@@ -2,6 +2,8 @@
 forward
 global type w_composite from window
 end type
+type cb_4 from commandbutton within w_composite
+end type
 type cb_3 from commandbutton within w_composite
 end type
 type cb_2 from commandbutton within w_composite
@@ -57,6 +59,7 @@ long backcolor = 67108864
 string icon = "AppIcon!"
 boolean center = true
 event ue_autorun ( )
+cb_4 cb_4
 cb_3 cb_3
 cb_2 cb_2
 cb_autorun cb_autorun
@@ -4077,6 +4080,7 @@ f_outputtext(dw_output,ls_message)
 end subroutine
 
 on w_composite.create
+this.cb_4=create cb_4
 this.cb_3=create cb_3
 this.cb_2=create cb_2
 this.cb_autorun=create cb_autorun
@@ -4097,7 +4101,8 @@ this.gb_2=create gb_2
 this.gb_3=create gb_3
 this.gb_4=create gb_4
 this.dw_1=create dw_1
-this.Control[]={this.cb_3,&
+this.Control[]={this.cb_4,&
+this.cb_3,&
 this.cb_2,&
 this.cb_autorun,&
 this.dw_event,&
@@ -4120,6 +4125,7 @@ this.dw_1}
 end on
 
 on w_composite.destroy
+destroy(this.cb_4)
 destroy(this.cb_3)
 destroy(this.cb_2)
 destroy(this.cb_autorun)
@@ -4171,13 +4177,31 @@ next
 
 end event
 
-type cb_3 from commandbutton within w_composite
-integer x = 594
-integer y = 356
-integer width = 457
-integer height = 128
+type cb_4 from commandbutton within w_composite
+integer x = 1769
+integer y = 380
+integer width = 475
+integer height = 100
 integer taborder = 150
-integer textsize = -12
+integer textsize = -9
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Arial"
+string text = "scrollpriorpage"
+end type
+
+event clicked;dw_1.scrollpriorpage( )
+end event
+
+type cb_3 from commandbutton within w_composite
+integer x = 663
+integer y = 380
+integer width = 389
+integer height = 104
+integer taborder = 150
+integer textsize = -9
 integer weight = 400
 fontcharset fontcharset = ansi!
 fontpitch fontpitch = variable!
@@ -4192,12 +4216,12 @@ dw_1.retrieve()
 end event
 
 type cb_2 from commandbutton within w_composite
-integer x = 1189
-integer y = 352
-integer width = 535
-integer height = 128
+integer x = 1248
+integer y = 380
+integer width = 475
+integer height = 100
 integer taborder = 140
-integer textsize = -12
+integer textsize = -9
 integer weight = 400
 fontcharset fontcharset = ansi!
 fontpitch fontpitch = variable!
