@@ -1,0 +1,26 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "slideupslideleft.pbl" "";
+@end;
+@begin Objects 
+ "d_exter_slide.srd" "slideupslideleft.pbl";
+ "d_freeform.srd" "slideupslideleft.pbl";
+ "d_freeform_slide.srd" "slideupslideleft.pbl";
+ "d_freeform1.srd" "slideupslideleft.pbl";
+ "d_grid.srd" "slideupslideleft.pbl";
+ "d_grid_default.srd" "slideupslideleft.pbl";
+ "d_grid_header.srd" "slideupslideleft.pbl";
+ "d_tabular_detail.srd" "slideupslideleft.pbl";
+ "d_tabular_footer.srd" "slideupslideleft.pbl";
+ "d_tabular_header.srd" "slideupslideleft.pbl";
+ "d_tabular_header_com.srd" "slideupslideleft.pbl";
+ "d_tabular_slide.srd" "slideupslideleft.pbl";
+ "d_tabular_slide1.srd" "slideupslideleft.pbl";
+ "d_tabular_slideleft.srd" "slideupslideleft.pbl";
+ "d_tabular_slideup_slideleft.srd" "slideupslideleft.pbl";
+ "d_tabular_slideup_slideleft_report.srd" "slideupslideleft.pbl";
+ "d_tabular_slideup_slideleft_visible.srd" "slideupslideleft.pbl";
+ "d_tabular_summary.srd" "slideupslideleft.pbl";
+ "w_slideup.srw" "slideupslideleft.pbl";
+ "w_slideupui.srw" "slideupslideleft.pbl";
+@end;

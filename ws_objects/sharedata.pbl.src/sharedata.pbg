@@ -1,0 +1,12 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "sharedata.pbl" "";
+@end;
+@begin Objects 
+ "d_bak.srd" "sharedata.pbl";
+ "d_output.srd" "sharedata.pbl";
+ "d_sharedata_dddw.srd" "sharedata.pbl";
+ "d_sharedata_grid.srd" "sharedata.pbl";
+ "d_sharedata_update.srd" "sharedata.pbl";
+ "w_sharedata.srw" "sharedata.pbl";
+@end;

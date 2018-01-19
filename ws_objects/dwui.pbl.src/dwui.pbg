@@ -1,0 +1,11 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "dwui.pbl" "";
+@end;
+@begin Objects 
+ "d_all_datatype_required.srd" "dwui.pbl";
+ "d_external_data.srd" "dwui.pbl";
+ "d_object.srd" "dwui.pbl";
+ "w_rowsmovecopy.srw" "dwui.pbl";
+ "w_ui_test.srw" "dwui.pbl";
+@end;

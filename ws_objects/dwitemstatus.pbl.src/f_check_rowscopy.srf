@@ -1,0 +1,662 @@
+﻿$PBExportHeader$f_check_rowscopy.srf
+global type f_check_rowscopy from function_object
+end type
+
+forward prototypes
+global subroutine f_check_rowscopy (datawindow adw_output, datawindow adw_1, boolean ab_save_flag, integer ai_check_flag, boolean ab_output, datawindow adw_2)
+end prototypes
+
+global subroutine f_check_rowscopy (datawindow adw_output, datawindow adw_1, boolean ab_save_flag, integer ai_check_flag, boolean ab_output, datawindow adw_2);string			ls_status_arr[]={"notmodified","new!","newmodified!","datamodified!"}
+string			ls_buffer_arr[]={"primary!","delete!","filter!"}
+DwItemStatus	l_status,l_status_arr[]={notmodified!,new!,newmodified!,datamodified!}, l_status2
+DwBuffer 		l_buffer_arr[]={primary!,delete!,filter!}
+
+string 			ls_message[],ls_null
+int				i,j,n,x,y
+int				li_ret
+
+setnull(ls_null)
+//------------------------------------------------------------------------------
+//ÐÐ²âÊÔ   ²»Í¬Êý¾Ý´°¿ÚÍ¬Ò»»º³åÇø
+n=0
+if ai_check_flag=0 or ai_check_flag=1 then// Rowscopy()ÐÐ×´Ì¬
+	adw_1.dataobject = "d_dwitemstaus_feeform"
+	adw_1.settransobject(sqlca)
+	
+	adw_2.dataobject = adw_1.dataobject
+	adw_2.settransobject(sqlca)
+	
+	adw_1.retrieve()
+				
+//	messagebox("Setup Before",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	for x=1 to 4
+		adw_1.deleterow(2)
+	next
+	adw_1.SetFilter("#1>500")
+	adw_1.filter()
+//	messagebox("Setup After",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	
+	//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)
+			li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+		next
+	next
+	
+	// every buffer and rowstatus ·µ»ØÖµ	
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)				
+			n++				
+			l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+			
+			li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, l_buffer_arr[i]) //
+			
+			l_status2=adw_2.getitemstatus(j,0,l_buffer_arr[i])
+
+			f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),ls_buffer_arr[i]+"."+f_dwstatustostring(l_status2), l_buffer_arr[i],"1.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+	next
+end if
+
+
+//------------------------------------------------------------------------------
+//ÐÐ²âÊÔ   ²»Í¬Êý¾Ý´°¿Ú²»Í¬»º³åÇø
+n=0
+if ai_check_flag=0 or ai_check_flag=2 then// Rowscopy()ÐÐ×´Ì¬
+	for i=1 to UpperBound(ls_buffer_arr)
+		if ls_buffer_arr[i] = 'primary!' then			
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, delete!)
+				l_status2=adw_2.getitemstatus(j,0,delete!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"delete!"+"."+f_dwstatustostring(l_status2), delete!,"2.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "delete!" , ab_save_flag,li_ret,ab_output)
+			next
+
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, filter!)
+				l_status2=adw_2.getitemstatus(j,0,filter!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"filter!"+"."+f_dwstatustostring(l_status2), filter!,"2.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "filter!" , ab_save_flag,li_ret,ab_output)
+			next			
+		elseif ls_buffer_arr[i] = 'delete!' then
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+
+			for x=1 to 4
+				adw_1.deleterow(2)
+			next
+
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, primary!)
+				l_status2=adw_2.getitemstatus(j,0,primary!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"primary!"+"."+f_dwstatustostring(l_status2), primary!,"2.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "primary!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+
+			for x=1 to 4
+				adw_1.deleterow(2)
+			next
+
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, filter!)
+				l_status2=adw_2.getitemstatus(j,0,filter!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"filter!"+"."+f_dwstatustostring(l_status2), filter!,"2.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "filter!" , ab_save_flag,li_ret,ab_output)
+			next			
+		elseif ls_buffer_arr[i] = 'filter!' then
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+
+			adw_1.SetFilter("#1>500")
+			adw_1.filter()
+
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next			
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, primary!)
+				l_status2=adw_2.getitemstatus(j,0,primary!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"primary!"+"."+f_dwstatustostring(l_status2), primary!,"2.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "primary!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+
+			adw_1.SetFilter("#1>500")
+			adw_1.filter()
+
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next			
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, delete!)
+				l_status2=adw_2.getitemstatus(j,0,delete!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"delete!"+"."+f_dwstatustostring(l_status2), delete!,"2.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "delete!" , ab_save_flag,li_ret,ab_output)
+			next						
+		end if
+	next
+end if
+
+//------------------------------------------------------------------------------
+//ÐÐ²âÊÔ   Í¬Ò»Êý¾Ý´°¿Ú²»Í¬»º³åÇø
+n=0
+if ai_check_flag=0 or ai_check_flag=3 then// Rowscopy()ÐÐ×´Ì¬
+	for i=1 to UpperBound(ls_buffer_arr)
+		if ls_buffer_arr[i] = 'primary!' then			
+			//Primary! to delete! and filter!
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, delete!)
+				l_status2=adw_1.getitemstatus(j,0,delete!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"delete!"+"."+f_dwstatustostring(l_status2), delete!,"3.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "delete!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, filter!)
+				l_status2=adw_1.getitemstatus(j,0,filter!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"filter!"+"."+f_dwstatustostring(l_status2), filter!,"3.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "filter!" , ab_save_flag,li_ret,ab_output)
+			next			
+		elseif ls_buffer_arr[i] = 'delete!' then			
+			//Delete! to primary! and filter!
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+		
+			for x=1 to 4
+				adw_1.deleterow(2)
+			next
+		
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, primary!)
+				l_status2=adw_1.getitemstatus(j,0,primary!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"primary!"+"."+f_dwstatustostring(l_status2), primary!,"3.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "primary!" , ab_save_flag,li_ret,ab_output)
+			next
+			
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+		
+			for x=1 to 4
+				adw_1.deleterow(2)
+			next
+		
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, filter!)
+				l_status2=adw_1.getitemstatus(j,0,filter!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"filter!"+"."+f_dwstatustostring(l_status2), filter!,"3.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "filter!" , ab_save_flag,li_ret,ab_output)
+			next			
+		elseif ls_buffer_arr[i] = 'filter!' then			
+			//Filter! to primary! and delete!
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+		
+			adw_1.SetFilter("#1>500")
+			adw_1.filter()
+		
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+		
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, primary!)
+				l_status2=adw_1.getitemstatus(j,0,primary!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"primary!"+"."+f_dwstatustostring(l_status2), primary!,"3.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "primary!" , ab_save_flag,li_ret,ab_output)
+			next
+			
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+		
+			adw_1.SetFilter("#1>500")
+			adw_1.filter()
+		
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+		
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,0,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, delete!)
+				l_status2=adw_1.getitemstatus(j,0,delete!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"delete!"+"."+f_dwstatustostring(l_status2), delete!,"3.CheckRow rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "delete!" , ab_save_flag,li_ret,ab_output)
+			next						
+		end if
+	next
+end if
+
+
+//------------------------------------------------------------------------------
+//ÁÐ²âÊÔ   ²»Í¬Êý¾Ý´°¿ÚÍ¬Ò»»º³åÇø
+n=0
+if ai_check_flag=0 or ai_check_flag=4 then
+	adw_1.dataobject = "d_dwitemstaus_feeform"
+	adw_1.settransobject(sqlca)
+	
+	adw_2.dataobject = adw_1.dataobject
+	adw_2.settransobject(sqlca)
+	
+	adw_1.retrieve()
+				
+//	messagebox("Setup Before",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	for x=1 to 4
+		adw_1.deleterow(2)
+	next
+	adw_1.SetFilter("#1>500")
+	adw_1.filter()
+//	messagebox("Setup After",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	
+	//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)
+			li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+		next
+	next
+	
+	// every buffer and rowstatus ·µ»ØÖµ	
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)				
+			n++				
+			l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+			
+			li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, l_buffer_arr[i]) //
+			
+			l_status2=adw_2.getitemstatus(j,1,l_buffer_arr[i])
+			
+			f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),ls_buffer_arr[i]+"."+f_dwstatustostring(l_status2), l_buffer_arr[i],"4.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+	next
+end if
+
+
+//------------------------------------------------------------------------------
+//ÁÐ²âÊÔ   ²»Í¬Êý¾Ý´°¿Ú²»Í¬»º³åÇø
+n=0
+if ai_check_flag=0 or ai_check_flag=5 then
+	for i=1 to UpperBound(ls_buffer_arr)
+		if ls_buffer_arr[i] = 'primary!' then			
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, delete!)
+				l_status2=adw_2.getitemstatus(j,1,delete!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"delete!"+"."+f_dwstatustostring(l_status2), delete!,"5.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "delete!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, filter!)
+				l_status2=adw_2.getitemstatus(j,1,filter!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"filter!"+"."+f_dwstatustostring(l_status2), filter!,"5.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "filter!" , ab_save_flag,li_ret,ab_output)
+			next			
+		elseif ls_buffer_arr[i] = 'delete!' then
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+						
+			for x=1 to 4
+				adw_1.deleterow(2)
+			next
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next			
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, primary!)
+				l_status2=adw_2.getitemstatus(j,1,primary!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"primary!"+"."+f_dwstatustostring(l_status2), primary!,"5.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "primary!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+						
+			for x=1 to 4
+				adw_1.deleterow(2)
+			next
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next			
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, filter!)
+				l_status2=adw_2.getitemstatus(j,1,filter!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"filter!"+"."+f_dwstatustostring(l_status2), filter!,"5.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "filter!" , ab_save_flag,li_ret,ab_output)
+			next			
+		elseif ls_buffer_arr[i] = 'filter!' then			
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+						
+			adw_1.SetFilter("#1>500")
+			adw_1.filter()
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next			
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, primary!)
+				l_status2=adw_2.getitemstatus(j,1,primary!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"primary!"+"."+f_dwstatustostring(l_status2), primary!,"5.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "primary!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			
+			adw_2.dataobject = adw_1.dataobject
+			adw_2.settransobject(sqlca)
+			
+			adw_1.retrieve()
+						
+			adw_1.SetFilter("#1>500")
+			adw_1.filter()
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next			
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_2, j, delete!)
+				l_status2=adw_2.getitemstatus(j,1,delete!)
+				f_compare_rowscopy(adw_output,adw_2,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"delete!"+"."+f_dwstatustostring(l_status2), delete!,"5.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "delete!" , ab_save_flag,li_ret,ab_output)
+			next						
+		end if
+	next
+end if
+
+//------------------------------------------------------------------------------
+//ÁÐ²âÊÔ   Í¬Ò»Êý¾Ý´°¿Ú²»Í¬»º³åÇø
+n=0
+if ai_check_flag=0 or ai_check_flag=6 then
+	for i=1 to UpperBound(ls_buffer_arr)
+		if ls_buffer_arr[i] = 'primary!' then			
+			//Primary! to delete! and filter!
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, delete!)
+				l_status2=adw_1.getitemstatus(j,1,delete!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"delete!"+"."+f_dwstatustostring(l_status2), delete!,"6.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "delete!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+			
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, filter!)
+				l_status2=adw_1.getitemstatus(j,1,filter!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"filter!"+"."+f_dwstatustostring(l_status2), filter!,"6.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "filter!" , ab_save_flag,li_ret,ab_output)
+			next			
+
+		elseif ls_buffer_arr[i] = 'delete!' then			
+			//Delete! to primary! and filter!
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+		
+			for x=1 to 4
+				adw_1.deleterow(2)
+			next
+		
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, primary!)
+				l_status2=adw_1.getitemstatus(j,1,primary!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"primary!"+"."+f_dwstatustostring(l_status2), primary!,"6.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "primary!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+		
+			for x=1 to 4
+				adw_1.deleterow(2)
+			next
+		
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, filter!)
+				l_status2=adw_1.getitemstatus(j,1,filter!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"filter!"+"."+f_dwstatustostring(l_status2), filter!,"6.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "filter!" , ab_save_flag,li_ret,ab_output)
+			next			
+		elseif ls_buffer_arr[i] = 'filter!' then			
+			//Filter! to primary! and delete!
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+		
+			adw_1.SetFilter("#1>500")
+			adw_1.filter()
+		
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next
+			
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, primary!)
+				l_status2=adw_1.getitemstatus(j,1,primary!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"primary!"+"."+f_dwstatustostring(l_status2), primary!,"6.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "primary!" , ab_save_flag,li_ret,ab_output)
+			next
+
+			adw_1.dataobject = "d_dwitemstaus_feeform"
+			adw_1.settransobject(sqlca)
+			adw_1.retrieve()
+		
+			adw_1.SetFilter("#1>500")
+			adw_1.filter()
+		
+			//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+			next
+
+			for j=1 to UpperBound(ls_status_arr)				
+				n++				
+				l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+				li_ret  =adw_1.rowscopy(j, j, l_buffer_arr[i], adw_1, j, delete!)
+				l_status2=adw_1.getitemstatus(j,1,delete!)
+				f_compare_rowscopy(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(l_status),"delete!"+"."+f_dwstatustostring(l_status2), delete!,"6.CheckColumn rowscopy() "+string(n)+ " From " +ls_buffer_arr[i] + " To " + "delete!" , ab_save_flag,li_ret,ab_output)
+			next						
+		end if
+	next
+end if
+end subroutine
+

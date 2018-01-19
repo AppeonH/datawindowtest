@@ -1,0 +1,15 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "dwdataexp.pbl" "";
+@end;
+@begin Objects 
+ "d_dotoperate.srd" "dwdataexp.pbl";
+ "d_dwdataaccess.srd" "dwdataexp.pbl";
+ "d_dwdataexp_feeform.srd" "dwdataexp.pbl";
+ "f_compare_dataexp.srf" "dwdataexp.pbl";
+ "f_get_columns.srf" "dwdataexp.pbl";
+ "f_temp.srf" "dwdataexp.pbl";
+ "str_dataexpall.srs" "dwdataexp.pbl";
+ "str_dataexppart.srs" "dwdataexp.pbl";
+ "w_dwdataaccess.srw" "dwdataexp.pbl";
+@end;

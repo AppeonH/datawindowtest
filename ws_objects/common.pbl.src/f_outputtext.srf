@@ -1,0 +1,17 @@
+﻿$PBExportHeader$f_outputtext.srf
+global type f_outputtext from function_object
+end type
+
+forward prototypes
+global subroutine f_outputtext (datawindow adw_1, string as_message[])
+end prototypes
+
+global subroutine f_outputtext (datawindow adw_1, string as_message[]);int i,j
+j=adw_1.insertrow(0)
+
+for i=1 to UpperBound(as_message)
+	adw_1.object.data.primary[j,i]=as_message[i]
+next
+
+end subroutine
+

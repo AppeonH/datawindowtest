@@ -1,0 +1,32 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "dynamicdw.pbl" "";
+@end;
+@begin Objects 
+ "d_attributes.srd" "dynamicdw.pbl";
+ "d_dddw_dept.srd" "dynamicdw.pbl";
+ "d_dddw_e10.srd" "dynamicdw.pbl";
+ "d_e10.srd" "dynamicdw.pbl";
+ "d_e11.srd" "dynamicdw.pbl";
+ "d_e12.srd" "dynamicdw.pbl";
+ "d_f160a02_common01.srd" "dynamicdw.pbl";
+ "d_f160a03_common01.srd" "dynamicdw.pbl";
+ "d_freeform.srd" "dynamicdw.pbl";
+ "d_q7.srd" "dynamicdw.pbl";
+ "d_q8.srd" "dynamicdw.pbl";
+ "d_q9.srd" "dynamicdw.pbl";
+ "d_qs1.srd" "dynamicdw.pbl";
+ "d_qs2.srd" "dynamicdw.pbl";
+ "d_qs3.srd" "dynamicdw.pbl";
+ "d_sp13.srd" "dynamicdw.pbl";
+ "d_sp14.srd" "dynamicdw.pbl";
+ "d_sp15.srd" "dynamicdw.pbl";
+ "d_ss1.srd" "dynamicdw.pbl";
+ "d_ss1_1.srd" "dynamicdw.pbl";
+ "d_ss1_2.srd" "dynamicdw.pbl";
+ "d_ss2.srd" "dynamicdw.pbl";
+ "d_ss3.srd" "dynamicdw.pbl";
+ "f_get_handle.srf" "dynamicdw.pbl";
+ "f_str_to_array.srf" "dynamicdw.pbl";
+ "w_dynamicdw.srw" "dynamicdw.pbl";
+@end;

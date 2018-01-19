@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_attribute.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=id dbname="dwattribute.id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=objectname dbname="dwattribute.objectname" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=attribute dbname="dwattribute.attribute" )
+ column=(type=long update=yes updatewhereclause=yes name=ismodify dbname="dwattribute.ismodify" )
+ column=(type=long update=yes updatewhereclause=yes name=isdescribe dbname="dwattribute.isdescribe" )
+ column=(type=char(10000) update=yes updatewhereclause=yes name=modifyvalue dbname="dwattribute.modifyvalue" )
+ column=(type=char(10000) update=yes updatewhereclause=yes name=describevalue dbname="dwattribute.describevalue" )
+ column=(type=long update=yes updatewhereclause=yes name=valuetype dbname="dwattribute.valuetype" )
+ retrieve="  SELECT ~"dwattribute~".~"id~",   
+         ~"dwattribute~".~"objectname~",   
+         ~"dwattribute~".~"attribute~",   
+         ~"dwattribute~".~"ismodify~",   
+         ~"dwattribute~".~"isdescribe~",   
+         ~"dwattribute~".~"modifyvalue~",   
+         ~"dwattribute~".~"describevalue~",   
+         ~"dwattribute~".~"valuetype~"  
+    FROM ~"dwattribute~"  
+   WHERE ~"dwattribute~".~"objectname~" = :as_objectname    
+" update="dwattribute" updatewhere=1 updatekeyinplace=no arguments=(("as_objectname", string)) )
+text(band=header alignment="2" text="id no" border="0" color="33554432" x="9" y="8" height="64" width="165" html.valueishtml="0"  name=id_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="object" border="0" color="33554432" x="183" y="8" height="64" width="475" html.valueishtml="0"  name=objectname_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="attribute name" border="0" color="33554432" x="667" y="8" height="64" width="859" html.valueishtml="0"  name=attribute_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="ismodify" border="0" color="33554432" x="1536" y="8" height="64" width="407" html.valueishtml="0"  name=ismodify_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="isdescribe" border="0" color="33554432" x="1952" y="8" height="64" width="439" html.valueishtml="0"  name=isdescribe_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="modifyvalue" border="0" color="33554432" x="2400" y="8" height="64" width="713" html.valueishtml="0"  name=modifyvalue_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="describevalue" border="0" color="33554432" x="3122" y="8" height="64" width="677" html.valueishtml="0"  name=describevalue_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="valuetype" border="0" color="33554432" x="3808" y="8" height="64" width="439" html.valueishtml="0"  name=valuetype_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="76" width="165" format="[general]" html.valueishtml="0"  name=id  tag="id no" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=10 border="0" color="33554432" x="183" y="8" height="76" width="475" format="[general]" html.valueishtml="0"  name=objectname  tag="object name (Column,Text)" visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=20 border="0" color="33554432" x="667" y="8" height="76" width="859" format="[general]" html.valueishtml="0"  name=attribute  tag="attribute name" visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=30 border="0" color="33554432" x="1536" y="8" height="76" width="407" format="[general]" html.valueishtml="0"  name=ismodify  tag="whether modify is supported(0 not support,1 support)" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=40 border="0" color="33554432" x="1952" y="8" height="76" width="439" format="[general]" html.valueishtml="0"  name=isdescribe  tag="whether describe is supported(0 not support,1 support)" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=50 border="0" color="33554432" x="2400" y="8" height="76" width="713" format="[general]" html.valueishtml="0"  name=modifyvalue  tag="modify default value" visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="2" tabsequence=60 border="0" color="33554432" x="3122" y="8" height="76" width="677" format="[general]" html.valueishtml="0"  name=describevalue  tag="describe default value" visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="2" tabsequence=70 border="0" color="33554432" x="3808" y="8" height="76" width="439" format="[general]" html.valueishtml="0"  name=valuetype  tag="value type (0:string ='abc',1:no string =yes)" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

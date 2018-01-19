@@ -1,0 +1,25 @@
+﻿$PBExportHeader$f_dwstatustostring.srf
+global type f_dwstatustostring from function_object
+end type
+
+forward prototypes
+global function string f_dwstatustostring (dwitemstatus a_status)
+end prototypes
+
+global function string f_dwstatustostring (dwitemstatus a_status);//f_dwstatustostring()
+
+choose case a_status
+	case notmodified!
+		return "Notmodified!"
+	case Datamodified!	
+		return "Datamodified!"
+	case new!
+		return "New!"
+	case newmodified!
+		return "Newmodified!"
+end choose
+
+if isnull(a_status) then return "null"
+
+end function
+

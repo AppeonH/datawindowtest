@@ -1,0 +1,140 @@
+﻿$PBExportHeader$d_expression_utmost.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=20 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=date update=yes updatewhereclause=yes name=a_date dbname="expression_utmost.a_date" )
+ column=(type=date update=yes updatewhereclause=yes name=b_date dbname="expression_utmost.b_date" )
+ column=(type=date update=yes updatewhereclause=yes name=c_date dbname="expression_utmost.c_date" )
+ column=(type=date update=yes updatewhereclause=yes name=d_date dbname="expression_utmost.d_date" )
+ column=(type=date update=yes updatewhereclause=yes name=e_date dbname="expression_utmost.e_date" )
+ column=(type=date update=yes updatewhereclause=yes name=f_date dbname="expression_utmost.f_date" )
+ column=(type=date update=yes updatewhereclause=yes name=g_date dbname="expression_utmost.g_date" )
+ column=(type=date update=yes updatewhereclause=yes name=h_date dbname="expression_utmost.h_date" )
+ column=(type=date update=yes updatewhereclause=yes name=i_date dbname="expression_utmost.i_date" )
+ column=(type=time update=yes updatewhereclause=yes name=a_mytime dbname="expression_utmost.a_mytime" )
+ column=(type=time update=yes updatewhereclause=yes name=b_mytime dbname="expression_utmost.b_mytime" )
+ column=(type=time update=yes updatewhereclause=yes name=c_mytime dbname="expression_utmost.c_mytime" )
+ column=(type=datetime update=yes updatewhereclause=yes name=a_mydatetime dbname="expression_utmost.a_mydatetime" )
+ column=(type=datetime update=yes updatewhereclause=yes name=b_mydatetime dbname="expression_utmost.b_mydatetime" )
+ column=(type=datetime update=yes updatewhereclause=yes name=c_mydatetime dbname="expression_utmost.c_mydatetime" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=id dbname="expression_utmost.id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=emp_fname dbname="expression_utmost.emp_fname" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=street dbname="expression_utmost.street" )
+ column=(type=decimal(3) update=yes updatewhereclause=yes name=salary dbname="expression_utmost.salary" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=mydecimal dbname="expression_utmost.mydecimal" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"expression_utmost~" ) COLUMN(NAME=~"expression_utmost.a_date~") COLUMN(NAME=~"expression_utmost.b_date~") COLUMN(NAME=~"expression_utmost.c_date~") COLUMN(NAME=~"expression_utmost.d_date~") COLUMN(NAME=~"expression_utmost.e_date~") COLUMN(NAME=~"expression_utmost.f_date~") COLUMN(NAME=~"expression_utmost.g_date~") COLUMN(NAME=~"expression_utmost.h_date~") COLUMN(NAME=~"expression_utmost.i_date~") COLUMN(NAME=~"expression_utmost.a_mytime~") COLUMN(NAME=~"expression_utmost.b_mytime~") COLUMN(NAME=~"expression_utmost.c_mytime~") COLUMN(NAME=~"expression_utmost.a_mydatetime~") COLUMN(NAME=~"expression_utmost.b_mydatetime~") COLUMN(NAME=~"expression_utmost.c_mydatetime~") COLUMN(NAME=~"expression_utmost.id~") COLUMN(NAME=~"expression_utmost.emp_fname~") COLUMN(NAME=~"expression_utmost.street~") COLUMN(NAME=~"expression_utmost.salary~") COLUMN(NAME=~"expression_utmost.mydecimal~")) " update="expression_utmost" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="A Date" border="6" color="33554432" x="9" y="8" height="64" width="384" html.valueishtml="0"  name=a_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="B Date" border="6" color="33554432" x="402" y="8" height="64" width="384" html.valueishtml="0"  name=b_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="C Date" border="6" color="33554432" x="795" y="8" height="64" width="384" html.valueishtml="0"  name=c_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="D Date" border="6" color="33554432" x="1189" y="8" height="64" width="384" html.valueishtml="0"  name=d_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="E Date" border="6" color="33554432" x="1582" y="8" height="64" width="384" html.valueishtml="0"  name=e_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="F Date" border="6" color="33554432" x="1975" y="8" height="64" width="384" html.valueishtml="0"  name=f_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="G Date" border="6" color="33554432" x="2368" y="8" height="64" width="384" html.valueishtml="0"  name=g_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="H Date" border="6" color="33554432" x="2761" y="8" height="64" width="384" html.valueishtml="0"  name=h_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="I Date" border="6" color="33554432" x="3154" y="8" height="64" width="384" html.valueishtml="0"  name=i_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="A Mytime" border="6" color="33554432" x="3547" y="8" height="64" width="320" html.valueishtml="0"  name=a_mytime_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="B Mytime" border="6" color="33554432" x="3877" y="8" height="64" width="320" html.valueishtml="0"  name=b_mytime_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="C Mytime" border="6" color="33554432" x="4206" y="8" height="64" width="320" html.valueishtml="0"  name=c_mytime_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="A Mydatetime" border="6" color="33554432" x="4535" y="8" height="64" width="704" html.valueishtml="0"  name=a_mydatetime_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="B Mydatetime" border="6" color="33554432" x="5248" y="8" height="64" width="704" html.valueishtml="0"  name=b_mydatetime_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="C Mydatetime" border="6" color="33554432" x="5961" y="8" height="64" width="704" html.valueishtml="0"  name=c_mydatetime_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="Id" border="6" color="33554432" x="6674" y="8" height="64" width="384" html.valueishtml="0"  name=id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="Emp Fname" border="6" color="33554432" x="7067" y="8" height="64" width="672" html.valueishtml="0"  name=emp_fname_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="Street" border="6" color="33554432" x="7749" y="8" height="64" width="649" html.valueishtml="0"  name=street_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="Salary" border="6" color="33554432" x="8407" y="8" height="64" width="384" html.valueishtml="0"  name=salary_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+text(band=header alignment="2" text="Mydecimal" border="6" color="33554432" x="8800" y="8" height="64" width="384" html.valueishtml="0"  name=mydecimal_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217738" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="33554432" x="9" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=a_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif(dayname( a_date )=~"Sunday~",RGB(255,0,0),
+if(dayname( a_date )=~"monday~",RGB(200,0,0),
+if(dayname( a_date )=~"Tuesday~",RGB(150,0,0),
+if(dayname( a_date )=~"Wednesday~",RGB(100,0,0),
+if(dayname( a_date )=~"Thursday~",RGB(50,0,0),
+if(dayname( a_date )=~"Friday~",RGB(50,0,255),
+if(dayname( a_date )=~"Saturday~",RGB(50,255,255),
+if(mod(day( a_date ),3)=0,RGB(0,year(a_date)/10,0),
+RGB(255,255,0)
+))))))))" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="33554432" x="402" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=b_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tRGB(abs(day(  b_date )*10),int(month(  b_date )*10),year(  b_date )/10)" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="33554432" x="795" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=c_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif (mod(daysafter(  c_date , relativedate( c_date,month( c_date )*getrow())),2)=0 ,
+rgb(getrow()*100,rand(long(string(  c_date , ~"yyyymmdd~" ))),55),
+rgb(222,getrow()*10,
+year(c_date)/daynumber(  c_date  )*daynumber(today())+long(string(  c_date , ~"yyyymmdd~" ))/100000
+))
+" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="33554432" x="1189" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=d_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif( isnull( d_date),rgb(128,0,128) ,rgb(200,200,200) )" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="33554432" x="1582" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=e_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif (mod(daysafter(  e_date , relativedate( e_date,month( e_date )*getrow())),2)=0 ,
+rgb(getrow()*100,rand(long(string(  e_date , ~"yyyymmdd~" ))),55),
+rgb(222,getrow()*10,
+year(e_date)/daynumber(  e_date  )*daynumber(today())+long(string(  e_date , ~"yyyymmdd~" ))/100000
+))" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="33554432" x="1975" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=f_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif( isnull( d_date),rgb(128,185,128) ,rgb(200,200,200) )" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="5" color="33554432" x="2368" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=g_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif (mod(daysafter(  g_date , relativedate( g_date,month( g_date )*getrow())),2)=0 ,
+rgb(getrow()*100,long(string(  g_date , ~"yyyymmdd~" )),55),
+rgb(222,getrow()*10,
+year(g_date)/daynumber(  g_date  )*daynumber(today())+long(string(  g_date , ~"yyyymmdd~" ))/100000
+))" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="5" color="33554432" x="2761" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=h_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif (mod(daysafter(  h_date , relativedate( h_date,month( h_date )*getrow())),2)=0 ,
+rgb(getrow()*100,rand(long(string(  h_date , ~"yyyymmdd~" ))),55),
+rgb(222,getrow()*10,
+year(h_date)/daynumber(  h_date  )*daynumber(today())+long(string(  h_date , ~"yyyymmdd~" ))/100000
+))" )
+column(band=detail id=9 alignment="0" tabsequence=90 border="5" color="33554432" x="3154" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=i_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif (mod(daysafter(  i_date , relativedate( i_date,month( i_date )*getrow())),2)=0 ,
+rgb(getrow()*100,rand(long(string(  i_date , ~"yyyymmdd~" ))),55),
+rgb(222,getrow()*10,
+year(i_date)/daynumber(  i_date  )*daynumber(today())+long(string(  i_date , ~"yyyymmdd~" ))/100000
+))" )
+column(band=detail id=10 alignment="0" tabsequence=100 border="5" color="33554432" x="3547" y="8" height="68" width="320" format="[time]" html.valueishtml="0"  name=a_mytime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tRGB(getrow()*second( a_mytime )*10,
+secondsafter( a_mytime , relativetime(  a_mytime , 60 ) ),
+0)" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="5" color="33554432" x="3877" y="8" height="68" width="320" format="[time]" html.valueishtml="0"  name=b_mytime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tRGB(getrow()*second(  b_mytime )*10,
+secondsafter(  b_mytime , relativetime(   b_mytime , 60 ) ),
+0)" )
+column(band=detail id=12 alignment="0" tabsequence=120 border="5" color="33554432" x="4206" y="8" height="68" width="320" format="[time]" html.valueishtml="0"  name=c_mytime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tRGB(getrow()*second( a_mytime )*10,
+secondsafter( a_mytime , relativetime(  a_mytime , 60 ) ),
+0)" )
+column(band=detail id=13 alignment="0" tabsequence=130 border="5" color="33554432" x="4535" y="8" height="68" width="704" format="[shortdate] [time]" html.valueishtml="0"  name=a_mydatetime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tRGB(getrow()*second( a_mytime )*10,
+secondsafter( a_mytime , relativetime(  a_mytime , 60 ) ),
+0)" )
+column(band=detail id=14 alignment="0" tabsequence=140 border="5" color="33554432" x="5248" y="8" height="68" width="704" format="[shortdate] [time]" html.valueishtml="0"  name=b_mydatetime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tRGB(getrow()*second( a_mytime )*10,
+secondsafter( a_mytime , relativetime(  a_mytime , 60 ) ),
+0)" )
+column(band=detail id=15 alignment="0" tabsequence=150 border="5" color="33554432" x="5961" y="8" height="68" width="704" format="[shortdate] [time]" html.valueishtml="0"  name=c_mydatetime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tRGB(getrow()*second( a_mytime )*10,
+secondsafter( a_mytime , relativetime(  a_mytime , 60 ) ),
+0)" )
+column(band=detail id=16 alignment="1" tabsequence=160 border="5" color="33554432" x="6674" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif(mod(getrow(),2)=0,rgb(255,0,0),rgb(rand(getrow())*10,255,0))" )
+column(band=detail id=17 alignment="0" tabsequence=170 border="5" color="33554432" x="7067" y="8" height="68" width="672" format="[general]" html.valueishtml="0"  name=emp_fname visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~t
+if(getrow()= 1,RGB(  0,  0,  0),
+if(getrow()= 2,RGB(255,255,255),
+if(getrow()= 3,RGB(192,192,192),
+if(getrow()= 4,RGB(128,128,128),
+if(getrow()= 5,RGB(255,0,0),
+if(getrow()= 6,RGB(128,0,0),
+if(getrow()= 7,RGB(0,255,0),
+if(getrow()= 8,RGB(0,128,0),
+if(getrow()= 9,RGB(0,0,255),
+if(getrow()=10,RGB(0,0,128),
+if(getrow()=11,RGB(255,0,255),
+if(getrow()=12,RGB(128,0,128),
+if(getrow()=13,RGB(0,255,255),
+if(getrow()=14,RGB(0,128,128),
+if(getrow()=15,RGB(255,255,0),
+if(getrow()=16,RGB(128,128,0),
+RGB(255,255,0)
+))))))))))))))))" )
+column(band=detail id=18 alignment="0" tabsequence=180 border="5" color="33554432" x="7749" y="8" height="68" width="649" format="[general]" html.valueishtml="0"  name=street visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~trgb(255,asc( mid( street , if(len(street) -getrow()>0,len(street) -getrow(),1), 1)),0)" )
+column(band=detail id=19 alignment="1" tabsequence=190 border="5" color="33554432" x="8407" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=salary visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~trgb(
+abs(  salary )+  salary - ceiling(   salary ) 
++
+asin(  salary - ceiling(   salary ) ) ,
+255,
+getrow()*10)" )
+column(band=detail id=20 alignment="1" tabsequence=200 border="5" color="33554432" x="8800" y="8" height="68" width="384" format="[general]" html.valueishtml="0"  name=mydecimal visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~trgb(
+abs( mydecimal )+ acos(mydecimal - ceiling(  mydecimal  ) )
++
+asin(mydecimal - ceiling(  mydecimal  ) ) ,
+255,
+getrow()*10)" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

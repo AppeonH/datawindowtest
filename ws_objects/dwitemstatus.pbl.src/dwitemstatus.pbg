@@ -1,0 +1,32 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "dwitemstatus.pbl" "";
+@end;
+@begin Objects 
+ "d_dwitemstaus_feeform.srd" "dwitemstatus.pbl";
+ "d_dwitemstaus_update.srd" "dwitemstatus.pbl";
+ "d_lockstatus.srd" "dwitemstatus.pbl";
+ "f_buffertostring.srf" "dwitemstatus.pbl";
+ "f_check_dwitemstatus.srf" "dwitemstatus.pbl";
+ "f_check_lockstatus.srf" "dwitemstatus.pbl";
+ "f_check_lockstatus1.srf" "dwitemstatus.pbl";
+ "f_check_lockstatus2.srf" "dwitemstatus.pbl";
+ "f_check_rowscopy.srf" "dwitemstatus.pbl";
+ "f_check_rowsmove.srf" "dwitemstatus.pbl";
+ "f_check_updatecolumnstatus.srf" "dwitemstatus.pbl";
+ "f_check_updaterowstatus.srf" "dwitemstatus.pbl";
+ "f_compare_dwstatus.srf" "dwitemstatus.pbl";
+ "f_compare_rowscopy.srf" "dwitemstatus.pbl";
+ "f_compare_rowsmove.srf" "dwitemstatus.pbl";
+ "f_compare_updatecolumnstatus.srf" "dwitemstatus.pbl";
+ "f_compare_updaterowstatus.srf" "dwitemstatus.pbl";
+ "f_dwstatustostring.srf" "dwitemstatus.pbl";
+ "f_getdwrowdata.srf" "dwitemstatus.pbl";
+ "f_getitem_data.srf" "dwitemstatus.pbl";
+ "f_getrowcolstatus.srf" "dwitemstatus.pbl";
+ "w_dwitemstatus.srw" "dwitemstatus.pbl";
+ "w_rowscopy.srw" "dwitemstatus.pbl";
+ "w_rowsmove.srw" "dwitemstatus.pbl";
+ "w_updatecolumnstatus.srw" "dwitemstatus.pbl";
+ "w_updaterowstatus.srw" "dwitemstatus.pbl";
+@end;

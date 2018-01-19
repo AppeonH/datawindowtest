@@ -1,0 +1,23 @@
+﻿$PBExportHeader$f_buffertostring.srf
+global type f_buffertostring from function_object
+end type
+
+forward prototypes
+global function string f_buffertostring (dwbuffer abuffer)
+end prototypes
+
+global function string f_buffertostring (dwbuffer abuffer);//f_buffertostring()
+
+choose case abuffer
+	case primary!
+		return "primary"
+	case delete!
+		return "delete"
+	case filter!
+		return "filter"
+end choose
+
+if isnull(abuffer) then return "null"
+
+end function
+

@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_string.srf
+global type f_string from function_object
+end type
+
+forward prototypes
+global function string f_string (any aa_value)
+end prototypes
+
+global function string f_string (any aa_value);string ls_value
+
+
+if isnull(aa_value) then
+	return "null"
+else
+	ls_value =  string(aa_value)
+	return ls_value
+end if
+end function
+

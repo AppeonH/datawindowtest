@@ -1,0 +1,43 @@
+﻿$PBExportHeader$f_getrowcolstatus.srf
+global type f_getrowcolstatus from function_object
+end type
+
+forward prototypes
+global function string f_getrowcolstatus (datawindow adw_1, dwbuffer a_buffer, long al_row)
+end prototypes
+
+global function string f_getrowcolstatus (datawindow adw_1, dwbuffer a_buffer, long al_row);dwItemStatus l_status
+integer columncount,i
+string ls_status,ls_status1
+//È¡µÃÐÐµÄ×´Ì¬
+
+ l_status = adw_1.getitemstatus(al_row,0,a_buffer)
+
+choose case l_status
+	case new!
+		ls_status = "new"
+	case newmodified!
+		ls_status = "newmodified"
+	case datamodified!
+		ls_status = "datamodified"
+	case notmodified!
+		ls_status = "notmodified"
+end choose
+columncount = integer(adw_1.object.datawindow.column.count)
+for i = 1 to columncount
+	l_status = adw_1.getitemstatus(al_row,i,a_buffer)
+	choose case l_status
+		case new!
+			ls_status1 = "new"
+		case newmodified!
+			ls_status1 = "newmodified"
+		case datamodified!
+			ls_status1 = "datamodified"
+		case notmodified!
+			ls_status1 = "notmodified"
+	end choose
+	ls_status = ls_status + "," +ls_status1
+next
+return ls_status
+end function
+

@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_replacetext.srf
+global type f_replacetext from function_object
+end type
+
+forward prototypes
+global function string f_replacetext (string as_string, string as_replacefrom, string as_replaceto)
+end prototypes
+
+global function string f_replacetext (string as_string, string as_replacefrom, string as_replaceto);
+long ll_StartPos = 1
+
+// Find the first occurrence of old_str.
+ll_StartPos = Pos(as_string, as_replacefrom, ll_StartPos)
+
+// Only enter the loop if you find old_str.
+DO WHILE ll_StartPos > 0
+
+    // Replace old_str with new_str.
+    as_string = Replace(as_string, ll_StartPos, Len(as_replacefrom), as_replaceto)
+
+    // Find the next occurrence of old_str.
+    ll_StartPos = Pos(as_string, as_replacefrom, ll_StartPos+Len(as_replaceto))
+
+LOOP
+
+return as_string
+end function
+

@@ -1,0 +1,12 @@
+﻿$PBExportHeader$f_temp.srf
+global type f_temp from function_object
+end type
+
+forward prototypes
+global subroutine f_temp ()
+end prototypes
+
+global subroutine f_temp ();messagebox("","")
+//return false
+end subroutine
+

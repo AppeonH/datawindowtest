@@ -1,0 +1,173 @@
+﻿$PBExportHeader$f_dwds_checkrowdata.srf
+global type f_dwds_checkrowdata from function_object
+end type
+
+forward prototypes
+global function boolean f_dwds_checkrowdata (datawindow adw_1, long al_row1, string as_buffer1, datastore ads_2, long al_row2, string as_buffer2)
+end prototypes
+
+global function boolean f_dwds_checkrowdata (datawindow adw_1, long al_row1, string as_buffer1, datastore ads_2, long al_row2, string as_buffer2);/************************************************************
+	Function:		f_dw_checkrowdata
+
+	Access: 			public
+
+	Arguments:	
+	
+	Returns:  		boolean
+
+	Description: 	check whether a datawindow's one row is equal to another
+	
+	Author:			zhushaobin
+*************************************************************/
+//check the datawindow column
+integer 	j,columncount
+string 	ls_value1,ls_value2
+string 	ls_coltype
+
+columncount = integer(adw_1.object.datawindow.column.count)
+for j = 1 to columncount
+	ls_coltype = adw_1.describe("#"+string(j)+".coltype")
+	
+	//buffer
+	if as_buffer1="primary" or as_buffer1="" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value1=adw_1.getitemstring(al_row1,j,primary!,false)
+				
+			case "date"
+				ls_value1=string(adw_1.getitemdate(al_row1,j,primary!,false))
+				
+			case "datet"
+				ls_value1=string(adw_1.getitemdatetime(al_row1,j,primary!,false)) 
+				
+			case "time"
+				ls_value1=string(adw_1.getitemtime(al_row1,j,primary!,false)) 
+			case else
+				ls_value1=string(adw_1.getitemnumber(al_row1,j,primary!,false))
+		end choose	
+	end if
+		
+
+	
+	if as_buffer1="filter" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value1=adw_1.getitemstring(al_row1,j,filter!,false)
+				
+			case "date"
+				ls_value1=string(adw_1.getitemdate(al_row1,j,filter!,false))
+				
+			case "datet"
+				ls_value1=string(adw_1.getitemdatetime(al_row1,j,filter!,false)) 
+				
+			case "time"
+				ls_value1=string(adw_1.getitemtime(al_row1,j,filter!,false)) 
+			case else
+				ls_value1=string(adw_1.getitemnumber(al_row1,j,filter!,false))
+		end choose	
+		
+	end if
+	
+		if as_buffer1="delete" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value1=adw_1.getitemstring(al_row1,j,delete!,false)
+				
+			case "date"
+				ls_value1=string(adw_1.getitemdate(al_row1,j,delete!,false))
+				
+			case "datet"
+				ls_value1=string(adw_1.getitemdatetime(al_row1,j,delete!,false)) 
+				
+			case "time"
+				ls_value1=string(adw_1.getitemtime(al_row1,j,delete!,false)) 
+			case else
+				ls_value1=string(adw_1.getitemnumber(al_row1,j,delete!,false))
+		end choose	
+		
+	end if
+		
+	
+	
+	//buffer
+	if as_buffer2="primary"  or as_buffer2="" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value2=ads_2.getitemstring(al_row2,j,primary!,false)
+				
+			case "date"
+				ls_value2=string(ads_2.getitemdate(al_row2,j,primary!,false))
+				
+			case "datet"
+				ls_value2=string(ads_2.getitemdatetime(al_row2,j,primary!,false)) 
+				
+			case "time"
+				ls_value2=string(ads_2.getitemtime(al_row2,j,primary!,false)) 
+			case else
+				ls_value2=string(ads_2.getitemnumber(al_row2,j,primary!,false))
+		end choose	
+	end if				
+			
+			//buffer
+	if as_buffer2="filter" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value2=ads_2.getitemstring(al_row2,j,filter!,false)
+				
+			case "date"
+				ls_value2=string(ads_2.getitemdate(al_row2,j,filter!,false))
+				
+			case "datet"
+				ls_value2=string(ads_2.getitemdatetime(al_row2,j,filter!,false)) 
+				
+			case "time"
+				ls_value2=string(ads_2.getitemtime(al_row2,j,filter!,false)) 
+			case else
+				ls_value2=string(ads_2.getitemnumber(al_row2,j,filter!,false))
+		end choose	
+	end if		
+	if as_buffer2="filter" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value2=ads_2.getitemstring(al_row2,j,filter!,false)
+				
+			case "date"
+				ls_value2=string(ads_2.getitemdate(al_row2,j,filter!,false))
+				
+			case "datet"
+				ls_value2=string(ads_2.getitemdatetime(al_row2,j,filter!,false)) 
+				
+			case "time"
+				ls_value2=string(ads_2.getitemtime(al_row2,j,filter!,false)) 
+			case else
+				ls_value2=string(ads_2.getitemnumber(al_row2,j,filter!,false))
+		end choose	
+	end if
+	
+		if as_buffer2="delete" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value2=ads_2.getitemstring(al_row2,j,delete!,false)
+				
+			case "date"
+				ls_value2=string(ads_2.getitemdate(al_row2,j,delete!,false))
+				
+			case "datet"
+				ls_value2=string(ads_2.getitemdatetime(al_row2,j,delete!,false)) 
+				
+			case "time"
+				ls_value2=string(ads_2.getitemtime(al_row2,j,delete!,false)) 
+			case else
+				ls_value2=string(ads_2.getitemnumber(al_row2,j,delete!,false))
+		end choose	
+	end if
+
+	if ls_value1 <> ls_value2 then
+		return false
+	end if
+
+next
+return true
+
+end function
+

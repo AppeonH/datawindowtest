@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_object.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=192 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=emp_id dbname="employee.emp_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"employee~" ) COLUMN(NAME=~"employee.emp_id~")) " update="employee" updatewhere=1 updatekeyinplace=no )
+button(band=header text="Button"filename=""action="0" border="0" color="33554432" x="55" y="24" height="120" width="320" vtextalign="0" htextalign="0"  name=b_1 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+bitmap(band=header filename="PictureButton.bmp" x="448" y="32" height="100" width="521" border="6"  name=p_1 visible="1" )
+line(band=header x1="1115" y1="72" x2="1513" y2="72"  name=l_1 visible="1" pen.style="0" pen.width="23" pen.color="33554432"  background.mode="2" background.color="1073741824" )
+rectangle(band=header x="1627" y="36" height="120" width="553"  name=r_1 visible="1" brush.hatch="6" brush.color="1073741824" pen.style="0" pen.width="23" pen.color="134217856"  background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Emp Id:" border="0" color="33554432" x="37" y="4" height="64" width="256" html.valueishtml="0"  name=emp_id_t visible="1"  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="33554432" x="311" y="4" height="76" width="439" format="[general]" html.valueishtml="0"  name=emp_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="System" font.height="-12" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

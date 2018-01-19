@@ -1,0 +1,41 @@
+﻿$PBExportHeader$f_getdwrowdata.srf
+global type f_getdwrowdata from function_object
+end type
+
+forward prototypes
+global function string f_getdwrowdata (datawindow adw_1, long al_row, dwbuffer a_buffer, boolean ab_original)
+end prototypes
+
+global function string f_getdwrowdata (datawindow adw_1, long al_row, dwbuffer a_buffer, boolean ab_original);string ls_ret
+integer j,columncount
+string ls_coltype
+columncount = integer(adw_1.object.datawindow.column.count)
+for j = 1 to columncount
+	ls_coltype = adw_1.describe("#"+string(j)+".coltype")
+	choose case lower(left(ls_coltype,5))
+		case "char("
+			if not isnull(adw_1.getitemstring(al_row,j,a_buffer,ab_original))then
+				ls_ret = ls_ret + adw_1.getitemstring(al_row,j,a_buffer,ab_original) + " "
+			end if
+		case "date"
+			if not isnull(adw_1.getitemdate(al_row,j,a_buffer,ab_original)) then
+				ls_ret = ls_ret + string(adw_1.getitemdate(al_row,j,a_buffer,ab_original),'mm/dd/yyyy') + " "
+			end if
+		case "datet"
+			if not isnull(adw_1.getitemdatetime(al_row,j,a_buffer,ab_original)) then
+				ls_ret = ls_ret + string(adw_1.getitemdatetime(al_row,j,a_buffer,ab_original),'mm/dd/yyyy hh:mm:ss') + " "
+			end if
+		case "time"
+			if not isnull(adw_1.getitemtime(al_row,j,a_buffer,ab_original)) then
+				ls_ret = ls_ret + string(adw_1.getitemtime(al_row,j,a_buffer,ab_original),"hh:mm:ss") + " "
+			end if
+		case else
+			if not isnull(adw_1.getitemnumber(al_row,j,a_buffer,ab_original)) then
+				ls_ret = ls_ret + string(adw_1.getitemnumber(al_row,j,a_buffer,ab_original)) + " "
+			end if
+	end choose			
+next
+
+return ls_ret
+end function
+

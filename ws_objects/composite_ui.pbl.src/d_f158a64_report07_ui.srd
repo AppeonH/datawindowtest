@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_f158a64_report07_ui.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=5 HTMLDW=no print.documentname="Appeon Print" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 12 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=164 color="536870912"  height.autosize=yes)
+table(column=(type=char(10) updatewhereclause=yes name=a dbname="a" )
+ unbound = "yes")
+text(band=detail alignment="0" text="Composite : Detail" border="0" color="134217729" x="9" y="8" height="60" width="471" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="2" text="Level 2" border="0" color="134217729" x="9" y="76" height="60" width="471" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+report(band=detail dataobject="d_f158a64_freeform01_ui" x="489" y="60" height="100" width="2203" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=dw_1 visible="1"  slideleft=yes  slideup=directlyabove )
+report(band=detail dataobject="d_public_composite1_64_ui" x="2697" y="60" height="100" width="1385" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=dw_2 visible="1"  slideup=directlyabove )
+report(band=detail dataobject="d_public_composite2_64_ui" x="4087" y="60" height="100" width="1394" border="0"  height.autosize=yes criteria="" trail_footer = yes  name=dw_3 visible="1"  slideup=directlyabove )
+text(band=footer alignment="2" text="text" border="0" color="33554432" x="2766" y="24" height="120" width="279" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+roundrectangle(band=footer ellipseheight="36" ellipsewidth="41"x="3109" y="40" height="120" width="256"  name=rr_2 visible="1" brush.hatch="5" brush.color="12639424" pen.style="5" pen.width="5" pen.color="1073741824"  background.mode="2" background.color="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

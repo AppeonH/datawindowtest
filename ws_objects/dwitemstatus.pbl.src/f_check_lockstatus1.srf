@@ -1,0 +1,71 @@
+﻿$PBExportHeader$f_check_lockstatus1.srf
+global type f_check_lockstatus1 from function_object
+end type
+
+forward prototypes
+global subroutine f_check_lockstatus1 (datawindow adw_1)
+end prototypes
+
+global subroutine f_check_lockstatus1 (datawindow adw_1);//datamodified->newmodifiedËø¶¨ÁÐ²âÊÔ£º
+//11a null¡¡value
+string ls_null
+int ai_flag
+dwitemstatus l_status
+int li_ret,n
+datawindow adw_output
+
+
+adw_1.object.data[1,1] = ls_null//null¡¡value
+
+//11a null¡¡value  datamodified--newmodifiedÔÙ²âÒ»²âËø¶¨ÁÐ 
+adw_1.object.city[3] = ls_null//null¡¡value
+adw_1.setitemstatus(3,0,primary!,newmodified!)
+adw_1.setitemstatus(3,2,primary!,notmodified!) //Ã»¸Ä¶¯
+//wf_status(3, "datamodified", "notmodified", "11a1", "0", ai_flag)
+
+
+f_compare_dwstatus(adw_output,adw_1,3,"datamodified", "notmodified", primary!,"CheckRow lockstatus() b"+string(n)+"primary", false,li_ret,false)
+					
+adw_1.setitemstatus(3,1,primary!,notmodified!) //ÒÑ¸Ä¶¯
+//wf_status(3, "datamodified", "notmodified", "11a2", "0", ai_flag)
+
+adw_1.setitemstatus(3,2,primary!,notmodified!) //Ã»¸Ä¶¯
+//wf_status(3, "datamodified", "notmodified", "11a3", "0", ai_flag)
+
+adw_1.setitemstatus(3,1,primary!,datamodified!) //ÒÑ¸Ä¶¯
+//wf_status(3, "datamodified", "notmodified", "11a4", "0", ai_flag)
+
+
+//new->newmodifiedËø¶¨ÁÐ²âÊÔ£º
+//______________________________________________________________________________________
+//¶ÔËø¶¨ÁÐ½øÐÐÉîÈë²âÊÔ
+adw_1.setitemstatus(12,0,primary!,new!)
+adw_1.setitemstatus(12,0,primary!,newmodified!)
+adw_1.setitemstatus(12,1,primary!,notmodified!)//ÒÑËø¶¨
+//wf_status(12, "new", "newmodified", "121a1", "0", ai_flag)
+adw_1.setitemstatus(12,2,primary!,notmodified!)//ÒÑËø¶¨
+//wf_status(12, "new", "newmodified", "121a2", "0", ai_flag)
+
+
+
+//______________________________________________________________________________________
+
+//newmodified -> datamodified Ëø¶¨ÁÐ²âÊÔ
+//²âÊÔÎ´Ôø¸ü¸ÄµÄÁÐ£¬
+adw_1.setitemstatus(31,0,primary!,newmodified!)
+adw_1.setitemstatus(31,0,primary!,datamodified!)
+//wf_status(31, "newmodified", "datamodified", "141a", "0", ai_flag)
+
+//ºÍÒÑ¸ü¸ÄµÄÁÐµÄ×´Ì¬Öµ¡£
+adw_1.setitemstatus(31,0,primary!,newmodified!)
+adw_1.object.city[31] = "AAAAA"
+adw_1.setitemstatus(31,0,primary!,datamodified!)
+//wf_status(31, "newmodified", "datamodified", "141b", "0", ai_flag)
+//------------------------------------------------------------------
+////notmodified->newmodifiedËø¶¨ÁÐÔÙ²âÒ»²â
+//dw_1.setitemstatus(22,0,primary!,newmodified!)
+//dw_1.setitemstatus(22,1,primary!,notmodified!)
+//wf_status(22, "notmodified", "newmodified", "131a", "0", ai_flag)
+
+end subroutine
+

@@ -1,0 +1,94 @@
+﻿$PBExportHeader$d_color.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=128 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=items dbname="items" )
+ )
+data("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", ) 
+text(band=header alignment="0" text="Color Test:" border="0" color="33554432" x="27" y="24" height="56" width="443" html.valueishtml="0"  name=t_1 visible="1"  font.face="@ËÎÌå" font.height="-9" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" font.underline="1" background.mode="2" background.color="1073741824" )
+text(band=header alignment="0" text="Color Display:" border="0" color="33554432" x="763" y="24" height="56" width="443" html.valueishtml="0"  name=t_2 visible="1"  font.face="@ËÎÌå" font.height="-9" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" font.underline="1" background.mode="2" background.color="1073741824" )
+text(band=header alignment="2" text="PB Color Value:
+(~"Error~" BackColor is Red)" border="0" color="33554432" x="1408" y="20" height="112" width="946" html.valueishtml="0"  name=t_3 visible="1"  font.face="@ËÎÌå" font.height="-9" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" font.underline="1" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="Items:" border="2" color="33554432" x="23" y="8" height="56" width="210" html.valueishtml="0"  name=items_t visible="1"  font.face="@ËÎÌå" font.height="-9" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="2" color="33554432" x="270" y="8" height="56" width="320" format="[general]" html.valueishtml="0"  name=items visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="@ËÎÌå" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="134" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="
+if(getrow()= 1,RGB(  0,  0,  0),
+if(getrow()= 2,RGB(255,255,255),
+if(getrow()= 3,RGB(192,192,192),
+if(getrow()= 4,RGB(128,128,128),
+if(getrow()= 5,RGB(255,0,0),
+if(getrow()= 6,RGB(128,0,0),
+if(getrow()= 7,RGB(0,255,0),
+if(getrow()= 8,RGB(0,128,0),
+if(getrow()= 9,RGB(0,0,255),
+if(getrow()=10,RGB(0,0,128),
+if(getrow()=11,RGB(255,0,255),
+if(getrow()=12,RGB(128,0,128),
+if(getrow()=13,RGB(0,255,255),
+if(getrow()=14,RGB(0,128,128),
+if(getrow()=15,RGB(255,255,0),
+if(getrow()=16,RGB(128,128,0),
+RGB(255,255,0)
+))))))))))))))))"border="0" color="33554432~t
+if(getrow()= 1,RGB(  255,  255,  255),
+RGB(0,0,0))
+" x="667" y="8" height="56" width="837" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="@ËÎÌå" font.height="-9" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="0" background.color="1073741824~t
+if(getrow()= 1,RGB(  0,  0,  0),
+if(getrow()= 2,RGB(255,255,255),
+if(getrow()= 3,RGB(192,192,192),
+if(getrow()= 4,RGB(128,128,128),
+if(getrow()= 5,RGB(255,0,0),
+if(getrow()= 6,RGB(128,0,0),
+if(getrow()= 7,RGB(0,255,0),
+if(getrow()= 8,RGB(0,128,0),
+if(getrow()= 9,RGB(0,0,255),
+if(getrow()=10,RGB(0,0,128),
+if(getrow()=11,RGB(255,0,255),
+if(getrow()=12,RGB(128,0,128),
+if(getrow()=13,RGB(0,255,255),
+if(getrow()=14,RGB(0,128,128),
+if(getrow()=15,RGB(255,255,0),
+if(getrow()=16,RGB(128,128,0),
+RGB(255,255,0)
+))))))))))))))))" )
+compute(band=detail alignment="0" expression="if(getrow()= 1,0,
+if(getrow()= 2,16777215,
+if(getrow()= 3,12632256,
+if(getrow()= 4,8421504,
+if(getrow()= 5,255,
+if(getrow()= 6,128,
+if(getrow()= 7,65280,
+if(getrow()= 8,32768,
+if(getrow()= 9,16711680,
+if(getrow()= 10,8388608,
+if(getrow()= 11,16711935,
+if(getrow()= 12,8388736,
+if(getrow()= 13,16776960,
+if(getrow()= 14,8421376,
+if(getrow()= 15,65535,
+if(getrow()= 16,32896,
+0
+))))))))))))))))"border="0" color="33554432" x="1623" y="8" height="56" width="594" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="@ËÎÌå" font.height="-9" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="0" background.color="1073741824~tif (   compute_2 <> compute_3  ,RGB(255,0,0), RGB(255,255,255) )" )
+compute(band=detail alignment="0" expression="if(getrow()= 1,'RGB(  0,  0,  0)',
+if(getrow()= 2,'RGB(255,255,255)',
+if(getrow()= 3,'RGB(192,192,192)',
+if(getrow()= 4,'RGB(128,128,128)',
+if(getrow()= 5,'RGB(255,0,0)',
+if(getrow()= 6,'RGB(128,0,0)',
+if(getrow()= 7,'RGB(0,255,0)',
+if(getrow()= 8,'RGB(0,128,0)',
+if(getrow()= 9,'RGB(0,0,255)',
+if(getrow()=10,'RGB(0,0,128)',
+if(getrow()=11,'RGB(255,0,255)',
+if(getrow()=12,'RGB(128,0,128)',
+if(getrow()=13,'RGB(0,255,255)',
+if(getrow()=14,'RGB(0,128,128)',
+if(getrow()=15,'RGB(255,255,0)',
+if(getrow()=16,'RGB(128,128,0)',
+'RGB(255,255,0)'
+))))))))))))))))"border="0" color="33554432" x="2267" y="4" height="56" width="594" format="[General]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="@ËÎÌå" font.height="-9" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="0" background.color="1073741824~tif (   compute_2 <> compute_3  ,RGB(255,0,0), RGB(255,255,255) )" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

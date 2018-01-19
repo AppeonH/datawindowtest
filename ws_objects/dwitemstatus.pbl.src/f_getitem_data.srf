@@ -1,0 +1,97 @@
+﻿$PBExportHeader$f_getitem_data.srf
+global type f_getitem_data from function_object
+end type
+
+forward prototypes
+global function string f_getitem_data (datawindow adw_1, long al_row, long al_column, string as_buffer, boolean ab_original, ref string as_classname)
+end prototypes
+
+global function string f_getitem_data (datawindow adw_1, long al_row, long al_column, string as_buffer, boolean ab_original, ref string as_classname);int	li_columncount,j
+string ls_coltype,ls_value
+li_columncount = integer(adw_1.object.datawindow.column.count)
+//for j = 1 to li_columncount
+//	ls_coltype = adw_1.describe("#"+string(j)+".coltype")
+	
+	//buffer
+	if as_buffer="primary" or as_buffer="" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value=adw_1.getitemstring(al_row,al_column,primary!,ab_original)
+				
+			case "date"
+				ls_value=string(adw_1.getitemdate(al_row,al_column,primary!,ab_original),'mm/dd/yyyy')
+				
+			case "datet"
+				ls_value=string(adw_1.getitemdatetime(al_row,al_column,primary!,ab_original),'mm/dd/yyyy hh:mm:ss') 
+				
+			case "time"
+				ls_value=string(adw_1.getitemtime(al_row,al_column,primary!,ab_original),'hh:mm:ss') 
+			case else
+				ls_value=string(adw_1.getitemnumber(al_row,al_column,primary!,ab_original))
+		end choose	
+	end if
+		
+
+	
+	if as_buffer="filter" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value=adw_1.getitemstring(al_row,al_column,filter!,ab_original)
+				
+			case "date"
+				ls_value=string(adw_1.getitemdate(al_row,al_column,filter!,ab_original),'mm/dd/yyyy')
+				
+			case "datet"
+				ls_value=string(adw_1.getitemdatetime(al_row,al_column,filter!,ab_original),'mm/dd/yyyy hh:mm:ss') 
+				
+			case "time"
+				ls_value=string(adw_1.getitemtime(al_row,al_column,filter!,ab_original),'hh:mm:ss') 
+			case else
+				ls_value=string(adw_1.getitemnumber(al_row,al_column,filter!,ab_original))
+		end choose	
+		
+	end if
+	
+		if as_buffer="delete" then 
+		choose case lower(left(ls_coltype,5))
+			case "char("
+				ls_value=adw_1.getitemstring(al_row,al_column,delete!,ab_original)
+				
+			case "date"
+				ls_value=string(adw_1.getitemdate(al_row,al_column,delete!,ab_original),'mm/dd/yyyy')
+				
+			case "datet"
+				ls_value=string(adw_1.getitemdatetime(al_row,al_column,delete!,ab_original),'mm/dd/yyyy hh:mm:ss') 
+				
+			case "time"
+				ls_value=string(adw_1.getitemtime(al_row,al_column,delete!,ab_original),'hh:mm:ss') 
+			case else
+				ls_value=string(adw_1.getitemnumber(al_row,al_column,delete!,ab_original))
+		end choose	
+		
+	end if
+	
+//next
+
+
+choose case lower(left(ls_coltype,5))
+			case "char("
+				as_classname="char"
+				
+			case "date"
+				as_classname="date"
+				
+			case "datet"
+				as_classname="datetime"
+				
+			case "time"
+				as_classname="time"
+			case else
+				as_classname="unknown"
+		end choose	
+
+
+
+return ls_value
+end function
+

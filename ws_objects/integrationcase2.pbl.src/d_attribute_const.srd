@@ -1,0 +1,40 @@
+﻿$PBExportHeader$d_attribute_const.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=104 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=objectname dbname="dwattribute_const.objectname" )
+ column=(type=char(100) updatewhereclause=yes name=attribute dbname="dwattribute_const.attribute" )
+ column=(type=long updatewhereclause=yes name=ismodify dbname="dwattribute_const.ismodify" )
+ column=(type=long updatewhereclause=yes name=isdescribe dbname="dwattribute_const.isdescribe" )
+ column=(type=char(10000) updatewhereclause=yes name=modifyvalue dbname="dwattribute_const.modifyvalue" )
+ column=(type=char(10000) updatewhereclause=yes name=describevalue dbname="dwattribute_const.describevalue" )
+ column=(type=long updatewhereclause=yes name=valuetype dbname="dwattribute_const.valuetype" )
+ retrieve="  SELECT ~"dwattribute_const~".~"objectname~",   
+         ~"dwattribute_const~".~"attribute~",   
+         ~"dwattribute_const~".~"ismodify~",   
+         ~"dwattribute_const~".~"isdescribe~",   
+         ~"dwattribute_const~".~"modifyvalue~",   
+         ~"dwattribute_const~".~"describevalue~",   
+         ~"dwattribute_const~".~"valuetype~"  
+    FROM ~"dwattribute_const~"   
+where ~"dwattribute_const~".~"objectname~" = :as_object 
+" arguments=(("as_object", string)) )
+text(band=header alignment="2" text="Objectname" border="0" color="33554432" x="9" y="8" height="76" width="1207" html.valueishtml="0"  name=objectname_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Attribute" border="0" color="33554432" x="1225" y="8" height="76" width="2350" html.valueishtml="0"  name=attribute_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ismodify" border="0" color="33554432" x="3584" y="8" height="76" width="293" html.valueishtml="0"  name=ismodify_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Isdescribe" border="0" color="33554432" x="3886" y="8" height="76" width="329" html.valueishtml="0"  name=isdescribe_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Modifyvalue" border="0" color="33554432" x="4224" y="8" height="76" width="5893" html.valueishtml="0"  name=modifyvalue_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Describevalue" border="0" color="33554432" x="10126" y="8" height="76" width="5893" html.valueishtml="0"  name=describevalue_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Valuetype" border="0" color="33554432" x="16027" y="8" height="76" width="315" html.valueishtml="0"  name=valuetype_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="76" width="1207" format="[general]" html.valueishtml="0"  name=objectname visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="1225" y="8" height="76" width="2350" format="[general]" html.valueishtml="0"  name=attribute visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="3584" y="8" height="76" width="293" format="[General]" html.valueishtml="0"  name=ismodify visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="3886" y="8" height="76" width="329" format="[General]" html.valueishtml="0"  name=isdescribe visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="4224" y="8" height="76" width="5893" format="[general]" html.valueishtml="0"  name=modifyvalue visible="1" edit.limit=10000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="10126" y="8" height="76" width="5893" format="[general]" html.valueishtml="0"  name=describevalue visible="1" edit.limit=10000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="33554432" x="16027" y="8" height="76" width="315" format="[General]" html.valueishtml="0"  name=valuetype visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

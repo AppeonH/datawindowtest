@@ -1,0 +1,45 @@
+﻿$PBExportHeader$f_str_to_array.srf
+global type f_str_to_array from function_object
+end type
+
+forward prototypes
+global subroutine f_str_to_array (string as_source, string as_separator, ref string as_array[])
+end prototypes
+
+global subroutine f_str_to_array (string as_source, string as_separator, ref string as_array[]);integer li_pos = 0,li_lastpos = 0
+String ls_str
+integer li_i = 1
+IF isNULL (as_source) OR isNULL(as_separator) THEN
+	RETURN 
+END IF
+
+li_pos = pos(as_source,as_separator)
+IF li_pos> 0 THEN 
+	Do while li_pos > 0 
+		IF li_lastpos > 0 THEN
+			ls_str = mid( as_source,li_lastpos + len(as_separator), li_pos - li_lastpos - 1)
+		ELSE
+			ls_str = mid( as_source,1, li_pos - li_lastpos - 1)
+		END IF
+		IF li_pos <> 1 THEN
+			as_array[li_i] = ls_str
+			li_i ++
+		END IF
+		li_lastpos = li_pos
+		li_pos = pos(as_source,as_separator,li_pos + len(as_separator) )
+	LOOP
+	//Get the lastest string
+	IF li_lastpos + len(as_separator) - 1 < len(as_source)  THEN
+		ls_str = mid( as_source,li_lastpos + len(as_separator))
+		as_array[li_i] = ls_str
+	END IF
+ELSE
+	IF as_source<>'' THEN
+		as_array[li_i] = as_source
+	END IF
+END IF
+
+return
+	
+end subroutine
+

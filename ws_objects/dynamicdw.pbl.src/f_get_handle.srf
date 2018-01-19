@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_get_handle.srf
+global type f_get_handle from function_object
+end type
+
+forward prototypes
+global function string f_get_handle (string as_source, string as_key, string as_separator)
+end prototypes
+
+global function string f_get_handle (string as_source, string as_key, string as_separator);String ls_handle
+Integer li_start,li_end,li_keypos
+li_keypos = pos(as_source,';'+as_key+'=')
+IF li_keypos>0 THEN
+	li_start = pos(as_source,'=',li_keypos)
+	li_end 	= pos(as_source,as_separator,li_keypos+1)
+	IF li_end > li_start + 1 THEN
+		RETURN Mid(as_source,li_start+1,li_end - li_start - 1)
+	END IF
+END IF
+RETURN ls_handle
+end function
+

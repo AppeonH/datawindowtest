@@ -1,0 +1,78 @@
+﻿$PBExportHeader$d_ss1_2.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=emp_id dbname="employee.emp_id" )
+ column=(type=long update=yes updatewhereclause=yes name=manager_id dbname="employee.manager_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=emp_fname dbname="employee.emp_fname" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=emp_lname dbname="employee.emp_lname" )
+ column=(type=long update=yes updatewhereclause=yes name=dept_id dbname="employee.dept_id" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=street dbname="employee.street" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=city dbname="employee.city" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=state dbname="employee.state" )
+ column=(type=char(9) update=yes updatewhereclause=yes name=zip_code dbname="employee.zip_code" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=phone dbname="employee.phone" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=status dbname="employee.status" )
+ column=(type=char(11) update=yes updatewhereclause=yes name=ss_number dbname="employee.ss_number" )
+ column=(type=decimal(3) update=yes updatewhereclause=yes name=salary dbname="employee.salary" )
+ column=(type=date update=yes updatewhereclause=yes name=start_date dbname="employee.start_date" )
+ column=(type=date update=yes updatewhereclause=yes name=termination_date dbname="employee.termination_date" )
+ column=(type=date update=yes updatewhereclause=yes name=birth_date dbname="employee.birth_date" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=bene_health_ins dbname="employee.bene_health_ins" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=bene_life_ins dbname="employee.bene_life_ins" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=bene_day_care dbname="employee.bene_day_care" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=sex dbname="employee.sex" )
+ retrieve="  SELECT ~"employee~".~"emp_id~",   
+         ~"employee~".~"manager_id~",   
+         ~"employee~".~"emp_fname~",   
+         ~"employee~".~"emp_lname~",   
+         ~"employee~".~"dept_id~",   
+         ~"employee~".~"street~",   
+         ~"employee~".~"city~",   
+         ~"employee~".~"state~",   
+         ~"employee~".~"zip_code~",   
+         ~"employee~".~"phone~",   
+         ~"employee~".~"status~",   
+         ~"employee~".~"ss_number~",   
+         ~"employee~".~"salary~",   
+         ~"employee~".~"start_date~",   
+         ~"employee~".~"termination_date~",   
+         ~"employee~".~"birth_date~",   
+         ~"employee~".~"bene_health_ins~",   
+         ~"employee~".~"bene_life_ins~",   
+         ~"employee~".~"bene_day_care~",   
+         ~"employee~".~"sex~"  
+    FROM ~"employee~"     
+where ~"employee~".~"salary~" = :an_salary
+" update="employee" updatewhere=0 updatekeyinplace=no arguments=(("an_salary", number)) )
+text(band=header alignment="2" text="Emp Id" border="0" color="33554432" x="9" y="8" height="64" width="329" html.valueishtml="0"  name=emp_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Manager Id" border="0" color="33554432" x="347" y="8" height="64" width="329" html.valueishtml="0"  name=manager_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Emp Fname" border="0" color="33554432" x="686" y="8" height="64" width="576" html.valueishtml="0"  name=emp_fname_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Emp Lname" border="0" color="33554432" x="1271" y="8" height="64" width="576" html.valueishtml="0"  name=emp_lname_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dept Id" border="0" color="33554432" x="1856" y="8" height="64" width="329" html.valueishtml="0"  name=dept_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Street" border="0" color="33554432" x="2194" y="8" height="64" width="1125" html.valueishtml="0"  name=street_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="City" border="0" color="33554432" x="3328" y="8" height="64" width="576" html.valueishtml="0"  name=city_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Salary" border="0" color="33554432" x="3913" y="8" height="64" width="329" html.valueishtml="0"  name=salary_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Birth Date" border="0" color="33554432" x="4251" y="8" height="64" width="603" html.valueishtml="0"  name=birth_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bene Health Ins" border="0" color="33554432" x="4864" y="8" height="64" width="421" html.valueishtml="0"  name=bene_health_ins_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bene Life Ins" border="0" color="33554432" x="5294" y="8" height="64" width="343" html.valueishtml="0"  name=bene_life_ins_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bene Day Care" border="0" color="33554432" x="5646" y="8" height="64" width="402" html.valueishtml="0"  name=bene_day_care_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sex" border="0" color="33554432" x="6057" y="8" height="64" width="105" html.valueishtml="0"  name=sex_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="33554432" x="9" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=emp_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="33554432" x="347" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=manager_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="33554432" x="686" y="8" height="76" width="576" format="[general]" html.valueishtml="0"  name=emp_fname visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="33554432" x="1271" y="8" height="76" width="576" format="[general]" html.valueishtml="0"  name=emp_lname visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="0" color="33554432" x="1856" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=dept_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="33554432" x="2194" y="8" height="76" width="1125" format="[general]" html.valueishtml="0"  name=street visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="33554432" x="3328" y="8" height="76" width="576" format="[general]" html.valueishtml="0"  name=city visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=80 border="0" color="33554432" x="3913" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=salary visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=90 border="0" color="33554432" x="4251" y="8" height="76" width="603" format="[shortdate] [time]" html.valueishtml="0"  name=birth_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=100 border="0" color="33554432" x="4864" y="8" height="76" width="421" format="[general]" html.valueishtml="0"  name=bene_health_ins visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=110 border="0" color="33554432" x="5294" y="8" height="76" width="343" format="[general]" html.valueishtml="0"  name=bene_life_ins visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=120 border="0" color="33554432" x="5646" y="8" height="76" width="402" format="[general]" html.valueishtml="0"  name=bene_day_care visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=130 border="0" color="33554432" x="6057" y="8" height="76" width="105" format="[general]" html.valueishtml="0"  name=sex visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )
