@@ -1,0 +1,9 @@
+﻿$PBExportHeader$p_integrationcase_easproxy.srj
+$PBExportComments$Generated Jaguar Proxy Project
+GeneratorID:{1B1DCEE1-E514-11D1-B30A-006008925BD4}GENBC00000000
+
+SERVERINFO:192.0.0.228	9000	jagadmin	1	
+COMPONENT:1	eondwnvo::n_cst_appeon
+PACKAGE:0
+COMMENT:
+DEPLOYMENT:E:\Web Library\DataWindow\dwnvo.pbl	0	0	0	0

@@ -1,0 +1,57 @@
+﻿$PBExportHeader$d_date_format.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=140 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=str_date dbname="date_exp.str_date" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=fun_isdate dbname="date_exp.fun_isdate" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=fun_date dbname="date_exp.fun_date" )
+ column=(type=long updatewhereclause=yes key=yes identity=yes name=id dbname="date_exp.id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=str_time dbname="date_exp.str_time" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=fun_istime dbname="date_exp.fun_istime" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=fun_time dbname="date_exp.fun_time" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"date_exp~" ) COLUMN(NAME=~"date_exp.str_date~") COLUMN(NAME=~"date_exp.fun_isdate~") COLUMN(NAME=~"date_exp.fun_date~") COLUMN(NAME=~"date_exp.id~") COLUMN(NAME=~"date_exp.str_time~") COLUMN(NAME=~"date_exp.fun_istime~") COLUMN(NAME=~"date_exp.fun_time~")) " update="date_exp" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="String
+Date" border="6" color="33554432" x="9" y="8" height="120" width="379" html.valueishtml="0"  name=str_date_t visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="PB 
+Date()" border="6" color="33554432" x="398" y="8" height="120" width="347" html.valueishtml="0"  name=fun_date_t visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="IE 
+date()" border="6" color="33554432" x="754" y="8" height="120" width="361" html.valueishtml="0"  name=t_1 visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="PB 
+isdate()" border="6" color="33554432" x="1125" y="8" height="120" width="251" html.valueishtml="0"  name=isdate_t visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="IE 
+isdate()" border="6" color="33554432" x="1385" y="8" height="120" width="251" html.valueishtml="0"  name=t_2 visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="String
+ Time" border="6" color="33554432" x="1646" y="8" height="120" width="453" html.valueishtml="0"  name=str_time_t visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="PB
+Istime()" border="6" color="33554432" x="2706" y="8" height="120" width="283" html.valueishtml="0"  name=fun_istime_t visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="PB
+time()" border="6" color="33554432" x="2107" y="8" height="120" width="288" html.valueishtml="0"  name=fun_time_t visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="IE 
+time()" border="6" color="33554432" x="2405" y="8" height="120" width="293" html.valueishtml="0"  name=t_3 visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="IE 
+istime()" border="6" color="33554432" x="2999" y="8" height="120" width="251" html.valueishtml="0"  name=t_4 visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="0" tabsequence=30 border="2" color="33554432" x="1125" y="8" height="64" width="251" format="[general]" html.valueishtml="0"  name=fun_isdate visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="2" color="33554432" x="398" y="8" height="64" width="347" format="[general]" html.valueishtml="0"  name=fun_date visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="date(  str_date )"border="2" color="33554432" x="754" y="8" height="64" width="361" format="[general]" html.valueishtml="0"  name=compute_date visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="0" background.color="1073741824~tif(   fun_date =  string(  compute_date ) ,RGB(255,255,255),
+
+if( isnull(  compute_date ) and fun_date=~"null~" ,RGB(255,255,255),
+RGB(255,0,255)) )" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="2" color="33554432" x="9" y="8" height="64" width="379" format="[general]" html.valueishtml="0"  name=str_date visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=8  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="2" background.color="15780518" )
+compute(band=detail alignment="0" expression="isdate( str_date )"border="2" color="33554432" x="1385" y="8" height="64" width="251" format="[GENERAL]" html.valueishtml="0"  name=compute_isdate visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="0" background.color="16777215~tif(   isdate( str_date ) and fun_isdate=~"true~"  ,RGB(255,255,255),
+if(   fun_isdate=~"false~"  ,RGB(255,255,255),
+RGB(255,0,255)) )" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="2" color="33554432" x="1646" y="8" height="64" width="453" format="[general]" html.valueishtml="0"  name=str_time visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=8  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="2" background.color="15780518" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="2" color="33554432" x="2706" y="8" height="64" width="283" format="[general]" html.valueishtml="0"  name=fun_istime visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="2" color="33554432" x="2107" y="8" height="64" width="288" format="[general]" html.valueishtml="0"  name=fun_time visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="2" font.pitch="1" font.charset="134" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="time (  str_time )"border="2" color="33554432" x="2405" y="8" height="64" width="293" format="[TIME]" html.valueishtml="0"  name=compute_time visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="0" background.color="1073741824~tif(    fun_time =  string(   compute_time ) ,RGB(255,255,255),
+
+if( isnull(   compute_time ) and  fun_time =~"null~" ,RGB(255,255,255),
+RGB(255,0,255)) )" )
+compute(band=detail alignment="0" expression="istime(  str_time )"border="2" color="33554432" x="2999" y="8" height="64" width="251" format="[GENERAL]" html.valueishtml="0"  name=compute_istime visible="1"  font.face="@ËÎÌå" font.height="-10" font.weight="400"  font.family="0" font.pitch="2" font.charset="134" background.mode="0" background.color="1073741824~tif(   istime(  str_time ) and  fun_istime =~"true~"  ,RGB(255,255,255),
+if(    fun_istime =~"false~"  ,RGB(255,255,255),
+RGB(255,0,255)) )" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

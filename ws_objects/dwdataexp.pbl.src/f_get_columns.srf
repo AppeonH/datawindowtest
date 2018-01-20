@@ -1,0 +1,48 @@
+﻿$PBExportHeader$f_get_columns.srf
+$PBExportComments$È¡Ò»¶ÎÁÐµÄÖµ¸³¸øÊý×é
+global type f_get_columns from function_object
+end type
+
+forward prototypes
+global subroutine f_get_columns (datawindow adw_1, ref any aa_data[], integer ai_column_no, long al_start_row, long al_stop_row, dwbuffer a_buffer, boolean ab_original)
+end prototypes
+
+global subroutine f_get_columns (datawindow adw_1, ref any aa_data[], integer ai_column_no, long al_start_row, long al_stop_row, dwbuffer a_buffer, boolean ab_original);//»ñÈ¡Ä³ÐÐµÄÔ­Ê¼»º³åÇøµÄÊý¾Ý
+long i,j
+string ls_ret
+string ls_coltype
+ls_coltype = adw_1.describe("#"+string(ai_column_no)+".coltype")
+for j = al_start_row to al_stop_row
+	i++
+
+	choose case lower(left(ls_coltype,5))
+		case "char("
+			if not isnull(adw_1.getitemstring(j,ai_column_no,a_buffer,ab_original))then
+				aa_data[i]= adw_1.getitemstring(j,ai_column_no,a_buffer,ab_original) 
+			end if
+		case "date"
+			if not isnull(adw_1.getitemdate(j,ai_column_no,a_buffer,ab_original)) then
+				aa_data[i]= adw_1.getitemdate(j,ai_column_no,a_buffer,ab_original)
+			end if
+		case "datet"
+			if not isnull(adw_1.getitemdatetime(j,ai_column_no,a_buffer,ab_original)) then
+				aa_data[i]= adw_1.getitemdatetime(j,ai_column_no,a_buffer,ab_original)
+			end if
+		case "time"
+			if not isnull(adw_1.getitemtime(j,ai_column_no,a_buffer,ab_original)) then
+				aa_data[i]= adw_1.getitemtime(j,ai_column_no,a_buffer,ab_original)
+			end if
+		case "long"
+			if not isnull(adw_1.getitemnumber(j,ai_column_no,a_buffer,ab_original)) then
+				aa_data[i]= long(adw_1.getitemnumber(j,ai_column_no,a_buffer,ab_original))
+			end if
+		case else
+			if not isnull(adw_1.getitemnumber(j,ai_column_no,a_buffer,ab_original)) then
+				aa_data[i]= adw_1.getitemnumber(j,ai_column_no,a_buffer,ab_original)
+			end if
+	end choose			
+next
+
+
+end subroutine
+

@@ -1,0 +1,148 @@
+﻿$PBExportHeader$f_compare_updaterowstatus.srf
+global type f_compare_updaterowstatus from function_object
+end type
+
+forward prototypes
+global subroutine f_compare_updaterowstatus (datawindow adw_output, datawindow adw_1, long ai_row, string as_fromstatus, string as_tostatus, dwbuffer a_buffer, string as_savetext, boolean ab_saveflag, integer ai_return_value, boolean ab_output)
+end prototypes
+
+global subroutine f_compare_updaterowstatus (datawindow adw_output, datawindow adw_1, long ai_row, string as_fromstatus, string as_tostatus, dwbuffer a_buffer, string as_savetext, boolean ab_saveflag, integer ai_return_value, boolean ab_output);/************************************************************
+	Function:		f_compare_dwstatus
+
+	Access: 			public
+
+	Arguments:	   
+						adw_output	
+						ai_row			rows number
+						as_fromstatus	
+						as_tostatus
+						as_savetype			"111"
+								
+						ab_saveflag		true - save
+											false - check
+	
+	Returns:  		None
+
+	Description: 
+*************************************************************/
+//f_compare_dwstatus(dw_1,1, "datamodified", "notmodified", "111", true)
+integer	li_count
+string	ls_columnstatus,ls_rowstatus,ls_message,ls_columnstatus1,ls_rowstatus1
+string	ls_return,ls_originalvalue,ls_originalvalue1,ls_valuetype
+string	ls_currentvalue,ls_currentvalue1,ls_return_value
+
+string 	ls_flag="x" //Çø·Ö¾ÉµÄ²âÊÔ ±ístatus µÄ flag
+string	ls_message[]
+
+long ll_errorcount
+ll_errorcount = long(adw_output.Describe("t_errorcount.Text"))
+
+ls_originalvalue = f_getdwrowdata(adw_1,ai_row,a_buffer,true)//Ô­Ê¼Öµ
+ls_currentvalue  = f_getdwrowdata(adw_1,ai_row,a_buffer,false)//ÏÖÓÐÖµ
+//if isnull(ls_originalvalue) then ls_originalvalue = "null"
+//if isnull(ls_currentvalue) then ls_currentvalue = "null"
+
+//
+ls_return = f_getrowcolstatus(adw_1,a_buffer,ai_row)//»ñÈ¡Ä³ÐÐµÄÐÐÁÐ×´Ì¬  "row,col,col...."
+ls_rowstatus = f_get_token(ls_return,",")
+ls_columnstatus = ls_return
+
+if isnull(ai_return_value) then 
+	ls_return_value="Null"
+else
+	ls_return_value=string(ai_return_value)
+end if
+long ll_cnt
+if ab_saveflag then//±£´æ
+	//±£´æ×´Ì¬
+		//type:²âÊÔÃèÊö £¨Î¨Ò»£©
+
+		insert into status (fromstatus,tostatus,type,columnstatus,rowstatus,flag,original_data,current_data,return_value)
+				values(:as_fromstatus,:as_tostatus,:as_savetext,:ls_columnstatus,:ls_rowstatus,:ls_flag,:ls_originalvalue,:ls_currentvalue,:ls_return_value);
+else//¼ì²é
+	//¼ì²é×´Ì¬
+//			insert into status (fromstatus,tostatus,type,columnstatus,rowstatus,flag,original_data,current_data,return_value)
+//				values(:as_fromstatus,:as_tostatus,:as_savetext,:ls_columnstatus,:ls_rowstatus,:ls_flag,:ls_originalvalue,:ls_currentvalue,:ls_return_value);
+				
+	select columnstatus,rowstatus,original_data,current_data,return_value into :ls_columnstatus1,:ls_rowstatus1,:ls_originalvalue1,:ls_currentvalue1,:ls_return_value from status 
+		where fromstatus = :as_fromstatus and tostatus = :as_tostatus and type = :as_savetext and flag = :ls_flag;
+
+	if isnull(ls_columnstatus) then ls_columnstatus = ""
+	if isnull(ls_rowstatus) then ls_rowstatus = ""
+	
+	if (ls_columnstatus1 = ls_columnstatus and ls_rowstatus1 = ls_rowstatus and string(ai_return_value) = ls_return_value ) then
+		if ab_output=true then
+			ls_message[1] = "Right"
+			ls_message[2] = "JS"
+			//ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+":"+as_savetext+") return value:"+ls_return_value+"return  rowstatus:"+ls_rowstatus+" columnstatus:"+ls_columnstatus
+			ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+") return value:"+ls_return_value+"return rowstatus :"+ls_rowstatus1+" columnstatus:"+ls_columnstatus1		
+			ls_message[3] =as_savetext
+			f_outputtext(adw_output,ls_message)
+		end if
+	else
+		ll_errorcount ++
+		ls_message[1] = "Error"
+		ls_message[2] = "PB"
+		ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+") return value:"+ls_return_value+"return rowstatus :"+ls_rowstatus1+" columnstatus:"+ls_columnstatus1		
+		ls_message[3] =as_savetext
+		f_outputtext(adw_output,ls_message)
+		ls_message[1] = "Error"
+		ls_message[2] = "JS"
+		ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+") return value:"+ls_return_value+"return rowstatus :"+ls_rowstatus+" columnstatus:"+ls_columnstatus
+		f_outputtext(adw_output,ls_message)
+	end if
+	
+	if (trim(ls_originalvalue1) = trim(ls_originalvalue) ) then
+		if ab_output=true then
+			ls_message[1] = "Right"
+			ls_message[2] = "JS"
+			ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+") original value:"+ls_originalvalue
+			ls_message[3] =as_savetext
+			f_outputtext(adw_output,ls_message)
+		end if
+	else
+		ll_errorcount ++
+		ls_message[1] = "Error"
+		ls_message[2] = "PB"
+		ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+") original value :"+ls_originalvalue1
+		ls_message[3] =as_savetext
+		f_outputtext(adw_output,ls_message)
+		ls_message[1] = "Error"
+		ls_message[2] = "JS"
+		ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+") original value :"+ ls_originalvalue
+		f_outputtext(adw_output,ls_message)
+	end if
+	
+	if (trim(ls_currentvalue1) = trim(ls_currentvalue)) then
+		if ab_output=true then
+			ls_message[1] = "Right"
+			ls_message[2] = "JS"
+			ls_message[3] =  "( "+as_fromstatus+"-->"+as_tostatus+") current value:"+ls_currentvalue
+			ls_message[3] =as_savetext
+			f_outputtext(adw_output,ls_message)
+		end if
+	else
+		ll_errorcount ++
+		ls_message[1] = "Error"
+		ls_message[2] = "PB"
+		ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+") current value :"+ls_currentvalue1
+		ls_message[3] =as_savetext
+		f_outputtext(adw_output,ls_message)
+		ls_message[1] = "Error"
+		ls_message[2] = "JS"
+		ls_message[4] = "( "+as_fromstatus+"-->"+as_tostatus+") current value pb:"+ ls_currentvalue
+		f_outputtext(adw_output,ls_message)
+	end if
+end if
+
+adw_output.Object.t_errorcount.Text = string(ll_errorcount)
+
+if sqlca.sqlcode = 0 then
+	commit;
+else
+	rollback;
+end if
+
+
+end subroutine
+

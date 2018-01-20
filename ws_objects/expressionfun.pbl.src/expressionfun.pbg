@@ -1,0 +1,22 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "expressionfun.pbl" "";
+@end;
+@begin Objects 
+ "d_color.srd" "expressionfun.pbl";
+ "d_computedfield.srd" "expressionfun.pbl";
+ "d_computedfield_filter.srd" "expressionfun.pbl";
+ "d_computedoperate.srd" "expressionfun.pbl";
+ "d_date_format.srd" "expressionfun.pbl";
+ "d_detailband.srd" "expressionfun.pbl";
+ "d_expcomment.srd" "expressionfun.pbl";
+ "d_expression_fun.srd" "expressionfun.pbl";
+ "d_expression_other.srd" "expressionfun.pbl";
+ "d_expression_utmost.srd" "expressionfun.pbl";
+ "d_footerband.srd" "expressionfun.pbl";
+ "d_fourbands.srd" "expressionfun.pbl";
+ "d_function.srd" "expressionfun.pbl";
+ "d_headerband.srd" "expressionfun.pbl";
+ "d_summaryband.srd" "expressionfun.pbl";
+ "w_expressionfun.srw" "expressionfun.pbl";
+@end;

@@ -1,0 +1,48 @@
+﻿$PBExportHeader$f_enumerate2string.srf
+global type f_enumerate2string from function_object
+end type
+
+forward prototypes
+global function string f_enumerate2string (any aa_enum, string as_type)
+end prototypes
+
+global function string f_enumerate2string (any aa_enum, string as_type);//f_enumerate2string(,dwbuffer)
+//f_enumerate2string(,dwitemstatus)
+choose case as_type
+	case "dwbuffer"
+		
+		dwbuffer ldwbuffer
+		ldwbuffer = aa_enum
+		
+		choose case ldwbuffer
+			case primary!
+				return "primary!"
+			case delete!
+				return "delete!"
+			case filter!
+				return "filter!"
+		end choose
+		
+	case "dwitemstatus"
+		
+		dwitemstatus ldwstatus
+		ldwstatus = aa_enum
+		
+		choose case ldwstatus
+			case new!
+				return "new!"
+			case newmodified!
+				return "newmodified!"
+			case datamodified!
+				return "datamodified!"
+			case notmodified!
+				return "notmodified!"
+		end choose
+		
+		
+end choose
+
+if isnull(aa_enum) then return "null"
+
+end function
+

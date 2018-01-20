@@ -1,0 +1,19 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "common.pbl" "";
+@end;
+@begin Objects 
+ "d_all_datatype_freeform.srd" "common.pbl";
+ "d_out.srd" "common.pbl";
+ "d_out_sharedata.srd" "common.pbl";
+ "d_output.srd" "common.pbl";
+ "f_dw_checkrowdata.srf" "common.pbl";
+ "f_dw_dw_checkblockdata.srf" "common.pbl";
+ "f_enumerate2string.srf" "common.pbl";
+ "f_get_token.srf" "common.pbl";
+ "f_outputtext.srf" "common.pbl";
+ "f_replacetext.srf" "common.pbl";
+ "f_string.srf" "common.pbl";
+ "f_string_othertype.srf" "common.pbl";
+ "w_dynamiccreate_basic.srw" "common.pbl";
+@end;

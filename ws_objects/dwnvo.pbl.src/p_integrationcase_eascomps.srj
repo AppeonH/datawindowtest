@@ -1,0 +1,24 @@
+﻿$PBExportHeader$p_integrationcase_eascomps.srj
+$PBExportComments$Generated Jaguar Component Project
+GeneratorID:{DF93F2A2-E504-11D1-B30A-006008925BD4}GENBC00000447
+L	E:\Web Library\DataWindow\integrationcase.pbl
+L	E:\Web Library\DataWindow\dwitemstatus.pbl
+L	E:\Web Library\DataWindow\dwdataexp.pbl
+L	E:\Web Library\DataWindow\expressionfun.pbl
+L	E:\Web Library\DataWindow\output.pbl
+L	E:\AppeonNVO\TestCase\appeon_workarounds.pbl
+L	E:\Web Library\DataWindow\dwnvo.pbl
+L	E:\Web Library\DataWindow\dwUI.pbl
+L	E:\Web Library\DataWindow\dwrowid.pbl
+L	E:\Web Library\DataWindow\common.pbl
+O	n_cst_appeon
+PROJVERS:2
+PACKAGE:eondwnvo	
+PROPERTY:n_cst_appeon	n_cst_appeon	0	1	0	0	5	0	1	1	0	1
+SERVERINFO:localhost	9989	jagadmin	1		
+CONSOLIDATEDPBD:1	E:\Web Library\DataWindow\dwnvo.pbd
+LIBS:10	e:\web library\datawindow\integrationcase.pbl	0	e:\web library\datawindow\dwitemstatus.pbl	0	e:\web library\datawindow\dwdataexp.pbl	0	e:\web library\datawindow\expressionfun.pbl	0	e:\web library\datawindow\output.pbl	0	e:\appeonnvo\testcase\appeon_workarounds.pbl	0	e:\web library\datawindow\dwnvo.pbl	0	e:\web library\datawindow\dwui.pbl	0	e:\web library\datawindow\dwrowid.pbl	0	e:\web library\datawindow\common.pbl	0
+PBR:
+MISC:0	0	0	0	0	0	0	1
+APPLIBLIST:E:\Web Library\DataWindow\integrationcase.pbl;E:\Web Library\DataWindow\dwitemstatus.pbl;E:\Web Library\DataWindow\dwdataexp.pbl;E:\Web Library\DataWindow\expressionfun.pbl;E:\Web Library\DataWindow\output.pbl;E:\AppeonNVO\TestCase\appeon_workarounds.pbl;E:\Web Library\DataWindow\dwnvo.pbl;E:\Web Library\DataWindow\dwUI.pbl;E:\Web Library\DataWindow\dwrowid.pbl;E:\Web Library\DataWindow\common.pbl
+ADVANCED:1	1	1	0	1	

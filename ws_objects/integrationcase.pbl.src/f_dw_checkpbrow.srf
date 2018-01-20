@@ -1,0 +1,79 @@
+﻿$PBExportHeader$f_dw_checkpbrow.srf
+global type f_dw_checkpbrow from function_object
+end type
+
+forward prototypes
+global function string f_dw_checkpbrow (string as_name, datawindow adw_1, long al_row, boolean ab_flag, boolean ab_save)
+end prototypes
+
+global function string f_dw_checkpbrow (string as_name, datawindow adw_1, long al_row, boolean ab_flag, boolean ab_save);//ab_flag--true  original status
+//			  false current status
+//ab_save--true  save
+//			  false check
+//
+long				j,ll_colcount
+string 			ls_current,ls_original,ls_message
+string			ls_rowstatus,ls_colstatus
+ll_colcount=long(adw_1.Object.DataWindow.Column.Count)
+messagebox("",string(classname(adw_1.Object.Data.Primary.Current[1])))
+if ab_save then //±£´æ
+	for j=1 to ll_colcount
+		//						messagebox("",string(classname(adw_1.Object.Data.Primary.Current[al_row,j])))
+		ls_current		=	string(adw_1.Object.Data.Primary.Current[al_row,j])
+		ls_original		=	string(adw_1.Object.Data.Primary.original[al_row,j])
+		ls_rowstatus		=	f_dwstatustostring(adw_1.GetItemStatus(al_row, 0,Primary!))
+		ls_colstatus		=	f_dwstatustostring(adw_1.GetItemStatus(al_row, j,Primary!))
+		//ls_message="[Data("+string(al_row)+","+string(j)+")original:"+ls_original+",current:"+string(ls_current)+",rowstatus:"+string(l_rowstatus)+",rowstatus:"+string(l_colstatus)+"]"
+		
+		delete from dw_information where row_id=:al_row and column_id=:j and operation=:as_name;
+		if ab_flag then //original status
+			insert into 	dw_information(row_id,column_id,original_data,current_data,
+			original_rowstatus,original_colstatus,operation)
+				values(:al_row,:j,:ls_original,:ls_current,:ls_rowstatus,:ls_colstatus,:as_name);
+		else //current status
+			insert into 	dw_information(row_id,column_id,original_data,current_data,
+			current_rowstatus,current_colstatus,operation)
+				values(:al_row,:j,:ls_original,:ls_current,:ls_rowstatus,:ls_colstatus,:as_name);
+		end if
+		
+	next
+else //±È½Ï¡¡
+	
+	for j=1 to ll_colcount
+		if ab_flag then //original status
+			SELECT original_data,current_data,
+				original_rowstatus,original_colstatus
+			  INTO :ls_original, :ls_current,:ls_rowstatus,:ls_colstatus
+			  FROM dw_information
+			  WHERE row_id=:al_row and column_id=:j and operation=:as_name;
+			  
+			  
+		else //current status	  
+			SELECT original_data,current_data,
+				current_rowstatus,current_colstatus
+			  INTO :ls_original, :ls_current,:ls_rowstatus,:ls_colstatus
+			  FROM dw_information
+			  WHERE row_id=:al_row and column_id=:j;
+		 
+			  
+		end if
+		
+		
+		IF (ls_current		<>	string(adw_1.Object.Data.Primary.Current[al_row,j])) or &
+			(ls_original	<>	string(adw_1.Object.Data.Primary.original[al_row,j])) or &
+			(ls_rowstatus	<>	f_dwstatustostring(adw_1.GetItemStatus(al_row, 0,Primary!))) or &
+			(ls_colstatus	<>	f_dwstatustostring(adw_1.GetItemStatus(al_row, j,Primary!))) then
+			
+			
+			RETURN 	"[PB_Data("+string(al_row)+","+string(j)+")original:"+ls_original+",current:"+string(ls_current)+",rowstatus:"+ls_rowstatus+",colstatus:"+ls_colstatus+"]<>"   +"[Web_Data("+string(al_row)+","+string(j)+")original:"+ls_original+",current:"+string(ls_current)+",rowstatus:"+f_dwstatustostring(adw_1.GetItemStatus(al_row, 0,Primary!))+",colstatus:"+f_dwstatustostring(adw_1.GetItemStatus(al_row, j,Primary!))+"]"
+			
+			
+		end if
+		
+		
+	next
+
+end if
+RETURN ""
+end function
+

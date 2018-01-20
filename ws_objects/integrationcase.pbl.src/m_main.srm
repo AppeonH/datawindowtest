@@ -1,0 +1,891 @@
+﻿$PBExportHeader$m_main.srm
+forward
+global type m_main from menu
+end type
+type m_1 from menu within m_main
+end type
+type m_2 from menu within m_1
+end type
+type m_datastoreintegrationtest from menu within m_1
+end type
+type m_modifyanddescribetest from menu within m_1
+end type
+type m_datawindowintegrationtestresponsewidnow from menu within m_1
+end type
+type m_eventoccursseq from menu within m_1
+end type
+type m_modifyanddescribetestver2 from menu within m_1
+end type
+type m_nupdw from menu within m_1
+end type
+type m_w_dynamiccreate_basic from menu within m_1
+end type
+type m_1 from menu within m_main
+m_2 m_2
+m_datastoreintegrationtest m_datastoreintegrationtest
+m_modifyanddescribetest m_modifyanddescribetest
+m_datawindowintegrationtestresponsewidnow m_datawindowintegrationtestresponsewidnow
+m_eventoccursseq m_eventoccursseq
+m_modifyanddescribetestver2 m_modifyanddescribetestver2
+m_nupdw m_nupdw
+m_w_dynamiccreate_basic m_w_dynamiccreate_basic
+end type
+type m_test from menu within m_main
+end type
+type m_dwitemstatus from menu within m_test
+end type
+type m_dwexpressionfuntion from menu within m_test
+end type
+type m_dwdataexpression from menu within m_test
+end type
+type m_querymode from menu within m_test
+end type
+type m_dwnvo from menu within m_test
+end type
+type m_dwrowid from menu within m_test
+end type
+type m_dwui from menu within m_test
+end type
+type m_rowscopy from menu within m_test
+end type
+type m_rowsmove from menu within m_test
+end type
+type m_updaterowstatus from menu within m_test
+end type
+type m_updatecolumnstatus from menu within m_test
+end type
+type m_datawindowui from menu within m_test
+end type
+type m_sharedata from menu within m_test
+end type
+type m_compositedwui from menu within m_test
+end type
+type m_compositedw from menu within m_test
+end type
+type m_groupdw from menu within m_test
+end type
+type m_dynamicdw from menu within m_test
+end type
+type m_syntaxfromsql from menu within m_test
+end type
+type m_labeldw from menu within m_test
+end type
+type m_slideupslideleft from menu within m_test
+end type
+type m_saveasexcel from menu within m_test
+end type
+type m_saveashtml from menu within m_test
+end type
+type m_graphdw from menu within m_test
+end type
+type m_reviewbug from menu within m_test
+end type
+type m_n-updw from menu within m_test
+end type
+type m_crosstabdw from menu within m_test
+end type
+type m_test from menu within m_main
+m_dwitemstatus m_dwitemstatus
+m_dwexpressionfuntion m_dwexpressionfuntion
+m_dwdataexpression m_dwdataexpression
+m_querymode m_querymode
+m_dwnvo m_dwnvo
+m_dwrowid m_dwrowid
+m_dwui m_dwui
+m_rowscopy m_rowscopy
+m_rowsmove m_rowsmove
+m_updaterowstatus m_updaterowstatus
+m_updatecolumnstatus m_updatecolumnstatus
+m_datawindowui m_datawindowui
+m_sharedata m_sharedata
+m_compositedwui m_compositedwui
+m_compositedw m_compositedw
+m_groupdw m_groupdw
+m_dynamicdw m_dynamicdw
+m_syntaxfromsql m_syntaxfromsql
+m_labeldw m_labeldw
+m_slideupslideleft m_slideupslideleft
+m_saveasexcel m_saveasexcel
+m_saveashtml m_saveashtml
+m_graphdw m_graphdw
+m_reviewbug m_reviewbug
+m_n-updw m_n-updw
+m_crosstabdw m_crosstabdw
+end type
+type m_0 from menu within m_main
+end type
+type m_3 from menu within m_0
+end type
+type m_0 from menu within m_main
+m_3 m_3
+end type
+global type m_main from menu
+m_1 m_1
+m_test m_test
+m_0 m_0
+end type
+end forward
+
+global type m_main from menu
+m_1 m_1
+m_test m_test
+m_0 m_0
+end type
+global m_main m_main
+
+on m_main.create
+m_main=this
+call super::create
+this.m_1=create m_1
+this.m_test=create m_test
+this.m_0=create m_0
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_test
+this.Item[UpperBound(this.Item)+1]=this.m_0
+end on
+
+on m_main.destroy
+call super::destroy
+destroy(this.m_1)
+destroy(this.m_test)
+destroy(this.m_0)
+end on
+
+event clicked;//w_dynamiccreate_basic
+end event
+
+type m_1 from menu within m_main
+m_2 m_2
+m_datastoreintegrationtest m_datastoreintegrationtest
+m_modifyanddescribetest m_modifyanddescribetest
+m_datawindowintegrationtestresponsewidnow m_datawindowintegrationtestresponsewidnow
+m_eventoccursseq m_eventoccursseq
+m_modifyanddescribetestver2 m_modifyanddescribetestver2
+m_nupdw m_nupdw
+m_w_dynamiccreate_basic m_w_dynamiccreate_basic
+end type
+
+on m_1.create
+call super::create
+this.text = "Integration Test"
+this.m_2=create m_2
+this.m_datastoreintegrationtest=create m_datastoreintegrationtest
+this.m_modifyanddescribetest=create m_modifyanddescribetest
+this.m_datawindowintegrationtestresponsewidnow=create m_datawindowintegrationtestresponsewidnow
+this.m_eventoccursseq=create m_eventoccursseq
+this.m_modifyanddescribetestver2=create m_modifyanddescribetestver2
+this.m_nupdw=create m_nupdw
+this.m_w_dynamiccreate_basic=create m_w_dynamiccreate_basic
+this.Item[UpperBound(this.Item)+1]=this.m_2
+this.Item[UpperBound(this.Item)+1]=this.m_datastoreintegrationtest
+this.Item[UpperBound(this.Item)+1]=this.m_modifyanddescribetest
+this.Item[UpperBound(this.Item)+1]=this.m_datawindowintegrationtestresponsewidnow
+this.Item[UpperBound(this.Item)+1]=this.m_eventoccursseq
+this.Item[UpperBound(this.Item)+1]=this.m_modifyanddescribetestver2
+this.Item[UpperBound(this.Item)+1]=this.m_nupdw
+this.Item[UpperBound(this.Item)+1]=this.m_w_dynamiccreate_basic
+end on
+
+on m_1.destroy
+call super::destroy
+destroy(this.m_2)
+destroy(this.m_datastoreintegrationtest)
+destroy(this.m_modifyanddescribetest)
+destroy(this.m_datawindowintegrationtestresponsewidnow)
+destroy(this.m_eventoccursseq)
+destroy(this.m_modifyanddescribetestver2)
+destroy(this.m_nupdw)
+destroy(this.m_w_dynamiccreate_basic)
+end on
+
+type m_2 from menu within m_1
+event clicked ( )
+end type
+
+event clicked;opensheet(w_integration_case_freeform,w_main,0,Layered!  )
+end event
+
+on m_2.create
+call super::create
+this.text = "DataWindow Integration Test"
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_datastoreintegrationtest from menu within m_1
+event clicked ( )
+end type
+
+event clicked;opensheet(w_integration_case_datastore,w_main,0,Layered!  )
+
+end event
+
+on m_datastoreintegrationtest.create
+call super::create
+this.text = "DataStore Integration Test"
+end on
+
+on m_datastoreintegrationtest.destroy
+call super::destroy
+end on
+
+type m_modifyanddescribetest from menu within m_1
+event clicked ( )
+end type
+
+event clicked;opensheet(w_integration_case_modify,w_main,0,Layered!  )
+end event
+
+on m_modifyanddescribetest.create
+call super::create
+this.text = "Modify and Describe Test"
+end on
+
+on m_modifyanddescribetest.destroy
+call super::destroy
+end on
+
+type m_datawindowintegrationtestresponsewidnow from menu within m_1
+event clicked ( )
+end type
+
+event clicked;opensheet(w_othertype,w_main,0,Layered!)
+end event
+
+on m_datawindowintegrationtestresponsewidnow.create
+call super::create
+this.text = "Other Style DataWindow Test"
+end on
+
+on m_datawindowintegrationtestresponsewidnow.destroy
+call super::destroy
+end on
+
+type m_eventoccursseq from menu within m_1
+end type
+
+on m_eventoccursseq.create
+call super::create
+this.text = "Event occurs seq"
+end on
+
+on m_eventoccursseq.destroy
+call super::destroy
+end on
+
+event clicked;opensheet(w_eventseq,parentwindow,0,original!)
+end event
+
+type m_modifyanddescribetestver2 from menu within m_1
+end type
+
+event clicked;opensheet(w_integration_case_modify_ver2,w_main,0,Layered!)
+end event
+
+on m_modifyanddescribetestver2.create
+call super::create
+this.text = "Modify and Describe Test ver2"
+end on
+
+on m_modifyanddescribetestver2.destroy
+call super::destroy
+end on
+
+type m_nupdw from menu within m_1
+end type
+
+event clicked;OpenSheet(w_nupdw,w_main,0,layered!)
+end event
+
+on m_nupdw.create
+call super::create
+this.text = "NUpDw"
+end on
+
+on m_nupdw.destroy
+call super::destroy
+end on
+
+type m_w_dynamiccreate_basic from menu within m_1
+end type
+
+event clicked;opensheet(w_dynamiccreate_basic,w_main,0,Layered!)
+end event
+
+on m_w_dynamiccreate_basic.create
+call super::create
+this.text = "w_dynamiccreate_basic"
+end on
+
+on m_w_dynamiccreate_basic.destroy
+call super::destroy
+end on
+
+type m_test from menu within m_main
+m_dwitemstatus m_dwitemstatus
+m_dwexpressionfuntion m_dwexpressionfuntion
+m_dwdataexpression m_dwdataexpression
+m_querymode m_querymode
+m_dwnvo m_dwnvo
+m_dwrowid m_dwrowid
+m_dwui m_dwui
+m_rowscopy m_rowscopy
+m_rowsmove m_rowsmove
+m_updaterowstatus m_updaterowstatus
+m_updatecolumnstatus m_updatecolumnstatus
+m_datawindowui m_datawindowui
+m_sharedata m_sharedata
+m_compositedwui m_compositedwui
+m_compositedw m_compositedw
+m_groupdw m_groupdw
+m_dynamicdw m_dynamicdw
+m_syntaxfromsql m_syntaxfromsql
+m_labeldw m_labeldw
+m_slideupslideleft m_slideupslideleft
+m_saveasexcel m_saveasexcel
+m_saveashtml m_saveashtml
+m_graphdw m_graphdw
+m_reviewbug m_reviewbug
+m_n-updw m_n-updw
+m_crosstabdw m_crosstabdw
+end type
+
+on m_test.create
+call super::create
+this.text = "Test"
+this.m_dwitemstatus=create m_dwitemstatus
+this.m_dwexpressionfuntion=create m_dwexpressionfuntion
+this.m_dwdataexpression=create m_dwdataexpression
+this.m_querymode=create m_querymode
+this.m_dwnvo=create m_dwnvo
+this.m_dwrowid=create m_dwrowid
+this.m_dwui=create m_dwui
+this.m_rowscopy=create m_rowscopy
+this.m_rowsmove=create m_rowsmove
+this.m_updaterowstatus=create m_updaterowstatus
+this.m_updatecolumnstatus=create m_updatecolumnstatus
+this.m_datawindowui=create m_datawindowui
+this.m_sharedata=create m_sharedata
+this.m_compositedwui=create m_compositedwui
+this.m_compositedw=create m_compositedw
+this.m_groupdw=create m_groupdw
+this.m_dynamicdw=create m_dynamicdw
+this.m_syntaxfromsql=create m_syntaxfromsql
+this.m_labeldw=create m_labeldw
+this.m_slideupslideleft=create m_slideupslideleft
+this.m_saveasexcel=create m_saveasexcel
+this.m_saveashtml=create m_saveashtml
+this.m_graphdw=create m_graphdw
+this.m_reviewbug=create m_reviewbug
+this.m_n-updw=create m_n-updw
+this.m_crosstabdw=create m_crosstabdw
+this.Item[UpperBound(this.Item)+1]=this.m_dwitemstatus
+this.Item[UpperBound(this.Item)+1]=this.m_dwexpressionfuntion
+this.Item[UpperBound(this.Item)+1]=this.m_dwdataexpression
+this.Item[UpperBound(this.Item)+1]=this.m_querymode
+this.Item[UpperBound(this.Item)+1]=this.m_dwnvo
+this.Item[UpperBound(this.Item)+1]=this.m_dwrowid
+this.Item[UpperBound(this.Item)+1]=this.m_dwui
+this.Item[UpperBound(this.Item)+1]=this.m_rowscopy
+this.Item[UpperBound(this.Item)+1]=this.m_rowsmove
+this.Item[UpperBound(this.Item)+1]=this.m_updaterowstatus
+this.Item[UpperBound(this.Item)+1]=this.m_updatecolumnstatus
+this.Item[UpperBound(this.Item)+1]=this.m_datawindowui
+this.Item[UpperBound(this.Item)+1]=this.m_sharedata
+this.Item[UpperBound(this.Item)+1]=this.m_compositedwui
+this.Item[UpperBound(this.Item)+1]=this.m_compositedw
+this.Item[UpperBound(this.Item)+1]=this.m_groupdw
+this.Item[UpperBound(this.Item)+1]=this.m_dynamicdw
+this.Item[UpperBound(this.Item)+1]=this.m_syntaxfromsql
+this.Item[UpperBound(this.Item)+1]=this.m_labeldw
+this.Item[UpperBound(this.Item)+1]=this.m_slideupslideleft
+this.Item[UpperBound(this.Item)+1]=this.m_saveasexcel
+this.Item[UpperBound(this.Item)+1]=this.m_saveashtml
+this.Item[UpperBound(this.Item)+1]=this.m_graphdw
+this.Item[UpperBound(this.Item)+1]=this.m_reviewbug
+this.Item[UpperBound(this.Item)+1]=this.m_n-updw
+this.Item[UpperBound(this.Item)+1]=this.m_crosstabdw
+end on
+
+on m_test.destroy
+call super::destroy
+destroy(this.m_dwitemstatus)
+destroy(this.m_dwexpressionfuntion)
+destroy(this.m_dwdataexpression)
+destroy(this.m_querymode)
+destroy(this.m_dwnvo)
+destroy(this.m_dwrowid)
+destroy(this.m_dwui)
+destroy(this.m_rowscopy)
+destroy(this.m_rowsmove)
+destroy(this.m_updaterowstatus)
+destroy(this.m_updatecolumnstatus)
+destroy(this.m_datawindowui)
+destroy(this.m_sharedata)
+destroy(this.m_compositedwui)
+destroy(this.m_compositedw)
+destroy(this.m_groupdw)
+destroy(this.m_dynamicdw)
+destroy(this.m_syntaxfromsql)
+destroy(this.m_labeldw)
+destroy(this.m_slideupslideleft)
+destroy(this.m_saveasexcel)
+destroy(this.m_saveashtml)
+destroy(this.m_graphdw)
+destroy(this.m_reviewbug)
+destroy(this.m_n-updw)
+destroy(this.m_crosstabdw)
+end on
+
+type m_dwitemstatus from menu within m_test
+end type
+
+event clicked;opensheet(w_dwitemstatus,w_main,0,Layered!  )
+end event
+
+on m_dwitemstatus.create
+call super::create
+this.text = "DwItemStatus"
+end on
+
+on m_dwitemstatus.destroy
+call super::destroy
+end on
+
+type m_dwexpressionfuntion from menu within m_test
+end type
+
+event clicked;opensheet(w_expressionfun,w_main,0,Layered!  )
+end event
+
+on m_dwexpressionfuntion.create
+call super::create
+this.text = "DwExpressionFunction"
+end on
+
+on m_dwexpressionfuntion.destroy
+call super::destroy
+end on
+
+type m_dwdataexpression from menu within m_test
+end type
+
+event clicked;opensheet(w_dwdataaccess,w_main,0,Layered!  )
+end event
+
+on m_dwdataexpression.create
+call super::create
+this.text = "DwDataAccess"
+end on
+
+on m_dwdataexpression.destroy
+call super::destroy
+end on
+
+type m_querymode from menu within m_test
+event create ( )
+event destroy ( )
+end type
+
+on m_querymode.create
+call super::create
+this.text = "QueryMode"
+end on
+
+on m_querymode.destroy
+call super::destroy
+end on
+
+event clicked;OpenSheet(w_integration_case_querymode,w_main,0,layered!)
+end event
+
+type m_dwnvo from menu within m_test
+end type
+
+event clicked;//opensheet(w_dw_nvo,w_main,0,Layered!  )
+end event
+
+on m_dwnvo.create
+call super::create
+this.visible = false
+this.text = "DwNVO"
+end on
+
+on m_dwnvo.destroy
+call super::destroy
+end on
+
+type m_dwrowid from menu within m_test
+end type
+
+on m_dwrowid.create
+call super::create
+this.text = "DwFormat"
+end on
+
+on m_dwrowid.destroy
+call super::destroy
+end on
+
+event clicked;opensheet(w_format,parentwindow,0,Layered!  )
+end event
+
+type m_dwui from menu within m_test
+end type
+
+event clicked;opensheet(w_ui_test,w_main,0,Layered!  )
+end event
+
+on m_dwui.create
+call super::create
+this.text = "DwUI"
+end on
+
+on m_dwui.destroy
+call super::destroy
+end on
+
+type m_rowscopy from menu within m_test
+end type
+
+event clicked;opensheet(w_rowscopy,w_main,0,Layered!  )
+end event
+
+on m_rowscopy.create
+call super::create
+this.text = "RowsCopy"
+end on
+
+on m_rowscopy.destroy
+call super::destroy
+end on
+
+type m_rowsmove from menu within m_test
+end type
+
+event clicked;opensheet(w_rowsmove,w_main,0,Layered!  )
+end event
+
+on m_rowsmove.create
+call super::create
+this.text = "RowsMove"
+end on
+
+on m_rowsmove.destroy
+call super::destroy
+end on
+
+type m_updaterowstatus from menu within m_test
+end type
+
+event clicked;opensheet(w_updaterowstatus,w_main,0,Layered!  )
+end event
+
+on m_updaterowstatus.create
+call super::create
+this.text = "UpdateRowStatus"
+end on
+
+on m_updaterowstatus.destroy
+call super::destroy
+end on
+
+type m_updatecolumnstatus from menu within m_test
+end type
+
+event clicked;opensheet(w_updatecolumnstatus,w_main,0,Layered!  )
+end event
+
+on m_updatecolumnstatus.create
+call super::create
+this.text = "UpdateColumnStatus"
+end on
+
+on m_updatecolumnstatus.destroy
+call super::destroy
+end on
+
+type m_datawindowui from menu within m_test
+end type
+
+on m_datawindowui.create
+call super::create
+this.text = "DataWindowUI"
+end on
+
+on m_datawindowui.destroy
+call super::destroy
+end on
+
+event clicked;////TransAction appeoncase
+////appeoncase = create TransAction
+////appeoncase.DBMS = "MSS Microsoft SQL Server 6.x"
+////appeoncase.Database = "AppeonTestCase"
+////appeoncase.LogPass = ''
+////appeoncase.ServerName = "192.0.0.77"
+////appeoncase.LogId = "sa"
+////appeoncase.AutoCommit = False
+////appeoncase.DBParm = ""
+//
+//// Profile appeonTestcaserun
+//SQLCA.DBMS = "MSS Microsoft SQL Server 6.x"
+//SQLCA.ServerName = "192.0.0.77"
+//SQLCA.LogId = "appeon"
+//SQLCA.AutoCommit = False
+//SQLCA.DBParm = ""
+//
+//
+//connect;
+//if SQLCA.sqlcode <> 0 then 
+//	messagebox("Error",'Database connect failed!')
+//end if
+//
+//OpenSheet(w_grid,w_main,1,Layered!)
+end event
+
+type m_sharedata from menu within m_test
+end type
+
+event clicked;OpenSheet(w_sharedata,w_main,0,layered!)
+end event
+
+on m_sharedata.create
+call super::create
+this.text = "ShareData"
+end on
+
+on m_sharedata.destroy
+call super::destroy
+end on
+
+type m_compositedwui from menu within m_test
+end type
+
+event clicked;OpenSheet(w_ui,w_main,0,Original!)
+end event
+
+on m_compositedwui.create
+call super::create
+this.text = "CompositeDWUI"
+end on
+
+on m_compositedwui.destroy
+call super::destroy
+end on
+
+type m_compositedw from menu within m_test
+end type
+
+on m_compositedw.create
+call super::create
+this.text = "CompositeDW"
+end on
+
+on m_compositedw.destroy
+call super::destroy
+end on
+
+event clicked;OpenSheet(w_composite,w_main,0,layered!)
+end event
+
+type m_groupdw from menu within m_test
+end type
+
+on m_groupdw.create
+call super::create
+this.text = "GroupDw"
+end on
+
+on m_groupdw.destroy
+call super::destroy
+end on
+
+event clicked;OpenSheet(w_group,w_main,0,layered!)
+end event
+
+type m_dynamicdw from menu within m_test
+end type
+
+on m_dynamicdw.create
+call super::create
+this.text = "DynamicDw"
+end on
+
+on m_dynamicdw.destroy
+call super::destroy
+end on
+
+event clicked;OpenSheet(w_dynamicdw,w_main,0,layered!)
+end event
+
+type m_syntaxfromsql from menu within m_test
+end type
+
+event clicked;OpenSheet(w_dynamiccreate_syntaxfromsql,w_main,0,layered!)
+end event
+
+on m_syntaxfromsql.create
+call super::create
+this.text = "SyntaxFromSql"
+end on
+
+on m_syntaxfromsql.destroy
+call super::destroy
+end on
+
+type m_labeldw from menu within m_test
+end type
+
+event clicked;OpenSheet(w_labeldw,w_main,0,layered!)
+end event
+
+on m_labeldw.create
+call super::create
+this.text = "LabelDw"
+end on
+
+on m_labeldw.destroy
+call super::destroy
+end on
+
+type m_slideupslideleft from menu within m_test
+end type
+
+event clicked;OpenSheet(w_slideupui,w_main,0,layered!)
+end event
+
+on m_slideupslideleft.create
+call super::create
+this.text = "SlideUpSlideLeft"
+end on
+
+on m_slideupslideleft.destroy
+call super::destroy
+end on
+
+type m_saveasexcel from menu within m_test
+end type
+
+event clicked;OpenSheet(w_saveasexcel,w_main,0,layered!)
+end event
+
+on m_saveasexcel.create
+call super::create
+this.text = "SaveAsExcel"
+end on
+
+on m_saveasexcel.destroy
+call super::destroy
+end on
+
+type m_saveashtml from menu within m_test
+end type
+
+event clicked;OpenSheet(w_saveashtml,w_main,0,layered!)
+end event
+
+on m_saveashtml.create
+call super::create
+this.text = "SaveAsHTML"
+end on
+
+on m_saveashtml.destroy
+call super::destroy
+end on
+
+type m_graphdw from menu within m_test
+end type
+
+event clicked;OpenSheet(w_graphtest,w_main,0,layered!)
+end event
+
+on m_graphdw.create
+call super::create
+this.text = "GraphDW"
+end on
+
+on m_graphdw.destroy
+call super::destroy
+end on
+
+type m_reviewbug from menu within m_test
+end type
+
+event clicked;OpenSheet(w_reviewbug,w_main,0,layered!)
+end event
+
+on m_reviewbug.create
+call super::create
+this.text = "ReviewBug"
+end on
+
+on m_reviewbug.destroy
+call super::destroy
+end on
+
+type m_n-updw from menu within m_test
+end type
+
+event clicked;OpenSheet(w_nupdw,w_main,0,layered!)
+end event
+
+on m_n-updw.create
+call super::create
+this.text = "N-UpDw"
+end on
+
+on m_n-updw.destroy
+call super::destroy
+end on
+
+type m_crosstabdw from menu within m_test
+end type
+
+event clicked;OpenSheet(w_crosstabdw,w_main,0,layered!)
+end event
+
+on m_crosstabdw.create
+call super::create
+this.text = "CrosstabDw~tF4"
+this.shortcut = 115
+end on
+
+on m_crosstabdw.destroy
+call super::destroy
+end on
+
+type m_0 from menu within m_main
+m_3 m_3
+end type
+
+on m_0.create
+call super::create
+this.text = "AutoRun"
+this.m_3=create m_3
+this.Item[UpperBound(this.Item)+1]=this.m_3
+end on
+
+on m_0.destroy
+call super::destroy
+destroy(this.m_3)
+end on
+
+type m_3 from menu within m_0
+event create ( )
+event destroy ( )
+end type
+
+on m_3.create
+call super::create
+this.text = "AutoRun"
+end on
+
+on m_3.destroy
+call super::destroy
+end on
+
+event clicked;opensheet(w_autorun,w_main,0,original!)
+end event
+

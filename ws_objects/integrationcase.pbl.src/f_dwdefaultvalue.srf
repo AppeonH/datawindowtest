@@ -1,0 +1,118 @@
+﻿$PBExportHeader$f_dwdefaultvalue.srf
+global type f_dwdefaultvalue from function_object
+end type
+
+forward prototypes
+global subroutine f_dwdefaultvalue (datawindow a_dw)
+end prototypes
+
+global subroutine f_dwdefaultvalue (datawindow a_dw);//±£´æËùÓÐÊôÐÔ
+string ls_attrlist,ls_attribute
+string ls_objectname,ls_modifyvalue,ls_describevalue,ls_objectname1,ls_objectname2
+integer li_count,i,j
+string ls_object_array[]={"column_checkbox","column_radiobuttons","column_editmask","column_ddlb","column_dddw"}
+string ls_object[]={"DataWindow","Column","Text","Compute","Button"}
+for i=1 to upperbound(ls_object)
+	
+	ls_objectname=ls_object[i]
+	if (ls_objectname="DataWindow") then
+		ls_objectname1=ls_objectname
+	else
+		ls_objectname1=ls_objectname+"_test" //"Column","Text","Compute","Button" Ãû³Æ
+	end if
+	
+	ls_attrlist=a_dw.Describe(ls_objectname1+".Attributes")//ËùÓÐÊôÐÔ
+	
+	do while ls_attrlist<>""
+		
+
+		ls_attribute=f_get_token(ls_attrlist,"~t")
+		if (ls_objectname="DataWindow") then
+			ls_objectname2=ls_objectname
+			
+		elseif ls_objectname="Column" then //ÁÐ
+			if pos(ls_attribute,"checkbox")>0 then
+				ls_objectname2="column_checkbox"
+			elseif pos(ls_attribute,"radiobuttons")>0 then
+				ls_objectname2="column_radiobuttons"
+			elseif pos(ls_attribute,"editmask")>0 then
+				ls_objectname2="column_editmask"
+			elseif pos(ls_attribute,"ddlb")>0 then
+				ls_objectname2="column_ddlb"
+			elseif pos(ls_attribute,"dddw")>0 then
+				ls_objectname2="column_dddw"
+			
+			else
+				ls_objectname2="column_test"
+			end if
+		else
+			ls_objectname2=ls_objectname+"_test"
+		end if
+		
+
+		ls_describevalue = a_dw.describe(ls_objectname2+"."+ls_attribute) //È¡³öÄ³ÊôÐÔÖµ²¢±£´æ
+		ls_modifyvalue=ls_describevalue
+		
+		
+		 
+		
+		
+		select count(*) into :li_count 
+			from dwattribute
+			where objectname=:ls_objectname and attribute=:ls_attribute;
+		if (li_count = 0 ) then
+			insert dwattribute(objectname,attribute,modifyvalue,describevalue)
+						 values(:ls_objectname,:ls_attribute,:ls_modifyvalue,:ls_describevalue);
+		else
+			update dwattribute
+				set modifyvalue=:ls_modifyvalue,describevalue=:ls_describevalue
+				where objectname=:ls_objectname and attribute=:ls_attribute;
+		end if
+		
+		
+		
+		//ÐÂÔöedit.style¡¡¡°2.7°æ"
+		if pos(lower(ls_attribute),"edit.style")>0 then //"edit.style"ÆäËü·ç¸ñµÄÒ²Ö§³Ö
+		
+			
+		
+			
+			for j=1 to UpperBound(ls_object_array) //ls_object_array={"column_checkbox","column_radiobuttons","column_editmask","column_ddlb","column_dddw"}
+				ls_objectname2=ls_object_array[j]
+				
+				ls_describevalue = a_dw.describe(ls_objectname2+"."+"edit.style") //È¡³öÄ³ÊôÐÔÖµ²¢±£´æ
+				
+				ls_modifyvalue=ls_describevalue
+				//ÊôÐÔÃû´¦Àí
+				
+				ls_attribute=ls_objectname2+"@"+"edit.style"
+				select count(*) into :li_count 
+				from dwattribute
+				where objectname=:ls_objectname and attribute=:ls_attribute;
+				if (li_count = 0 ) then
+					insert dwattribute(objectname,attribute,modifyvalue,describevalue)
+								 values(:ls_objectname,:ls_attribute,:ls_modifyvalue,:ls_describevalue);
+				else
+					update dwattribute
+						set modifyvalue=:ls_modifyvalue,describevalue=:ls_describevalue
+						where objectname=:ls_objectname and attribute=:ls_attribute;
+				end if
+			next
+			
+			
+		end if
+		
+		
+		
+		
+		
+	loop
+next
+
+//require
+update dwattribute set modifyvalue='yes'  where  attribute like '%required' and  ismodify = 1;
+
+commit using sqlca;
+messagebox("Message","Finished")
+end subroutine
+

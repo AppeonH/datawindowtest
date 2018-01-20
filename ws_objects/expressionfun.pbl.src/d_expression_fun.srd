@@ -1,0 +1,152 @@
+﻿$PBExportHeader$d_expression_fun.srd
+$PBExportComments$datasource external
+release 8;
+datawindow(units=0 timer_interval=0 color=134217750 processing=0 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=212 color="536870912" )
+footer(height=196 color="536870912" )
+detail(height=1052 color="536870912" )
+table(column=(type=char(50) updatewhereclause=no name=n_string dbname="n_string" initial="eee" )
+ column=(type=number updatewhereclause=no name=n_number dbname="n_number" )
+ column=(type=decimal(10) updatewhereclause=no name=n_decimal dbname="n_decimal" )
+ column=(type=date updatewhereclause=no name=n_date dbname="n_date" )
+ column=(type=datetime updatewhereclause=no name=n_datetime dbname="n_datetime" )
+ column=(type=time updatewhereclause=no name=n_time dbname="n_time" )
+ column=(type=long updatewhereclause=no name=n_long dbname="n_long" )
+ column=(type=ulong updatewhereclause=no name=n_ulong dbname="n_ulong" )
+ column=(type=char(20) updatewhereclause=no name=n_string1 dbname="n_string1" )
+ column=(type=char(20) updatewhereclause=no name=cpt_1 dbname="name_1" )
+ column=(type=char(20) updatewhereclause=no name=cpt_3 dbname="name_3" )
+ column=(type=char(20) updatewhereclause=no name=cpt_4 dbname="name_4" )
+ column=(type=char(20) updatewhereclause=no name=cpt_5 dbname="name_5" )
+ column=(type=char(20) updatewhereclause=no name=cpt_6 dbname="name_6" )
+ column=(type=char(20) updatewhereclause=no name=cpt_7 dbname="name_7" )
+ column=(type=char(20) updatewhereclause=no name=cpt_8 dbname="name_8" )
+ column=(type=char(20) updatewhereclause=no name=cpt_9 dbname="name_9" )
+ )
+data("^(1", 10, 0.0000000000, 1999-10-01, 2005-05-05 00:00:00:000000, 13:00:00:000000, 0, 0, " ab 12 -= ", null null null null null null null null "(~~2", 0.5, -1.0000000000, 1999-10-01, 2005-05-05 00:00:00:000000, 00:00:01:000000, 1, 1, " ` ~~ @ ", null null null null null null null null "?/3", 1, 1.0000000000, 1999-10-01, 2005-05-05 00:00:00:000000, 12:00:00:000000, -1, 52, " AAaa 1 ", null null null null null null null null "ab4", 0, 0.0000000000, 1999-10-01, 2005-05-05 00:00:00:000000, 14:15:16:000000, -15, 4294967146, " ^*&^ &*", null null null null null null null null "zy5", 999999.9, 1.0000000000, 1999-10-01, 2005-05-05 23:59:59:000000, 13:00:00:000000, 50000, 0, "( *)", null null null null null null null null "196", -1, -1.0000000000, 1999-10-01, 2003-10-01 00:00:01:000000, 00:00:01:000000, 0, 1, "_+0 (*)", null null null null null null null null "287", 8888888, 1.5000000000, 1999-10-01, 1999-09-09 13:00:00:000000, 12:00:00:000000, 2, 0, " ipjIOJI", null null null null null null null null "%*8", 5000000, 5000000.0000000000, 2003-10-01, 2003-10-01 12:00:00:000000, 08:15:59:000000, 0, 5, "23", null null null null null null null null "&#9", -8000000, 80000.5000000000, 2003-10-01, 2003-10-01 10:15:20:000000, 08:15:59:000000, -1, 5462, "dfd", null null null null null null null null "null10", null null null null null null null null null null null null null null null null ) 
+text(band=detail alignment="1" text="Detail" border="0" color="33554432" x="91" y="28" height="64" width="238" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Record" border="0" color="33554432" x="663" y="32" height="64" width="261" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+compute(band=detail alignment="0" expression="getrow()"border="0" color="255" x="923" y="32" height="76" width="105" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="N Number:" border="0" color="33554432" x="5" y="236" height="64" width="393" html.valueishtml="0"  name=n_number_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="N Datetime:" border="0" color="33554432" x="0" y="536" height="64" width="393" html.valueishtml="0"  name=n_datetime_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="N Time:" border="0" color="33554432" x="0" y="636" height="64" width="393" html.valueishtml="0"  name=n_time_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="N Long:" border="0" color="33554432" x="0" y="736" height="64" width="393" html.valueishtml="0"  name=n_long_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="N Ulong:" border="0" color="33554432" x="0" y="836" height="64" width="393" html.valueishtml="0"  name=n_ulong_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="N String:" border="0" color="33554432" x="0" y="136" height="64" width="393" html.valueishtml="0"  name=n_string_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="N Decimal:" border="0" color="33554432" x="0" y="336" height="64" width="393" html.valueishtml="0"  name=n_decimal_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="N Date:" border="0" color="33554432" x="0" y="436" height="64" width="393" html.valueishtml="0"  name=n_date_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="N String:" border="0" color="33554432" x="0" y="952" height="64" width="393" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="2" color="33554432" x="425" y="336" height="76" width="475" format="[general]" html.valueishtml="0"  name=n_decimal visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="2" color="33554432" x="425" y="436" height="76" width="475" format="[general]" html.valueishtml="0"  name=n_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="2" color="33554432" x="425" y="536" height="76" width="475" format="[shortdate] [time]" html.valueishtml="0"  name=n_datetime visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="2" color="33554432" x="425" y="636" height="76" width="475" format="[time]" html.valueishtml="0"  name=n_time visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="2" color="33554432" x="425" y="736" height="76" width="475" format="[general]~tString(n_long, ~"0000;(000);****;empty~")" html.valueishtml="0"  name=n_long visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="2" color="33554432" x="425" y="836" height="76" width="475" format="[general]" html.valueishtml="0"  name=n_ulong visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="2" color="33554432" x="425" y="940" height="76" width="475" format="[general]" html.valueishtml="0"  name=n_string1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+compute(band=detail alignment="0" expression="if(getrow()>0 and getrow()<5,LOG( n_number )+LOGTEN(n_number),
+if(getrow()=5,LONG(string(n_number))+SQRT(2),
+if(getrow()=6,MAX(n_number for page) - max(#2 for page),
+if(getrow()=7,MIN(n_number for page) - min(#2 for page),
+if(getrow()=8,mod(n_number,6)+NUMBER(~"24.4~")+number(~"-24.4~"),
+if(getrow()=9,PAGE()+PAGECOUNT()+REAL(string(n_number))+real(~"asd~"),
+n_number))))))"border="2" color="33554432" x="919" y="240" height="76" width="1394" format="[General]" html.valueishtml="0"  name=cpt_js_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="n_decimal+RGB(0,0,0)-RGB(255,255,255)+
+IF(getrow()=1,ROUND(9.625, 2)+Round(9.623, 2)+Round(9.623, 4)+Round(9.623, -1),0)+ROWCOUNT()+TRUNCATE(9.22, 1)  +Truncate(9.9, 0) +Truncate(9.2, -1) +Truncate(-9.233, 1) "border="2" color="33554432~tif(getrow()= 1,RGB(  255,  255,  255),RGB(0,0,0))" x="919" y="336" height="76" width="1394" format="[General]" html.valueishtml="0"  name=cpt_js_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~t
+if(getrow()= 1,RGB(  0,  0,  0),
+if(getrow()= 2,RGB(255,255,255),
+if(getrow()= 3,RGB(192,192,192),
+if(getrow()= 4,RGB(128,128,128),
+if(getrow()= 5,RGB(255,0,0),
+if(getrow()= 6,RGB(128,0,0),
+if(getrow()= 7,RGB(0,255,0),
+if(getrow()= 8,RGB(0,128,0),
+if(getrow()= 9,RGB(0,0,255),
+if(getrow()=10,RGB(0,0,128),
+if(getrow()=11,RGB(255,0,255),
+if(getrow()=12,RGB(128,0,128),
+if(getrow()=13,RGB(0,255,255),
+if(getrow()=14,RGB(0,128,128),
+if(getrow()=15,RGB(255,255,0),
+
+if(getrow()=16,RGB(128,128,0),
+RGB(255,255,0)
+))))))))))))))))" )
+compute(band=detail alignment="0" expression="if(getrow()=1, DATE( n_date ),
+if(getrow()=2, date   ( string(n_date) ),
+if(getrow()=3, date   (~"1999 July 4~"),
+if(getrow()=4, date   (~"July 4, 1999~"),
+if(getrow()=5, date   (~"1998-Jan-1~"),
+if(getrow()=6,  RELATIVEDATE (n_date,DAY( n_date )+HOUR(n_date)+MONTH(n_date)+YEAR(n_date)),
+if(getrow()=7,  relativedate (n_date, DAYNUMBER ( n_date )+hour(n_date)+month(n_date)),
+if(getrow()=8, date(~"98/1/30~"),
+if(getrow()=9, date(~"1998-January-10~"),
+
+
+relativedate (n_date, DAYSAFTER ( n_date, n_datetime  ))
+))))))) ))
+"border="2" color="33554432" x="919" y="436" height="76" width="1394" format="[General]" html.valueishtml="0"  name=cpt_js_4 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if(getrow()=1, DATETIME (  n_datetime ),
+if(getrow()=2, RELATIVEDATE (  n_datetime ,day(  n_datetime )+HOUR(n_datetime)+MONTH(n_datetime)),
+if(getrow()=3, relativedate(  n_datetime ,DAYNUMBER (  n_datetime )+hour(n_datetime)+month(n_datetime)),
+
+if(getrow()=4, datetime(  n_datetime ),
+relativedate (n_date, DAYSAFTER ( n_date, n_datetime  ))
+))))
+"border="2" color="33554432" x="919" y="536" height="76" width="1394" format="[General]" html.valueishtml="0"  name=cpt_js_5 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if(getrow()=1,RELATIVETIME(n_time, 10),
+if(getrow()=2,RelativeTime(n_time,SECOND(n_time)),
+if(getrow()=3,relativetime(n_time,SECONDSAFTER(21:15:30, 21:15:45)),
+if(getrow()=3,relativetime(n_time,SecondsAfter(1:15:30, n_Time)),
+RelativeTime(n_time, -10)))))"border="2" color="33554432" x="919" y="636" height="76" width="1394" format="[General]" html.valueishtml="0"  name=cpt_js_6 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if(getrow()>=1 and getrow()<=3, 
+  ASIN ( n_long )+ ACOS (n_long)+ ATAN (n_long) + COS (n_long)+SIN(n_long)+TAN(n_long),
+if(getrow()=4, CEILING ( n_long )+ AVG (n_long for page),
+if(getrow()=5,Ceiling( n_long )+Avg(n_long for page),
+if(getrow()=6,asin( ASin(LogTen (Pi (1))))+acos(0.540302)+acos(0.540302),
+if(getrow()=7,EXP( n_long )+FACT(5),
+if(getrow()=8,exp( n_long ),
+exp( n_long )
+))))))"border="2" color="33554432" x="919" y="736" height="76" width="1394" format="[GENERAL]" html.valueishtml="0"  name=cpt_js_7 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="Sign(-5)+Sign(-5.5)+Sign(0)+Sign(5)+sign(n_ulong)+SUM(n_ulong for page)+Sum(#8 for page)"border="2" color="33554432" x="919" y="836" height="76" width="1394" format="[GENERAL]" html.valueishtml="0"  name=cpt_js_8 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if(getrow()=1,LEFT(   n_string1,3 )+  LEFTTRIM(  n_string1 )+   left(~"~", -2)+
+                    RIGHT(   n_string1,3 )+RIGHTTRIM(  n_string1 )+right(~"~", 2)+
+                    TRIM(n_string)+trim(~"~"),
+if(getrow()=2,string(LEN(~"~"))+string(len(n_string1))+string(len( gettext() )),
+if(getrow()=3,UPPER(n_string1)+LOWER(n_string1),
+if(getrow()=4,string(MATCH(n_string1, ~"^[A-Z]~"))+string(match(~"AB~", ~"^[A-Z]~")),
+if(getrow()=5,string(POS(n_string1, ~" ~")+Pos(n_string1, ~"~")+RAND(10)>10),
+if(getrow()=6,Replace(n_string1, 1, 4, ~"Qq~")+replace(n_string1,2, -1,~"B~"),
+n_string1+STRING(n_long, ~"0000;(000);****;empty~")))))))"border="2" color="33554432" x="919" y="944" height="76" width="1394" format="[General]" html.valueishtml="0"  name=cpt_js_9 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if(getrow()=1,string(ASC( n_string )) + FILL (~"*~", 10)+GETTEXT(),
+if(getrow()=2 ,UPPER(n_string) +fill(~"-+~", 10)+gettext(),
+if(getrow()=3 or getrow()=4,string(asc( mid(n_string,1,1)  ))+CHAR(  getrow() *10 -2 )+gettext() +ISDATE( n_string )+isdate(  string(n_date)  )+
+ISNULL(n_string)+isnull( n_long)+
+ISNUMBER( string( n_number )) +isnumber( string( n_long ) )+isnumber( string(n_ulong) )+ISROWMODIFIED( )+ISROWNEW()+ISSELECTED( ),
+
+string(asc( mid(n_string,1,1)  ))+CHAR(  getrow() *10 -2 )+gettext() +SPACE(3)+
+WordCap(n_string + ~" ~" + n_string1)+WordCap(~"boston, MASSACHUSETTS~")
+)) )"border="2" color="33554432" x="919" y="136" height="76" width="1394" format="[General]" html.valueishtml="0"  name=cpt_js_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="2" color="33554432" x="425" y="236" height="76" width="475" format="[general]" html.valueishtml="0"  name=n_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="2" color="33554432" x="425" y="136" height="76" width="475" format="[general]" html.valueishtml="0"  name=n_string visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="sum(n_number for all)"border="0" color="33554432" x="0" y="116" height="76" width="448" format="[general]" html.valueishtml="0"  name=compute_15 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=summary alignment="1" text="Summary" border="0" color="33554432" x="46" y="28" height="64" width="302" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="count(n_string for all)+count(#1 for page)+count(#1)+currentrow()"border="2" color="33554432" x="466" y="20" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_18 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="946" y="20" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_17 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="946" y="116" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_13 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="1422" y="20" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_16 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="1422" y="116" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_12 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="1902" y="116" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_10 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="1902" y="20" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_11 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="466" y="116" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_14 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="0" color="33554432" x="0" y="108" height="76" width="448" format="[general]" html.valueishtml="0"  name=compute_23 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=footer alignment="1" text="Footer" border="0" color="33554432" x="64" y="0" height="64" width="251" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="1911" y="108" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_27 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="466" y="12" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_19 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="942" y="12" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_24 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="1426" y="12" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_25 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="1906" y="12" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_26 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="466" y="108" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_22 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="946" y="108" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_21 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="1" expression="sum(n_number for all)"border="2" color="33554432" x="1426" y="108" height="76" width="457" format="[general]" html.valueishtml="0"  name=compute_20 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

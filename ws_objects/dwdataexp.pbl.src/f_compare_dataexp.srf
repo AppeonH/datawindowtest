@@ -1,0 +1,82 @@
+﻿$PBExportHeader$f_compare_dataexp.srf
+global type f_compare_dataexp from function_object
+end type
+
+forward prototypes
+global subroutine f_compare_dataexp (datawindow adw_output, datawindow adw_1, boolean ab_output)
+end prototypes
+
+global subroutine f_compare_dataexp (datawindow adw_output, datawindow adw_1, boolean ab_output);/************************************************************
+	Function:		f_compare_dataexp
+
+	Access: 			public
+
+	Arguments:	   
+						adw_output	
+						
+	
+	Returns:  		None
+
+	Description: 
+*************************************************************/
+string ls_message[]
+int li_data[]
+any la_object
+
+//1
+la_object= ClassName(adw_1.Object.emp_id)   //--½á¹ûÊÇÁÐ¶ÔÏó£¬¶ø²»ÊÇÊý¾ÝÒ²Òª²âÊÔ
+if string(la_object)="dwobject" then
+	if ab_output=true then
+		ls_message[]= {"Right","JS","dwcontrol.Object.ColumNname","return dwobject"}
+		f_outputtext(adw_output,ls_message)
+	end if
+else
+	ls_message[]= {"Error","PB","dwcontrol.Object.ColumNname","return dwobject"}
+	f_outputtext(adw_output,ls_message)
+	ls_message[]= {"Error","JS","dwcontrol.Object.ColumNname","return "+f_string(la_object)}
+	f_outputtext(adw_output,ls_message)
+end if
+
+
+//2
+li_data[]= adw_1.Object.emp_id.current   //--½á¹ûÊÇÁÐ¶ÔÏó£¬¶ø²»ÊÇÊý¾ÝÒ²Òª²âÊÔ
+if string(la_object)="dwobject" then
+	ls_message[]= {"Right","JS","array[]=dwcontrol.Object.ColumNname.current","return dwobject"}
+else
+	ls_message[]= {"Error","PB","array[]=dwcontrol.Object.ColumNname.current","return dwobject"}
+	f_outputtext(adw_output,ls_message)
+	ls_message[]= {"Error","JS","dwcontrol.Object.ColumNname.current","return "+f_string(la_object)}
+end if
+f_outputtext(adw_output,ls_message)
+
+la_object= ClassName(adw_1.Object.emp_id[1])   //--½á¹ûÊÇÁÐ¶ÔÏó£¬¶ø²»ÊÇÊý¾ÝÒ²Òª²âÊÔ
+if string(la_object)="dwobject" then
+messagebox("",string(la_object))
+end if
+//dw_1.Object.emp_id[] 
+//
+//dw_1.Object.emp_id.current
+//dw_1.Object.emp_id.current[]
+//dw_1.Object.emp_id.original
+//dw_1.Object.emp_id.original[]
+//dw_1.Object.emp_id.primary
+//
+//dw_1.Object.emp_id.primary.current
+//dw_1.Object.emp_id.primary.current[]
+//dw_1.Object.emp_id.primary.original
+//dw_1.Object.emp_id.primary.original[]
+//
+//dw_1.Object.emp_id.filter.current
+//dw_1.Object.emp_id.filter.current[]
+//dw_1.Object.emp_id.filter.original
+//dw_1.Object.emp_id.filter.original[]	
+//
+//dw_1.Object.emp_id.delete.current
+//dw_1.Object.emp_id.delete.current[]
+//dw_1.Object.emp_id.delete.original
+//dw_1.Object.emp_id.delete.original[]
+//
+	
+
+end subroutine
+

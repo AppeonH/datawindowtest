@@ -1,0 +1,22 @@
+﻿$PBExportHeader$n_cst_appeon.srx
+$PBExportComments$Proxy imported from EAServer via EAServer Proxy generator.
+global type n_cst_appeon from CORBAObject
+end type
+global n_cst_appeon n_cst_appeon
+
+forward prototypes
+  public:
+function Long of_getfullstate (REF String as_changes) alias for "of_getfullstate__LRS"
+function Long of_setfullstate (String as_changes) alias for "of_setfullstate__LS"
+function Long of_getchanges (REF String as_changes) alias for "of_getchanges__LRS"
+function Long of_setchanges (String as_changes) alias for "of_setchanges__LS"
+function Long of_getfullstate (REF Blob ab_changes) alias for "of_getfullstate__LRO"
+function Long of_getchanges (REF Blob as_changes) alias for "of_getchanges__LRO"
+function Long of_setchanges (Blob as_changes) alias for "of_setchanges__LO"
+function Long of_setfullstate (Blob as_changes) alias for "of_setfullstate__LO"
+function Long of_retrievedata (REF String as_changes) alias for "of_retrievedata__LRS"
+function Long of_retrievedata (REF Blob as_changes) alias for "of_retrievedata__LRO"
+function Long of_updatedata (REF Blob as_changes) alias for "of_updatedata__LRO"
+function Long of_updatedata (REF String as_changes) alias for "of_updatedata__LRS"
+                                                end prototypes
+

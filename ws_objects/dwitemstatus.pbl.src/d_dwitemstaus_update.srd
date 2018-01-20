@@ -1,0 +1,39 @@
+﻿$PBExportHeader$d_dwitemstaus_update.srd
+release 8;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=104 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=emp_id dbname="u_emp.emp_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=emp_fname dbname="u_emp.emp_fname" )
+ column=(type=decimal(3) update=yes updatewhereclause=yes name=salary dbname="u_emp.salary" )
+ column=(type=date update=yes updatewhereclause=yes name=start_date dbname="u_emp.start_date" )
+ column=(type=time update=yes updatewhereclause=yes name=mytime dbname="u_emp.mytime" )
+ column=(type=datetime update=yes updatewhereclause=yes name=mydatetime dbname="u_emp.mydatetime" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=mydecimal dbname="u_emp.mydecimal" )
+ retrieve="  SELECT ~"u_emp~".~"emp_id~",   
+         ~"u_emp~".~"emp_fname~",   
+         ~"u_emp~".~"salary~",   
+         ~"u_emp~".~"start_date~",   
+         ~"u_emp~".~"mytime~",   
+         ~"u_emp~".~"mydatetime~",   
+         ~"u_emp~".~"mydecimal~"  
+    FROM ~"u_emp~"   
+" update="u_emp" updatewhere=0 updatekeyinplace=yes  sort="emp_id A " )
+text(band=header alignment="0" text="Emp Id" border="0" color="33554432" x="9" y="4" height="76" width="261" html.valueishtml="0"  name=emp_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Emp Fname" border="0" color="33554432" x="279" y="4" height="76" width="421" html.valueishtml="0"  name=emp_fname_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Salary" border="0" color="33554432" x="709" y="4" height="76" width="375" html.valueishtml="0"  name=salary_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Start Date" border="0" color="33554432" x="1093" y="4" height="76" width="448" html.valueishtml="0"  name=start_date_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Mytime" border="0" color="33554432" x="1550" y="4" height="76" width="247" html.valueishtml="0"  name=mytime_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Mydatetime" border="0" color="33554432" x="1806" y="4" height="76" width="462" html.valueishtml="0"  name=mydatetime_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="0" text="Mydecimal" border="0" color="33554432" x="2277" y="4" height="76" width="581" html.valueishtml="0"  name=mydecimal_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="76" width="261" format="[general]" html.valueishtml="0"  name=emp_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="279" y="0" height="76" width="421" format="[general]" html.valueishtml="0"  name=emp_fname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="709" y="0" height="76" width="375" format="[general]" html.valueishtml="0"  name=salary visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1093" y="0" height="76" width="448" format="[general]" html.valueishtml="0"  name=start_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1550" y="0" height="76" width="247" format="[time]" html.valueishtml="0"  name=mytime visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1806" y="0" height="76" width="462" format="[shortdate] [time]" html.valueishtml="0"  name=mydatetime visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="2277" y="0" height="76" width="581" format="[general]" html.valueishtml="0"  name=mydecimal visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )

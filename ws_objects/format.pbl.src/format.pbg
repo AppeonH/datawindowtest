@@ -1,0 +1,22 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "format.pbl" "";
+@end;
+@begin Objects 
+ "d_msk010_w01_baseformat.srd" "format.pbl";
+ "d_msk010_w02_userformat.srd" "format.pbl";
+ "d_msk010_w03_otherformat.srd" "format.pbl";
+ "d_msk011_w01_baseformat.srd" "format.pbl";
+ "d_msk011_w02_userformat.srd" "format.pbl";
+ "d_msk011_w03_otherformat.srd" "format.pbl";
+ "d_msk012_w01_baseformat.srd" "format.pbl";
+ "d_msk012_w02_userformat.srd" "format.pbl";
+ "d_msk012_w03_otherformat.srd" "format.pbl";
+ "d_msk013_w01_baseformat.srd" "format.pbl";
+ "d_msk013_w02_userformat.srd" "format.pbl";
+ "d_msk013_w03_otherformat.srd" "format.pbl";
+ "d_msk014_w01_baseformat.srd" "format.pbl";
+ "d_msk014_w02_useformat.srd" "format.pbl";
+ "d_msk014_w03_otherformat.srd" "format.pbl";
+ "w_format.srw" "format.pbl";
+@end;

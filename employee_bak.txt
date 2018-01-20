@@ -1,0 +1,71 @@
+dept_id	emp_id	manager_id	emp_fname	emp_lname	city	start_date	zip_code	street	bene_health_ins	bene_life_ins	mydatetime	mydecimal	mytime
+400	184	1576	Melissa	Espinoza	Stow	04/18/1988	01775    	112 Apple Tree Way	Y	Y	01/01/2000 10:10:10	45.3100	10:10:10
+200	195	129	Marc	Dill	Milton	06/06/1988	02186    	89 Hancock Street	Y	Y	01/01/2000 10:10:10	45.3600	10:10:10
+100	243	582	Natasha	Shishov	Waltham	12/06/1988	02154    	15 Milk Street 	Y	Y	01/01/2000 10:10:10	45.3800	10:10:10
+100	249	582	Rodrigo	Guevara	Framingham	01/01/1999	01701    	East Main Street	Y	Y	01/01/2000 10:10:10	45.3000	10:10:10
+100	278	582	Terry	Melkisetian	Watertown	06/05/1989	02172    	87 Oxford Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	316	582	Lynn	Pastor	Burlington	10/24/1989	01803    	14 Cricklewood Drive	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	390	1293	Jo Ann	Davidson	Needham	11/30/1989	02192    	27 Mount Vernon Road	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	445	582	bbb	Lull	Concord	12/13/1989	01742    	199 Lincoln Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	467	129	James	Klobucher	Houston	01/07/1990	77079    	18 Corning Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	501	582	David	Scott	Belmont	02/01/1990	02178    	21 Riverdale Drive	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	586	1293	James	Coleman	Acton	10/04/1990	01720    	57 Heather Hill Drive	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	604	582	Albert	Wang	Waltham	03/30/1991	02154    	48 Edwin Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	667	129	Mary	Garcia	Houston	05/23/1991	77079    	98 Purvis Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+500	703	902	Jose	Martinez	Westwood	06/01/1992	02090    	123 Washington Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	148	1293	Julie	Jordan	Winchester	10/04/1997	01890    	144 Great Plain Avenue	Y	Y	01/04/2000 10:10:10	45.3200	13:10:10
+500	191	703	Jeannette	Bertrand	Acton	05/20/1990	01720    	209 Concord Street	Y	Y	01/01/2000 10:10:10	45.3500	10:10:10
+400	207	1576	Jane	Francis	Concord	08/04/1995	01742    	12 Hawthorne Drive	Y	Y	01/01/2000 10:10:10	45.3700	10:10:10
+100	247	582	aaa	Driscoll	Waltham	12/30/1996	02154	154 School Street	Y	Y	01/01/2000 10:10:10	45.3900	10:10:10
+100	266	582	Ram	Gowda	Natick	05/30/1991	01760    	79 Page Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	299	129	Rollin	Overbey	Emeryville	08/19/1989	94608    	1915 Companion Ct.	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	318	1576	aaa	Crow	Watertown	11/20/1989	02172	531 Main Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	409	1576	Bruce	Weaver	Lexington	12/08/1989	02173    	19 Westmoreland Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	453	582	Andrew	Rabkin	Burlington	12/13/1989	01803    	44 Birds Hill Way	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	479	582	bbb	Siperstein	Newton	01/20/1990	02164    	341 Hillside Avenue	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	582	582	Peter	Samuels	Newton	09/21/1990	02164    	54 Woodlawn Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	591	1576	Irene	Barletta	Bedford	01/16/1991	01730    	37 Gleason Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	641	129	Thomas	Powell	Newton	04/14/1991	02162    	48 Kennedy Court	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	690	129	Kathleen	Poitras	Boston	05/29/1991	02118    	50 The Fenway	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+500	750	703	Jane	Braun	Cambridge	07/04/1992	02140    	45 Wood Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	757	1293	Denis	Higgins	Lexington	08/24/1992	02173    	1033 Massachusetts Avenue	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	839	582	Dean	Marshall	Belmont	10/19/1992	02178    	44 Mount Pleasant Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	856	129	Samuel	Singer	Stow	11/30/1992	01775    	187 Orchard Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	862	582	John	Sheffield	Houston	12/14/1992	77079    	45 Belleview Drive	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+500	868	703	Felicia	Kuo	Cambridge	01/10/1993	02140    	79 Oak Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	879	1293	Kristen	Coe	West Roxbury	01/16/1993	02132    	30 Rainbow Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	888	1576	Doug	Charlton	Concord	03/10/1993	01742    	57 Webster Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	902	129	Judy	Snow	Marblehead	04/01/1993	01945	12 Fountain Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	913	129	Ken	Martel	Needham	04/16/1993	02192    	23 Lincoln Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+500	921	703	Charles	Crowley	Belmont	04/22/1993	02178    	421 Beacon Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	930	129	Ann	Taylor	Atlanta	05/08/1993	30339    	25 Westminster Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	949	129	Pamela	Savarino	Long Beach	05/08/1993	90806    	112 Beach Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	958	582	Thomas	Sisson	Houston	07/16/1993	77079    	54 School Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	992	1576	Joyce	Butterfield	Cambridge	08/13/1993	02140    	119 Adams Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+500	1013	703	Joseph	Barker	Bedford	09/10/1993	01730    	58 West Drive	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	1021	129	Paul	Sterling	Concord	10/28/1993	01742    	112 Endicott Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	1039	129	Shih Lin	Chao	Lexington	11/11/1993	02173    	59 Holyoke Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1062	1576	Barbara	Blaikie	Needham	11/20/1993	02192    	66 Beaumont Terrace	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	1090	582	Susan	Smith	Houston	12/13/1993	77079    	177 Johnson Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	1101	129	Mark	Preston	Boston	01/09/1994	02124    	49 Constitution Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	1142	129	Alison	Clark	Emeryville	01/19/1994	94608    	56 Carver Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	1162	129	Kevin	Goggin	Wellesley	02/03/1994	02181    	12 Wachusett Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1191	1576	Matthew	Bucceri	Lexington	02/12/1994	02173    	57 Taylor Place	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	1250	582	Emilio	Diaz	Wellesley	02/17/1994	02181    	112 Evergreen Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	1293	1293	Mary Anne	Shea	Lexington	03/01/1994	02173	197 Camden Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	1336	1293	Janet	Bigelow	Waltham	08/25/1995	02154	84 Lunda Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	1390	1293	Jennifer	Litton	Concord	10/05/1995	01742    	17 Downing Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	1446	129	Caroline	Yeung	Atlanta	04/29/1996	30339    	52 Cypress Street	N	Y	01/01/2000 10:10:10	45.3300	10:10:10
+300	1483	1293	John	Letiecq	Burlington	08/30/1996	01803    	149 Vista Drive	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1507	1576	Ruth	Wetherby	Needham	10/11/1996	02192    	82 Aberdeen Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+500	1570	703	Anthony	Rebeiro	Waltham	11/27/1996	02154    	39 Moody Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1576	902	Scott	Evans	Concord	12/30/1996	01742    	10-A Sunrise Circle	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+200	1596	129	Catherine	Pickett	Bedford	02/10/1997	01730    	45 Appleton Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1607	1576	Mark 	Morris	Waltham	04/13/1997	02154    	1 Example Way 	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+500	1615	703	Sheila	Romero	Bedford	05/20/1997	01730    	1 Oakview Terrace	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1643	1576	Elizabeth	Lambert	Burlington	06/15/1997	01803    	29 Union Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+500	1658	703	Michael	Lynch	Waltham	08/28/1997	02154    	76 Brookside Road	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1684	1576	Janet	Hildebrand	Waltham 	09/13/1997	02154    	47 Hilltop Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1740	1576	Robert	Nielsen	Bedford	12/23/1997	01730    	55 Sargent Avenue	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+400	1751	1576	Alex	Ahmed	Needham	01/10/1998	02192    	114 Cushing Street	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10
+100	999	582	Dorothy	Sullivan	Lexington	08/03/1990	02173    	124 Minuteman Drive	Y	Y	01/01/2000 10:10:10	45.3300	10:10:10

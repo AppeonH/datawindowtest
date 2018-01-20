@@ -1,0 +1,8 @@
+﻿$PBExportHeader$point.srs
+global type point from structure
+	long		left
+	long		top
+	long		right
+	long		bottom
+end type
+

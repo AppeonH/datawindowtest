@@ -1,0 +1,42 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "composite.pbl" "";
+@end;
+@begin Objects 
+ "d_arg_default.srd" "composite.pbl";
+ "d_arg_default1.srd" "composite.pbl";
+ "d_computefield.srd" "composite.pbl";
+ "d_f158a05_detailprop01.srd" "composite.pbl";
+ "d_f158a05_detailprop04.srd" "composite.pbl";
+ "d_f158a05_detailprop05.srd" "composite.pbl";
+ "d_f158a05_detailprop06.srd" "composite.pbl";
+ "d_f158a05_detailprop07.srd" "composite.pbl";
+ "d_f158a05_detailprop08.srd" "composite.pbl";
+ "d_f158a13_dwprop06.srd" "composite.pbl";
+ "d_f158a32_dwothers14.srd" "composite.pbl";
+ "d_f158a32_dwothers15.srd" "composite.pbl";
+ "d_f158a32_dwothers16.srd" "composite.pbl";
+ "d_f158a32_external.srd" "composite.pbl";
+ "d_f158a32_freeform01.srd" "composite.pbl";
+ "d_f158a32_grid01.srd" "composite.pbl";
+ "d_f158a32_group01.srd" "composite.pbl";
+ "d_f158a32_taburlar01.srd" "composite.pbl";
+ "d_f158a45_dwprop01.srd" "composite.pbl";
+ "d_f158a61_dwprop02.srd" "composite.pbl";
+ "d_nest_objectproperty.srd" "composite.pbl";
+ "d_nest_objectproperty1.srd" "composite.pbl";
+ "d_nestreport_print.srd" "composite.pbl";
+ "d_public_composite1.srd" "composite.pbl";
+ "d_public_composite11.srd" "composite.pbl";
+ "d_public_composite12.srd" "composite.pbl";
+ "d_public_composite2.srd" "composite.pbl";
+ "d_public_composite3.srd" "composite.pbl";
+ "d_public_composite4.srd" "composite.pbl";
+ "d_public_composite5.srd" "composite.pbl";
+ "d_public_composite6.srd" "composite.pbl";
+ "d_public_composite8.srd" "composite.pbl";
+ "d_public_composite9.srd" "composite.pbl";
+ "d_public_compsite_emp.srd" "composite.pbl";
+ "q_test1.srq" "composite.pbl";
+ "w_composite.srw" "composite.pbl";
+@end;

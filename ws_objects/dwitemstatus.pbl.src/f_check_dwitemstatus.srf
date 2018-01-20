@@ -1,0 +1,508 @@
+﻿$PBExportHeader$f_check_dwitemstatus.srf
+global type f_check_dwitemstatus from function_object
+end type
+
+forward prototypes
+global subroutine f_check_dwitemstatus (datawindow adw_output, datawindow adw_1, boolean ab_save_flag, integer ai_check_flag, boolean ab_output)
+end prototypes
+
+global subroutine f_check_dwitemstatus (datawindow adw_output, datawindow adw_1, boolean ab_save_flag, integer ai_check_flag, boolean ab_output);string			ls_status_arr[]={"notmodified","new!","newmodified!","datamodified!"}
+string			ls_buffer_arr[]={"primary!","delete!","filter!"}
+DwItemStatus	l_status,l_status_arr[]={notmodified!,new!,newmodified!,datamodified!}
+DwBuffer 		l_buffer_arr[]={primary!,delete!,filter!}
+
+string 			ls_message[],ls_null
+int				i,j,k,n
+int				li_ret
+
+setnull(ls_null)
+//------------------------------------------------------------------------------
+//ÐÐ²âÊÔ
+n=0
+if ai_check_flag=0 or ai_check_flag=1 then// 1 setitemstatus()ÐÐ×´Ì¬Ïà»¥×ª»»
+		adw_1.dataobject = "d_dwitemstaus_feeform"
+		adw_1.settransobject(sqlca)
+		adw_1.retrieve()
+		//messagebox("1",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+		for i=1 to 4
+			adw_1.deleterow(2)
+		next
+		adw_1.SetFilter("#1 > 500")
+		adw_1.filter()
+		//messagebox("1",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+		//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+		for i=1 to UpperBound(ls_buffer_arr)
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,0,l_buffer_arr[i],l_status_arr[j]) //
+			next
+		next
+		// every buffer and rowstatus ·µ»ØÖµ
+		for i=1 to UpperBound(ls_buffer_arr)
+			for j=1 to UpperBound(ls_status_arr)
+					n++
+					l_status=adw_1.getitemstatus(1,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(1,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,1, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow setitemstatus() a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(2,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(2,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,2, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow setitemstatus() b"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(3,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(3,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,3, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow setitemstatus() c"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(4,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(4,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,4, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow setitemstatus() d"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+			next
+			
+			adw_output.insertrow(0)
+		next
+		
+		adw_output.insertrow(0)
+
+end if
+n=0
+if ai_check_flag=0 or ai_check_flag=2 then // 2 insertrow()ÐÐ×´Ì¬Ïà»¥×ª»»
+		n=0
+		adw_1.dataobject = "d_dwitemstaus_feeform"
+		adw_1.settransobject(sqlca)
+		adw_1.retrieve()
+      adw_1.modify("emp_fname.Initial = 'sdfsd'")
+		//messagebox("2",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+		for i=1 to 5
+			adw_1.insertrow(1)
+		next
+		
+		//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+		li_ret=adw_1.SetItemStatus(1,0,primary!,datamodified!)  //new->datamodified->notmodified
+		li_ret=adw_1.SetItemStatus(1,0,primary!,notmodified!)
+		
+		li_ret=adw_1.SetItemStatus(2,0,primary!,new!) 
+		li_ret=adw_1.SetItemStatus(3,0,primary!,newmodified!)
+		li_ret=adw_1.SetItemStatus(4,0,primary!,datamodified!) 
+		
+		li_ret=adw_1.SetItemStatus(5,0,primary!,newmodified!) //new->newmodified->notmodified
+		li_ret=adw_1.SetItemStatus(5,0,primary!,notmodified!)
+		
+		// primary! buffer and rowstatus ·µ»ØÖµ
+		i=1
+		for j=1 to UpperBound(ls_status_arr)
+				n++
+				l_status=adw_1.getitemstatus(1,0,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(1,0,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,1, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow insertrow() a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(2,0,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(2,0,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,2, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow insertrow() b"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(3,0,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(3,0,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,3, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow insertrow() c"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(4,0,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(4,0,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,4, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow insertrow() d"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(5,0,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(5,0,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,5, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow insertrow() e"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+		adw_output.insertrow(0)
+
+end if
+n=0
+if ai_check_flag=0 or ai_check_flag=3 then// 3 .data()ÐÐ×´Ì¬Ïà»¥×ª»»
+		adw_1.dataobject = "d_dwitemstaus_feeform"
+		adw_1.settransobject(sqlca)
+		adw_1.retrieve()
+		//messagebox("3",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+		for i=1 to 20 //delete!
+			adw_1.deleterow(2)
+		next
+		
+		adw_1.SetFilter("#1>1000") //filter!
+		adw_1.filter()
+		//messagebox("3",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+		for i=1 to 4 //original
+			adw_1.object.data.primary.original[i,1]=i*10
+			adw_1.object.data.primary.original[i,2]=ls_null
+			
+			adw_1.object.data.delete.original[i,1]=i*10
+			adw_1.object.data.delete.original[i,2]=ls_null
+			
+			adw_1.object.data.filter.original[i,1]=i*10
+			adw_1.object.data.filter.original[i,2]=ls_null
+		next
+		
+		for i=5 to 9 //current
+			adw_1.object.data.primary.current[i,1]=i*10
+			adw_1.object.data.primary.current[i,2]=ls_null
+			
+			adw_1.object.data.delete.current[i,1]=i*10
+			adw_1.object.data.delete.current[i,2]=ls_null
+			
+			adw_1.object.data.filter.current[i,1]=i*10
+			adw_1.object.data.filter.current[i,2]=ls_null
+		next
+		
+		//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+		for i=1 to UpperBound(ls_buffer_arr)	//notmodified->
+			li_ret=adw_1.SetItemStatus(1,0,l_buffer_arr[i],notmodified!)
+			li_ret=adw_1.SetItemStatus(2,0,l_buffer_arr[i],new!) 
+			li_ret=adw_1.SetItemStatus(3,0,l_buffer_arr[i],newmodified!)
+			li_ret=adw_1.SetItemStatus(4,0,l_buffer_arr[i],datamodified!)
+		next
+		
+		for i=1 to UpperBound(ls_buffer_arr)	//datamodified->
+			li_ret=adw_1.SetItemStatus(5,0,l_buffer_arr[i],notmodified!)
+			
+			li_ret=adw_1.SetItemStatus(6,0,l_buffer_arr[i],newmodified!) //datamodified->newmodified->new 
+			li_ret=adw_1.SetItemStatus(6,0,l_buffer_arr[i],new!) 
+			
+			li_ret=adw_1.SetItemStatus(7,0,l_buffer_arr[i],newmodified!)
+			li_ret=adw_1.SetItemStatus(8,0,l_buffer_arr[i],datamodified!)
+			
+			li_ret=adw_1.SetItemStatus(9,0,l_buffer_arr[i],notmodified!) //datamodified->notmodified->new 
+			li_ret=adw_1.SetItemStatus(9,0,l_buffer_arr[i],new!) 
+		next
+			
+		// every buffer and rowstatus ·µ»ØÖµ
+		for i=1 to UpperBound(ls_buffer_arr)
+			for j=1 to UpperBound(ls_status_arr)
+					n++
+					l_status=adw_1.getitemstatus(1,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(1,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,1, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow object.data[] a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(2,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(2,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,2, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow object.data[] b"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(3,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(3,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,3, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow object.data[] c"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(4,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(4,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,4, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow object.data[] d"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(5,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(5,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,5, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow object.data[] e"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(6,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(6,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,6, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow object.data[] f"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(7,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(7,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,7, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow object.data[] g"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(8,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(8,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,8, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckRow object.data[] h"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+			next
+			
+			adw_output.insertrow(0)
+		next
+		
+		adw_output.insertrow(0)
+
+end if
+n=0
+if ai_check_flag=0 or ai_check_flag=4 then//4 ÁÐ²âÊÔsetitemstatus()ÁÐ×´Ì¬Ïà»¥×ª»»
+		adw_1.dataobject = "d_dwitemstaus_feeform"
+		adw_1.settransobject(sqlca)
+		adw_1.retrieve()
+		n=0
+
+//		messagebox("3",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+		adw_1.deleterow(3)
+		adw_1.deleterow(3)
+		adw_1.deleterow(3)
+		adw_1.deleterow(3)
+		adw_1.SetFilter("#1>500")
+		adw_1.filter()
+		
+		//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+		for i=1 to UpperBound(ls_buffer_arr)
+			for j=1 to UpperBound(ls_status_arr)
+				li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],notmodified!) //
+				li_ret=adw_1.SetItemStatus(j,2,l_buffer_arr[i],datamodified!)
+			next
+		next
+		
+		// every buffer and column status ·µ»ØÖµ
+		for i=1 to UpperBound(ls_buffer_arr)
+			for j=1 to UpperBound(ls_status_arr)
+					n++
+					l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,j, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckCol setitemstatus() a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(j,2,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(j,2,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,j, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"CheckCol setitemstatus() b"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+			next
+			adw_output.insertrow(0)
+		next
+
+end if
+n=0
+if ai_check_flag=0 or ai_check_flag=5 then // insertrow()ÁÐ×´Ì¬Ïà»¥×ª»»
+		n=0
+		adw_1.dataobject = "d_dwitemstaus_feeform"
+		adw_1.settransobject(sqlca)
+		adw_1.retrieve()
+      adw_1.modify("emp_fname.Initial = 'sdfsd'")
+		//messagebox("2",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+		for i=1 to 12 //
+			adw_1.insertrow(1)
+		next
+		
+		//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+		//ÓÐ³õÊ¼Öµ
+		li_ret=adw_1.SetItemStatus(1,0,primary!,datamodified!)  //new->datamodified->notmodified
+		li_ret=adw_1.SetItemStatus(1,0,primary!,notmodified!)
+		
+		li_ret=adw_1.SetItemStatus(2,0,primary!,new!) 
+		li_ret=adw_1.SetItemStatus(3,0,primary!,newmodified!)
+		li_ret=adw_1.SetItemStatus(4,0,primary!,datamodified!) 
+		
+		li_ret=adw_1.SetItemStatus(5,0,primary!,newmodified!) //new->newmodified->notmodified
+		li_ret=adw_1.SetItemStatus(5,0,primary!,notmodified!)
+		
+		//ÎÞ³õÊ¼Öµ
+		li_ret=adw_1.SetItemStatus(6,0,primary!,datamodified!)  //new->datamodified->notmodified
+		li_ret=adw_1.SetItemStatus(6,0,primary!,notmodified!)
+		
+		li_ret=adw_1.SetItemStatus(7,0,primary!,new!) 
+		li_ret=adw_1.SetItemStatus(8,0,primary!,newmodified!)
+		li_ret=adw_1.SetItemStatus(9,0,primary!,datamodified!) 
+		
+		li_ret=adw_1.SetItemStatus(10,0,primary!,newmodified!) //new->newmodified->notmodified
+		li_ret=adw_1.SetItemStatus(10,0,primary!,notmodified!)
+		// primary! buffer and rowstatus ·µ»ØÖµ
+		i=1
+		for j=1 to UpperBound(ls_status_arr)
+				n++
+				l_status=adw_1.getitemstatus(1,2,l_buffer_arr[i]) //ÓÐ³õÊ¼Öµ
+				li_ret=adw_1.SetItemStatus(1,2,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,1, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(2,2,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(2,2,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,2, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() b"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(3,2,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(3,2,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,3, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() c"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(4,2,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(4,2,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,4, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() d"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(5,2,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(5,2,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,5, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() e"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(6,1,l_buffer_arr[i]) //ÎÞ³õÊ¼Öµ
+				li_ret=adw_1.SetItemStatus(6,1,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,6, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() f"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(7,1,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(7,1,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,7, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() g"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(8,1,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(8,1,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,8, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() h"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(9,1,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(9,1,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,9, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() i"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(10,1,l_buffer_arr[i])
+				li_ret=adw_1.SetItemStatus(10,1,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,10, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() j"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+				
+				l_status=adw_1.getitemstatus(11,2,l_buffer_arr[i]) //have //rowstatus not set
+				li_ret=adw_1.SetItemStatus(11,2,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,11, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() k"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+
+				l_status=adw_1.getitemstatus(11,1,l_buffer_arr[i]) //have not //rowstatus not set
+				li_ret=adw_1.SetItemStatus(11,1,l_buffer_arr[i],l_status_arr[j]) //
+				f_compare_dwstatus(adw_output,adw_1,11, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol insertrow() l"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+
+		next
+		adw_output.insertrow(0)
+
+end if
+n=0
+if ai_check_flag=0 or ai_check_flag=6 then// .data()ÁÐ×´Ì¬Ïà»¥×ª»»
+		adw_1.dataobject = "d_dwitemstaus_feeform"
+		adw_1.settransobject(sqlca)
+		adw_1.retrieve()
+		for i=1 to 20 //delete!
+			adw_1.deleterow(2)
+		next
+		
+		adw_1.SetFilter("#1>1000") //filter!
+		adw_1.filter()
+		//messagebox("3",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+		for i=1 to 4 //original
+			adw_1.object.data.primary.original[i,1]=i*10
+			adw_1.object.data.delete.original[i,1]=i*10
+			adw_1.object.data.filter.original[i,1]=i*10
+		next
+		
+		for i=5 to 8 //original
+			adw_1.object.data.primary.original[i,2]=ls_null
+			adw_1.object.data.delete.original[i,2]=ls_null
+			adw_1.object.data.filter.original[i,2]=ls_null
+		next
+		
+		for i=9 to 13 //
+			adw_1.object.data.primary.current[i,1]=i*10
+			adw_1.object.data.delete.current[i,1]=i*10
+			adw_1.object.data.filter.current[i,1]=i*10
+		next
+		
+		for i=14 to 18 //
+			adw_1.object.data.primary.current[i,2]=ls_null
+			adw_1.object.data.delete.current[i,2]=ls_null
+			adw_1.object.data.filter.current[i,2]=ls_null
+		next
+	
+		//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+		for i=1 to UpperBound(ls_buffer_arr)	//notmodified->
+			li_ret=adw_1.SetItemStatus(1,0,l_buffer_arr[i],notmodified!)
+			li_ret=adw_1.SetItemStatus(2,0,l_buffer_arr[i],new!) 
+			li_ret=adw_1.SetItemStatus(3,0,l_buffer_arr[i],newmodified!)
+			li_ret=adw_1.SetItemStatus(4,0,l_buffer_arr[i],datamodified!)
+			
+			li_ret=adw_1.SetItemStatus(5,0,l_buffer_arr[i],notmodified!)
+			li_ret=adw_1.SetItemStatus(6,0,l_buffer_arr[i],new!) 
+			li_ret=adw_1.SetItemStatus(7,0,l_buffer_arr[i],newmodified!)
+			li_ret=adw_1.SetItemStatus(8,0,l_buffer_arr[i],datamodified!)
+			
+		next
+		
+		for i=1 to UpperBound(ls_buffer_arr)	//datamodified->
+			li_ret=adw_1.SetItemStatus(9,0,l_buffer_arr[i],notmodified!)
+			
+			li_ret=adw_1.SetItemStatus(10,0,l_buffer_arr[i],newmodified!) //datamodified->newmodified->new 
+			li_ret=adw_1.SetItemStatus(10,0,l_buffer_arr[i],new!) 
+			
+			li_ret=adw_1.SetItemStatus(11,0,l_buffer_arr[i],newmodified!)
+			li_ret=adw_1.SetItemStatus(12,0,l_buffer_arr[i],datamodified!)
+			
+			li_ret=adw_1.SetItemStatus(13,0,l_buffer_arr[i],notmodified!) //datamodified->notmodified->new 
+			li_ret=adw_1.SetItemStatus(13,0,l_buffer_arr[i],new!) 
+			//
+			li_ret=adw_1.SetItemStatus(14,0,l_buffer_arr[i],notmodified!)
+			
+			li_ret=adw_1.SetItemStatus(15,0,l_buffer_arr[i],newmodified!) //datamodified->newmodified->new 
+			li_ret=adw_1.SetItemStatus(15,0,l_buffer_arr[i],new!) 
+			
+			li_ret=adw_1.SetItemStatus(16,0,l_buffer_arr[i],newmodified!)
+			li_ret=adw_1.SetItemStatus(17,0,l_buffer_arr[i],datamodified!)
+			
+			li_ret=adw_1.SetItemStatus(18,0,l_buffer_arr[i],notmodified!) //datamodified->notmodified->new 
+			li_ret=adw_1.SetItemStatus(18,0,l_buffer_arr[i],new!) 
+		next
+		
+		// every buffer and rowstatus ·µ»ØÖµ
+		for i=1 to UpperBound(ls_buffer_arr)
+			for j=1 to UpperBound(ls_status_arr)
+					n++
+					l_status=adw_1.getitemstatus(1,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(1,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,1, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(2,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(2,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,2, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] b"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(3,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(3,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,3, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] c"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(4,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(4,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,4, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] d"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(5,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(5,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,5, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] e"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(6,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(6,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,6, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] f"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(7,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(7,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,7, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] g"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(8,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(8,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,8, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] h"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(9,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(9,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,9, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] i"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(10,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(10,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,10, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] j"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(11,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(11,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,11, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] k"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(12,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(12,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,12, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] l"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(13,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(13,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,13, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] m"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(14,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(14,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,14, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] n"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(15,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(15,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,15, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] o"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(16,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(16,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,16, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] p"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(17,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(17,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,17, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] q"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+					
+					l_status=adw_1.getitemstatus(18,0,l_buffer_arr[i])
+					li_ret=adw_1.SetItemStatus(18,0,l_buffer_arr[i],l_status_arr[j]) //
+					f_compare_dwstatus(adw_output,adw_1,18, f_dwstatustostring(l_status),ls_status_arr[j], l_buffer_arr[i],"Checkcol object.data[] r"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+			next
+			
+			adw_output.insertrow(0)
+		next
+		
+		adw_output.insertrow(0)
+
+end if
+n=0
+if ai_check_flag=0 or ai_check_flag=7 then //Ëø¶¨ÁÐ²âÊÔ
+	f_check_lockstatus(adw_output,adw_1,ab_save_flag,ai_check_flag,ab_output)
+	f_check_lockstatus2(adw_output,adw_1,ab_save_flag,ai_check_flag,ab_output)
+end if
+
+end subroutine
+

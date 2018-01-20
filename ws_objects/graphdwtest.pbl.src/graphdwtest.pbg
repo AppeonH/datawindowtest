@@ -1,0 +1,12 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "graphdwtest.pbl" "";
+@end;
+@begin Objects 
+ "d_exter_graph_property.srd" "graphdwtest.pbl";
+ "d_graph_defaultproperty.srd" "graphdwtest.pbl";
+ "d_graph_defaultproperty_result.srd" "graphdwtest.pbl";
+ "d_graph_propertytest.srd" "graphdwtest.pbl";
+ "w_graph.srw" "graphdwtest.pbl";
+ "w_graphtest.srw" "graphdwtest.pbl";
+@end;

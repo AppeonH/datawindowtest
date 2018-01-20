@@ -1,0 +1,50 @@
+﻿$PBExportHeader$f_outputfile.srf
+global type f_outputfile from function_object
+end type
+
+forward prototypes
+global subroutine f_outputfile (listbox alb_output, datawindow adw_output)
+end prototypes
+
+global subroutine f_outputfile (listbox alb_output, datawindow adw_output);
+long li_i,li_row,li_ItemTotal
+
+string  ls_Mysql
+//
+////Çå¿Õ±í
+//ls_Mysql="truncate table dwtofile"
+//
+//EXECUTE IMMEDIATE :ls_Mysql USING SQLCA ;
+//
+//commit;
+
+adw_output.reset()
+
+//insert errorÐÅÏ¢
+li_ItemTotal = alb_output.TotalItems( )
+
+for li_i=1 to li_itemtotal
+	if pos(lower(alb_output.text(li_i)),"right") = 0  then
+		li_row=adw_output.insertrow(0)
+		adw_output.setitem(li_row,2,alb_output.text(li_i))
+	end if
+next
+
+//IF adw_output.update()	 = 1  THEN
+//		COMMIT USING SQLCA;
+//
+//ELSE
+//		ROLLBACK USING SQLCA;
+//      messagebox("Alert","Save to DataBase False!")
+//		
+//END IF
+
+//±£´æÎÄ¼þ
+if adw_output.SaveAs("c:\output.txt", Text!	, FALSE)=1 then
+	messagebox("Alert","save to output.text,OK!")
+end if
+
+
+
+end subroutine
+

@@ -1,0 +1,180 @@
+﻿$PBExportHeader$f_check_updatecolumnstatus.srf
+global type f_check_updatecolumnstatus from function_object
+end type
+
+forward prototypes
+global subroutine f_check_updatecolumnstatus (datawindow adw_output, datawindow adw_1, boolean ab_save_flag, integer ai_check_flag, boolean ab_output)
+end prototypes
+
+global subroutine f_check_updatecolumnstatus (datawindow adw_output, datawindow adw_1, boolean ab_save_flag, integer ai_check_flag, boolean ab_output);string			ls_status_arr[]={"notmodified","new!","newmodified!","datamodified!"}
+string			ls_buffer_arr[]={"primary!","delete!","filter!"}
+DwItemStatus	l_status,l_status_arr[]={notmodified!,new!,newmodified!,datamodified!}
+DwBuffer 		l_buffer_arr[]={primary!,delete!,filter!}
+DwItemStatus   la_status[3,4]
+string 			ls_message[],ls_null
+int				i,j,n,x,y
+int				li_ret
+boolean        lb_exit
+
+setnull(ls_null)
+
+n=0
+if ai_check_flag=0 or ai_check_flag=1 then// Update()ÁÐ×´Ì¬
+	adw_1.dataobject = "d_dwitemstaus_update"
+	adw_1.settransobject(sqlca)
+	
+	adw_1.retrieve()
+				
+//	messagebox("Setup Before",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	for x=1 to 4
+		adw_1.deleterow(2)
+	next
+	adw_1.SetFilter("#1>500")
+	adw_1.filter()
+//	messagebox("Setup After",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	
+	//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)
+			li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+		next
+	next
+	
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)
+			l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+			la_status[i,j]=l_status
+		next
+	next
+	
+	li_ret =  adw_1.update()
+
+	rollback;
+
+	// every buffer and rowstatus ·µ»ØÖµ	
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)							
+			if ls_buffer_arr[i] = 'primary!' then
+				if adw_1.rowcount() < j then continue
+			elseif ls_buffer_arr[i] = 'delete!' then
+				if adw_1.deletedcount() < j then continue
+			elseif ls_buffer_arr[i] = 'filter!' then
+				if adw_1.filteredcount() < j then continue
+			end if
+			
+			n++				
+			l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+			
+			f_compare_updatecolumnstatus(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(la_status[i,j]),ls_buffer_arr[i]+"."+f_dwstatustostring(l_status), l_buffer_arr[i],"1.CheckColumn Update() "+string(n)+ " From " +ls_buffer_arr[i]+"."+f_dwstatustostring(la_status[i,j]) + " To " + ls_buffer_arr[i]+"."+f_dwstatustostring(l_status), ab_save_flag,li_ret,ab_output)
+		next
+	next
+end if
+
+n=0
+if ai_check_flag=0 or ai_check_flag=2 then// Update(true, false)ÁÐ×´Ì¬
+	adw_1.dataobject = "d_dwitemstaus_update"
+	adw_1.settransobject(sqlca)
+	
+	adw_1.retrieve()
+				
+//	messagebox("Setup Before",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	for x=1 to 4
+		adw_1.deleterow(2)
+	next
+	adw_1.SetFilter("#1>500")
+	adw_1.filter()
+//	messagebox("Setup After",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	
+	//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)
+			li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+		next
+	next
+	
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)
+			l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+			la_status[i,j]=l_status
+		next
+	next
+	
+	li_ret =  adw_1.update(true, false)
+
+	rollback;
+
+	// every buffer and rowstatus ·µ»ØÖµ	
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)							
+			if ls_buffer_arr[i] = 'primary!' then
+				if adw_1.rowcount() < j then continue
+			elseif ls_buffer_arr[i] = 'delete!' then
+				if adw_1.deletedcount() < j then continue
+			elseif ls_buffer_arr[i] = 'filter!' then
+				if adw_1.filteredcount() < j then continue
+			end if
+			
+			n++				
+			l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+			
+			f_compare_updatecolumnstatus(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(la_status[i,j]),ls_buffer_arr[i]+"."+f_dwstatustostring(l_status), l_buffer_arr[i],"2.CheckColumn Update(true, false) "+string(n)+ " From " +ls_buffer_arr[i]+"."+f_dwstatustostring(la_status[i,j]) + " To " + ls_buffer_arr[i]+"."+f_dwstatustostring(l_status), ab_save_flag,li_ret,ab_output)
+		next
+	next
+end if
+
+n=0
+if ai_check_flag=0 or ai_check_flag=3 then// Resetupdate()ÁÐ×´Ì¬
+
+	adw_1.dataobject = "d_dwitemstaus_update"
+	adw_1.settransobject(sqlca)
+	
+	adw_1.retrieve()
+				
+//	messagebox("Setup Before",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	for x=1 to 4
+		adw_1.deleterow(2)
+	next
+	adw_1.SetFilter("#1>500")
+	adw_1.filter()
+//	messagebox("Setup After",string(adw_1.rowcount())+"@@"+string(adw_1.deletedcount())+"@@"+string(adw_1.filteredcount()))
+	
+	//Ô¤ÉèÃ¿Ò»ÐÐ×´Ì¬{"notmodified","new!","newmodified!","datamodified!"}
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)
+			li_ret=adw_1.SetItemStatus(j,1,l_buffer_arr[i],l_status_arr[j]) //
+		next
+	next
+	
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)
+			l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+			la_status[i,j]=l_status
+		next
+	next
+	
+	li_ret =  adw_1.resetupdate()
+
+	rollback;
+
+	// every buffer and rowstatus ·µ»ØÖµ	
+	for i=1 to UpperBound(ls_buffer_arr)
+		for j=1 to UpperBound(ls_status_arr)						
+			if ls_buffer_arr[i] = 'primary!' then
+				if adw_1.rowcount() < j then continue
+			elseif ls_buffer_arr[i] = 'delete!' then
+				if adw_1.deletedcount() < j then continue
+			elseif ls_buffer_arr[i] = 'filter!' then
+				if adw_1.filteredcount() < j then continue
+			end if
+			
+			n++				
+			l_status=adw_1.getitemstatus(j,1,l_buffer_arr[i])
+			
+			f_compare_updatecolumnstatus(adw_output,adw_1,j,ls_buffer_arr[i]+"."+f_dwstatustostring(la_status[i,j]),ls_buffer_arr[i]+"."+f_dwstatustostring(l_status), l_buffer_arr[i],"3.CheckColumn ResetUpdate() "+string(n)+ " From " +ls_buffer_arr[i]+"."+f_dwstatustostring(la_status[i,j]) + " To " + ls_buffer_arr[i]+"."+f_dwstatustostring(l_status), ab_save_flag,li_ret,ab_output)
+		next
+	next
+end if
+
+
+end subroutine
+

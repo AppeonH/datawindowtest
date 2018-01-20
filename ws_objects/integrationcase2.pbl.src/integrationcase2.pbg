@@ -1,0 +1,9 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "integrationcase2.pbl" "";
+@end;
+@begin Objects 
+ "d_attribute_const.srd" "integrationcase2.pbl";
+ "d_column_style.srd" "integrationcase2.pbl";
+ "w_integration_case_modify_ver2.srw" "integrationcase2.pbl";
+@end;

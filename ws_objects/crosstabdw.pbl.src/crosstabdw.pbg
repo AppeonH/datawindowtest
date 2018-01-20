@@ -1,0 +1,20 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "crosstabdw.pbl" "";
+@end;
+@begin Objects 
+ "d_crosstab_button_dw.srd" "crosstabdw.pbl";
+ "d_crosstab_dw.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_bak.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_dynamic.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_event.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_event_static.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_expression.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_expression1.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_function.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_header.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_static.srd" "crosstabdw.pbl";
+ "d_crosstab_dw_zhan.srd" "crosstabdw.pbl";
+ "d_grid_crosstab_result.srd" "crosstabdw.pbl";
+ "w_crosstabdw.srw" "crosstabdw.pbl";
+@end;

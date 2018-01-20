@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_dataexppart.srs
+global type str_dataexppart from structure
+	decimal { 3 }		salary
+	date		start_date
+	time		mytime
+end type
+

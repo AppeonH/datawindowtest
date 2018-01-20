@@ -1,0 +1,11 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "labeldw.pbl" "";
+@end;
+@begin Objects 
+ "d_computed.srd" "labeldw.pbl";
+ "d_label.srd" "labeldw.pbl";
+ "d_label_default.srd" "labeldw.pbl";
+ "d_label_default1.srd" "labeldw.pbl";
+ "w_labeldw.srw" "labeldw.pbl";
+@end;

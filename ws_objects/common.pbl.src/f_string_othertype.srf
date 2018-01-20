@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_string_othertype.srf
+global type f_string_othertype from function_object
+end type
+
+forward prototypes
+global function string f_string_othertype (string as_type, datawindow ad_dw)
+end prototypes
+
+global function string f_string_othertype (string as_type, datawindow ad_dw);//f_string_othertype(string as_type, datawindow	ad_dw) Return String
+String		ls_Return
+
+If	Lower( as_type ) = Lower ( "BorderStyle" ) Then
+	choose case ad_dw.BorderStyle
+		Case StyleBox!
+			ls_Return = 'StyleBox!'
+		Case StyleLowered!
+			ls_Return = 'StyleLowered!'
+		Case StyleRaised!
+			ls_Return = 'StyleRaised!'
+		Case StyleShadowBox!
+			ls_Return = 'StyleShadowBox!'
+		Case Else
+			ls_Return = 'unkown Value'
+	End	Choose
+End	If
+Return ls_Return
+end function
+

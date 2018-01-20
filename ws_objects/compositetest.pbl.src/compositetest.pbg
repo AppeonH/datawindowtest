@@ -1,0 +1,9 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "compositetest.pbl" "";
+@end;
+@begin Objects 
+ "compositetest.sra" "compositetest.pbl";
+ "m_main.srm" "compositetest.pbl";
+ "w_mdi.srw" "compositetest.pbl";
+@end;

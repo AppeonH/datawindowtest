@@ -1,0 +1,8 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "output.pbl" "";
+@end;
+@begin Objects 
+ "d_dwtofile.srd" "output.pbl";
+ "f_outputfile.srf" "output.pbl";
+@end;

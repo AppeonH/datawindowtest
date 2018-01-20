@@ -1,0 +1,198 @@
+﻿$PBExportHeader$f_check_lockstatus.srf
+global type f_check_lockstatus from function_object
+end type
+
+forward prototypes
+global subroutine f_check_lockstatus (datawindow adw_output, datawindow adw_1, boolean ab_save_flag, integer ai_check_flag, boolean ab_output)
+end prototypes
+
+global subroutine f_check_lockstatus (datawindow adw_output, datawindow adw_1, boolean ab_save_flag, integer ai_check_flag, boolean ab_output);string			ls_status_arr[]={"notmodified","new!","newmodified!","datamodified!"}
+string			ls_buffer_arr[]={"primary!","delete!","filter!"}
+DwItemStatus	l_status,l_status_arr[]={notmodified!,new!,newmodified!,datamodified!}
+DwBuffer 		l_buffer_arr[]={primary!,delete!,filter!}
+
+string 			ls_null
+int				i,n
+int				li_ret
+
+setnull(ls_null)
+
+if ai_check_flag=0 or ai_check_flag=7 then 
+		n=0
+		adw_1.dataobject = "d_dwitemstaus_feeform"
+		adw_1.settransobject(sqlca)
+		adw_1.retrieve()
+      for i=1 to 10
+			adw_1.deleterow(1)
+		next
+		adw_1.SetFilter("#1>1000")
+		adw_1.filter()
+		
+		//datamodified->newmodifiedËø¶¨ÁÐ²âÊÔ£º
+		adw_1.object.data.primary[3,2]=ls_null
+		adw_1.object.data.delete[3,2]=ls_null
+		adw_1.object.data.filter[3,2]=ls_null
+		
+		for i=1 to UpperBound(ls_buffer_arr)
+			li_ret=adw_1.SetItemStatus(3,0,l_buffer_arr[i],newmodified!) //
+		next
+		
+		for i=1 to UpperBound(ls_buffer_arr) //Ã»¸Ä¶¯
+			n++
+			li_ret=adw_1.SetItemStatus(3,2,l_buffer_arr[i],notmodified!) //Ã»¸Ä¶¯
+			f_compare_dwstatus(adw_output,adw_1,3, "datamodified", "newmodified", l_buffer_arr[i],"CheckRow lockstatus a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+		for i=1 to UpperBound(ls_buffer_arr) 
+			n++
+			li_ret=adw_1.SetItemStatus(3,1,l_buffer_arr[i],notmodified!) //ÒÑ¸Ä¶¯
+			f_compare_dwstatus(adw_output,adw_1,3, "datamodified", "newmodified", l_buffer_arr[i],"CheckRow lockstatus a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+		for i=1 to UpperBound(ls_buffer_arr) 
+			n++
+			li_ret=adw_1.SetItemStatus(3,2,l_buffer_arr[i],notmodified!) //Ã»¸Ä¶¯
+			f_compare_dwstatus(adw_output,adw_1,3, "datamodified", "newmodified", l_buffer_arr[i],"CheckRow lockstatus a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+		for i=1 to UpperBound(ls_buffer_arr) 
+			n++
+			li_ret=adw_1.SetItemStatus(3,1,l_buffer_arr[i],datamodified!) //ÒÑ¸Ä¶¯
+			f_compare_dwstatus(adw_output,adw_1,3, "datamodified", "newmodified", l_buffer_arr[i],"CheckRow lockstatus a"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+
+		adw_output.insertrow(0)
+////11a null¡¡value
+//adw_1.object.city[1] = ls_null//null¡¡value
+//string aa,bb
+//aa=adw_1.getitemstring(1,6,primary!,true)
+//bb=adw_1.getitemstring(1,6,primary!,false)
+////messagebox("",adw_1.getitemstring(1,6,primary!,true)+"@@"+adw_1.getitemstring(1,6,primary!,false))
+//adw_1.setitemstatus(1,0,primary!,new!)
+//wf_status(1, "datamodified", "new", "11a", "0", ai_flag)
+//
+////11a null¡¡value
+//adw_1.object.city[2] = ls_null//null¡¡value
+//adw_1.setitemstatus(2,0,primary!,newmodified!)
+//wf_status(2, "datamodified", "newmodified", "11a", "0", ai_flag)
+//
+////11a null¡¡value
+//adw_1.object.city[3] = ls_null//null¡¡value
+//adw_1.setitemstatus(3,0,primary!,notmodified!)
+//wf_status(3, "datamodified", "notmodified", "11a", "0", ai_flag)
+//
+//
+////11a null¡¡value  datamodified--newmodifiedÔÙ²âÒ»²âËø¶¨ÁÐ 
+//adw_1.object.city[3] = ls_null//null¡¡value
+//adw_1.setitemstatus(3,0,primary!,newmodified!)
+//adw_1.setitemstatus(3,2,primary!,notmodified!) //Ã»¸Ä¶¯
+//wf_status(3, "datamodified", "notmodified", "11a1", "0", ai_flag)
+//
+//adw_1.setitemstatus(3,1,primary!,notmodified!) //ÒÑ¸Ä¶¯
+//wf_status(3, "datamodified", "notmodified", "11a2", "0", ai_flag)
+//
+//adw_1.setitemstatus(3,2,primary!,notmodified!) //Ã»¸Ä¶¯
+//wf_status(3, "datamodified", "notmodified", "11a3", "0", ai_flag)
+//
+//adw_1.setitemstatus(3,1,primary!,datamodified!) //ÒÑ¸Ä¶¯
+//wf_status(3, "datamodified", "notmodified", "11a4", "0", ai_flag)
+//
+
+
+		//¶ÔËø¶¨ÁÐ½øÐÐÉîÈë²âÊÔnew->newmodifiedËø¶¨ÁÐ²âÊÔ£º
+		for i=1 to UpperBound(ls_buffer_arr) 
+			li_ret=adw_1.SetItemStatus(4,0,l_buffer_arr[i],new!) 
+			li_ret=adw_1.SetItemStatus(4,0,l_buffer_arr[i],newmodified!) 
+		next
+
+		for i=1 to UpperBound(ls_buffer_arr) 
+			n++
+			li_ret=adw_1.SetItemStatus(4,1,l_buffer_arr[i],notmodified!) //ÒÑËø¶¨
+			f_compare_dwstatus(adw_output,adw_1,4, "new", "newmodified", l_buffer_arr[i],"CheckRow lockstatus b"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+
+		for i=1 to UpperBound(ls_buffer_arr) 
+			n++
+			li_ret=adw_1.SetItemStatus(4,2,l_buffer_arr[i],notmodified!) //ÒÑËø¶¨
+			f_compare_dwstatus(adw_output,adw_1,4, "new", "newmodified", l_buffer_arr[i],"CheckRow lockstatus b"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+		adw_output.insertrow(0)
+////¶ÔËø¶¨ÁÐ½øÐÐÉîÈë²âÊÔ
+//adw_1.setitemstatus(12,0,primary!,new!)
+//adw_1.setitemstatus(12,0,primary!,newmodified!)
+//adw_1.setitemstatus(12,1,primary!,notmodified!)//ÒÑËø¶¨
+//wf_status(12, "new", "newmodified", "121a1", "0", ai_flag)
+//adw_1.setitemstatus(12,2,primary!,notmodified!)//ÒÑËø¶¨
+//wf_status(12, "new", "newmodified", "121a2", "0", ai_flag)
+
+
+
+
+
+		////newmodified -> datamodified Ëø¶¨ÁÐ²âÊÔ
+		//²âÊÔÎ´Ôø¸ü¸ÄµÄÁÐ£¬
+		for i=1 to UpperBound(ls_buffer_arr) 
+			li_ret=adw_1.SetItemStatus(5,0,l_buffer_arr[i],newmodified!) 
+			li_ret=adw_1.SetItemStatus(5,0,l_buffer_arr[i],datamodified!) 
+		next
+
+		for i=1 to UpperBound(ls_buffer_arr) 
+			n++
+			li_ret=adw_1.SetItemStatus(5,1,l_buffer_arr[i],notmodified!) //ÒÑ¸Ä¶¯
+			f_compare_dwstatus(adw_output,adw_1,5, "newmodified", "datamodified", l_buffer_arr[i],"CheckRow lockstatus c"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+		//ºÍÒÑ¸ü¸ÄµÄÁÐµÄ×´Ì¬Öµ¡£
+		for i=1 to UpperBound(ls_buffer_arr) 
+			li_ret=adw_1.SetItemStatus(6,0,l_buffer_arr[i],newmodified!) 
+		next
+		adw_1.object.data.primary[6,2] = "AAAAA"
+		adw_1.object.data.delete[6,2] = "AAAAA"
+		adw_1.object.data.filter[6,2] = "AAAAA"
+		for i=1 to UpperBound(ls_buffer_arr) 
+			li_ret=adw_1.SetItemStatus(6,0,l_buffer_arr[i],datamodified!) 
+		next
+		
+		for i=1 to UpperBound(ls_buffer_arr) 
+			n++
+			li_ret=adw_1.SetItemStatus(6,0,l_buffer_arr[i],notmodified!) //ÒÑ¸Ä¶¯
+			f_compare_dwstatus(adw_output,adw_1,6, "newmodified", "datamodified", l_buffer_arr[i],"CheckRow lockstatus c"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+		adw_output.insertrow(0)
+		
+		///newmodified -> datamodified Ëø¶¨ÁÐ²âÊÔ
+////²âÊÔÎ´Ôø¸ü¸ÄµÄÁÐ£¬
+//adw_1.setitemstatus(31,0,primary!,newmodified!)
+//adw_1.setitemstatus(31,0,primary!,datamodified!)
+//wf_status(31, "newmodified", "datamodified", "141a", "0", ai_flag)
+//
+////ºÍÒÑ¸ü¸ÄµÄÁÐµÄ×´Ì¬Öµ¡£
+//adw_1.setitemstatus(31,0,primary!,newmodified!)
+//adw_1.object.city[31] = "AAAAA"
+//adw_1.setitemstatus(31,0,primary!,datamodified!)
+//wf_status(31, "newmodified", "datamodified", "141b", "0", ai_flag)
+		
+		
+		
+		
+		
+		////notmodified->newmodifiedËø¶¨ÁÐÔÙ²âÒ»²â
+		for i=1 to UpperBound(ls_buffer_arr) 
+			li_ret=adw_1.SetItemStatus(7,0,l_buffer_arr[i],newmodified!) 
+		next
+
+		for i=1 to UpperBound(ls_buffer_arr) 
+			n++
+			li_ret=adw_1.SetItemStatus(7,1,l_buffer_arr[i],notmodified!) //ÒÑ¸Ä¶¯
+			f_compare_dwstatus(adw_output,adw_1,7, "notmodified", "newmodified", l_buffer_arr[i],"CheckRow lockstatus d"+string(n)+ls_buffer_arr[i], ab_save_flag,li_ret,ab_output)
+		next
+		adw_output.insertrow(0)
+		
+////notmodified->newmodifiedËø¶¨ÁÐÔÙ²âÒ»²â
+//adw_1.setitemstatus(22,0,primary!,newmodified!)
+//adw_1.setitemstatus(22,1,primary!,notmodified!)
+//wf_status(22, "notmodified", "newmodified", "131a", "0", ai_flag)
+		
+		
+		
+
+end if
+
+end subroutine
+
